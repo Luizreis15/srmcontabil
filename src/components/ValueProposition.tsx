@@ -1,73 +1,50 @@
-import { Shield, FileCheck, BarChart3, CheckCircle } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Shield, FileCheck, BarChart3 } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
 
-const pillars = [
+const advantages = [
   {
     icon: Shield,
-    title: "Inteligência Fiscal (na prática)",
-    items: [
-      "Revisão de enquadramento e rotinas",
-      "Alertas e prevenção de risco",
-      "Leitura tributária com foco em pagar o justo",
-    ],
+    title: "Inteligência Fiscal",
+    description: "Revisão de enquadramento, alertas de risco e leitura tributária com foco em pagar o justo.",
   },
   {
     icon: FileCheck,
-    title: "Assessoria Contábil completa",
-    items: [
-      "Escrituração, apuração, obrigações",
-      "Integração e organização documental",
-      "Calendário e acompanhamento",
-    ],
+    title: "Assessoria Completa",
+    description: "Escrituração, apuração, obrigações e calendário organizado. Tudo sem improviso.",
   },
   {
     icon: BarChart3,
-    title: "Gestão que vira decisão",
-    items: [
-      "Relatórios claros",
-      "Indicadores básicos que importam",
-      "Conversa objetiva (sem \"contabilês\")",
-    ],
+    title: "Gestão para Decisão",
+    description: "Relatórios claros, indicadores que importam e conversa objetiva — sem \"contabilês\".",
   },
 ];
 
 export function ValueProposition() {
   return (
-    <section className="section-padding">
+    <section className="section-padding bg-background">
       <div className="container-wide mx-auto">
-        {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             O método é simples:{" "}
-            <span className="gradient-text">clareza, rotina e controle fiscal.</span>
+            <span className="text-primary">clareza, rotina e controle fiscal.</span>
           </h2>
           <p className="text-lg text-muted-foreground">
             Você sabe o que será feito, quando será feito e o que você recebe no fim.
           </p>
         </div>
 
-        {/* Pillars */}
         <div className="grid md:grid-cols-3 gap-8">
-          {pillars.map((pillar, index) => (
+          {advantages.map((item, index) => (
             <Card
               key={index}
-              className="group bg-card border-border hover:shadow-card-hover transition-all duration-300 hover:border-primary/20"
+              className="group border-border hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1 text-center"
             >
-              <CardHeader className="pb-4">
-                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/15 transition-colors">
-                  <pillar.icon className="w-7 h-7 text-primary" />
+              <CardContent className="p-8">
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6 group-hover:bg-primary/20 transition-colors">
+                  <item.icon className="w-8 h-8 text-primary" />
                 </div>
-                <CardTitle className="text-xl">{pillar.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-3">
-                  {pillar.items.map((item, itemIndex) => (
-                    <li key={itemIndex} className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                      <span className="text-muted-foreground">{item}</span>
-                    </li>
-                  ))}
-                </ul>
+                <h3 className="font-bold text-xl mb-3 text-foreground">{item.title}</h3>
+                <p className="text-muted-foreground leading-relaxed">{item.description}</p>
               </CardContent>
             </Card>
           ))}

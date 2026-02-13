@@ -4,7 +4,9 @@ import { PainPoints } from "@/components/PainPoints";
 import { ValueProposition } from "@/components/ValueProposition";
 import { ServicesPreview } from "@/components/ServicesPreview";
 import { SwitchAccountant } from "@/components/SwitchAccountant";
+import { FacilitateSection } from "@/components/FacilitateSection";
 import { SocialProof } from "@/components/SocialProof";
+import { OnlineSection } from "@/components/OnlineSection";
 import { ContentSection } from "@/components/ContentSection";
 import { FAQ } from "@/components/FAQ";
 import { FinalCTA } from "@/components/FinalCTA";
@@ -21,7 +23,9 @@ const Index = () => {
         <ValueProposition />
         <ServicesPreview />
         <SwitchAccountant />
+        <FacilitateSection />
         <SocialProof />
+        <OnlineSection />
         <ContentSection />
         <FAQ />
         <FinalCTA />

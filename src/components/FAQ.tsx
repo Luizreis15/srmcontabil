@@ -30,17 +30,14 @@ const faqs = [
 
 export function FAQ() {
   return (
-    <section className="section-padding bg-secondary/50">
+    <section className="section-padding bg-secondary">
       <div className="container-narrow mx-auto">
-        {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Perguntas que todo mundo tem{" "}
-            <span className="text-muted-foreground">(e poucos respondem direito)</span>
+            Dúvidas comuns de <span className="text-primary">nossos clientes</span>
           </h2>
         </div>
 
-        {/* Accordion */}
         <Accordion type="single" collapsible className="space-y-4">
           {faqs.map((faq, index) => (
             <AccordionItem
