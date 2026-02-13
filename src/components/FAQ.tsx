@@ -4,6 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const faqs = [
   {
@@ -29,31 +30,35 @@ const faqs = [
 ];
 
 export function FAQ() {
-  return (
-    <section className="section-padding bg-secondary">
-      <div className="container-narrow mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Dúvidas comuns de <span className="text-primary">nossos clientes</span>
-          </h2>
-        </div>
+  const ref = useScrollAnimation();
 
-        <Accordion type="single" collapsible className="space-y-4">
-          {faqs.map((faq, index) => (
-            <AccordionItem
-              key={index}
-              value={`item-${index}`}
-              className="bg-card border border-border rounded-xl px-6 data-[state=open]:shadow-card"
-            >
-              <AccordionTrigger className="text-left text-lg font-semibold hover:no-underline py-6">
-                {faq.question}
-              </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground pb-6 leading-relaxed">
-                {faq.answer}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
+  return (
+    <section className="section-padding bg-background">
+      <div className="container-narrow mx-auto">
+        <div ref={ref} className="scroll-animate">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Dúvidas comuns de <span className="text-primary">nossos clientes</span>
+            </h2>
+          </div>
+
+          <Accordion type="single" collapsible className="space-y-3">
+            {faqs.map((faq, index) => (
+              <AccordionItem
+                key={index}
+                value={`item-${index}`}
+                className="stagger-child bg-card border border-border rounded-xl px-6 data-[state=open]:shadow-card data-[state=open]:border-primary/30"
+              >
+                <AccordionTrigger className="text-left text-lg font-semibold hover:no-underline hover:text-primary transition-colors py-5">
+                  {faq.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground pb-5 leading-relaxed">
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
       </div>
     </section>
   );
