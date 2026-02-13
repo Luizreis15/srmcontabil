@@ -1,5 +1,6 @@
 import { FileSearch, ClipboardList, Settings, CheckSquare, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const steps = [
   { number: "01", icon: FileSearch, title: "Diagnóstico rápido", description: "Análise do cenário atual" },
@@ -9,17 +10,20 @@ const steps = [
 ];
 
 export function SwitchAccountant() {
+  const ref = useScrollAnimation();
+
   return (
     <section id="troca" className="section-padding bg-background">
       <div className="container-wide mx-auto">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div ref={ref} className="scroll-animate grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Image */}
           <div className="flex justify-center order-2 lg:order-1">
-            <div className="w-72 h-72 md:w-96 md:h-96">
+            <div className="w-72 h-72 md:w-96 md:h-96 relative">
+              <div className="absolute inset-0 rounded-full bg-primary/10 blur-xl scale-105" />
               <img
                 src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=600&h=600&fit=crop&crop=faces"
                 alt="Equipe preparando migração contábil"
-                className="w-full h-full rounded-full object-cover border-4 border-primary/20 shadow-lg"
+                className="relative w-full h-full rounded-full object-cover border-4 border-primary/30 shadow-xl"
               />
             </div>
           </div>
@@ -36,9 +40,9 @@ export function SwitchAccountant() {
 
             <div className="grid sm:grid-cols-2 gap-4 mb-8">
               {steps.map((step) => (
-                <div key={step.number} className="flex items-start gap-3 p-4 rounded-xl bg-secondary border border-border">
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <step.icon className="w-5 h-5 text-primary" />
+                <div key={step.number} className="stagger-child flex items-start gap-3 p-4 rounded-xl bg-secondary border border-border hover:border-primary/30 transition-colors">
+                  <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
+                    <step.icon className="w-5 h-5 text-primary-foreground" />
                   </div>
                   <div>
                     <h3 className="font-bold text-foreground">{step.title}</h3>
@@ -50,7 +54,7 @@ export function SwitchAccountant() {
 
             <Button
               size="lg"
-              className="bg-primary hover:bg-primary/90 text-primary-foreground gap-2 text-base px-8 py-6"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground gap-2 text-base px-8 py-6 pulse-glow"
               onClick={() => window.open("https://wa.me/5511999999999?text=Olá! Gostaria de migrar de contador com segurança.", "_blank")}
             >
               <MessageCircle className="w-5 h-5" />
