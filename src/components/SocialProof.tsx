@@ -33,42 +33,38 @@ const testimonials = [
 
 export function SocialProof() {
   return (
-    <section id="sobre" className="section-padding bg-secondary/50">
+    <section id="sobre" className="section-padding bg-accent text-accent-foreground">
       <div className="container-wide mx-auto">
-        {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Não é "marketing".{" "}
-            <span className="gradient-text">É processo + histórico.</span>
+            Não é "marketing". É processo + histórico.
           </h2>
         </div>
 
         {/* Stats */}
         <div className="grid grid-cols-3 gap-6 mb-16">
           {stats.map((stat, index) => (
-            <div key={index} className="text-center p-6 rounded-xl bg-card border border-border">
-              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mx-auto mb-3">
-                <stat.icon className="w-6 h-6 text-primary" />
+            <div key={index} className="text-center p-6 rounded-xl bg-accent-foreground/5 border border-accent-foreground/10">
+              <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center mx-auto mb-3">
+                <stat.icon className="w-6 h-6 text-primary-foreground" />
               </div>
-              <div className="text-3xl md:text-4xl font-bold text-foreground mb-1">{stat.value}</div>
-              <div className="text-sm text-muted-foreground">{stat.label}</div>
+              <div className="text-3xl md:text-4xl font-bold mb-1">{stat.value}</div>
+              <div className="text-sm text-accent-foreground/70">{stat.label}</div>
             </div>
           ))}
         </div>
 
         {/* Testimonials */}
         <div className="grid md:grid-cols-3 gap-6">
-          {testimonials.map((testimonial, index) => (
-            <Card key={index} className="bg-card border-border">
+          {testimonials.map((t, index) => (
+            <Card key={index} className="bg-accent-foreground/5 border-accent-foreground/10 text-accent-foreground">
               <CardContent className="p-6">
-                <Quote className="w-8 h-8 text-primary/20 mb-4" />
-                <p className="text-foreground mb-6 leading-relaxed">"{testimonial.quote}"</p>
+                <Quote className="w-8 h-8 text-primary mb-4" />
+                <p className="mb-6 leading-relaxed">"{t.quote}"</p>
                 <div>
-                  <div className="font-bold text-foreground">{testimonial.name}</div>
-                  <div className="text-sm text-muted-foreground">
-                    {testimonial.role} • {testimonial.company}
-                  </div>
-                  <div className="text-sm text-accent font-medium">{testimonial.location}</div>
+                  <div className="font-bold">{t.name}</div>
+                  <div className="text-sm text-accent-foreground/70">{t.role} • {t.company}</div>
+                  <div className="text-sm text-primary font-medium">{t.location}</div>
                 </div>
               </CardContent>
             </Card>
@@ -76,19 +72,13 @@ export function SocialProof() {
         </div>
 
         {/* Credentials */}
-        <div className="mt-12 flex flex-wrap justify-center gap-8 items-center">
-          <div className="flex items-center gap-2 text-muted-foreground">
-            <Award className="w-5 h-5" />
-            <span className="text-sm font-medium">Registro CRC Ativo</span>
-          </div>
-          <div className="flex items-center gap-2 text-muted-foreground">
-            <Award className="w-5 h-5" />
-            <span className="text-sm font-medium">Certificação Digital</span>
-          </div>
-          <div className="flex items-center gap-2 text-muted-foreground">
-            <Award className="w-5 h-5" />
-            <span className="text-sm font-medium">Sistemas Integrados</span>
-          </div>
+        <div className="mt-12 flex flex-wrap justify-center gap-8 items-center text-accent-foreground/70">
+          {["Registro CRC Ativo", "Certificação Digital", "Sistemas Integrados"].map((label) => (
+            <div key={label} className="flex items-center gap-2">
+              <Award className="w-5 h-5" />
+              <span className="text-sm font-medium">{label}</span>
+            </div>
+          ))}
         </div>
       </div>
     </section>

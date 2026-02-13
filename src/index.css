@@ -3,68 +3,68 @@
 @tailwind utilities;
 
 /* SMR Contábil Design System
-   Corporate modern: Petrol blue + Forest green + Warm neutrals
-   Focus: Trust, clarity, professionalism
+   Vibrant green + clean neutrals — inspired by Sigma Contabilidade
+   Focus: Life, growth, trust, professionalism
 */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 @layer base {
   :root {
-    /* Petrol Blue - Primary brand color (trust, professionalism) */
-    --primary: 190 52% 23%;
+    /* Vibrant Green - Primary brand color (growth, life) */
+    --primary: 152 69% 31%;
     --primary-foreground: 0 0% 100%;
     
-    /* Forest Green - Accent (growth, stability) */
-    --accent: 150 42% 29%;
+    /* Dark Green - For dark sections */
+    --accent: 160 45% 20%;
     --accent-foreground: 0 0% 100%;
     
     /* Backgrounds */
-    --background: 40 20% 98%;
-    --foreground: 200 25% 15%;
+    --background: 0 0% 100%;
+    --foreground: 210 20% 15%;
     
     /* Cards & Surfaces */
     --card: 0 0% 100%;
-    --card-foreground: 200 25% 15%;
+    --card-foreground: 210 20% 15%;
     
     --popover: 0 0% 100%;
-    --popover-foreground: 200 25% 15%;
+    --popover-foreground: 210 20% 15%;
     
-    /* Secondary - Light surface */
-    --secondary: 190 15% 95%;
-    --secondary-foreground: 190 52% 23%;
+    /* Secondary - Light gray surface */
+    --secondary: 210 20% 96%;
+    --secondary-foreground: 210 20% 15%;
     
-    /* Muted - Subtle elements */
-    --muted: 40 10% 93%;
-    --muted-foreground: 200 10% 45%;
+    /* Muted */
+    --muted: 210 10% 93%;
+    --muted-foreground: 210 10% 45%;
     
     /* Destructive */
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
     
     /* Borders & Inputs */
-    --border: 200 15% 88%;
-    --input: 200 15% 88%;
-    --ring: 190 52% 23%;
+    --border: 210 15% 90%;
+    --input: 210 15% 90%;
+    --ring: 152 69% 31%;
     
     --radius: 0.75rem;
     
     /* Custom tokens */
-    --hero-gradient: linear-gradient(135deg, hsl(190 52% 23%) 0%, hsl(190 45% 28%) 100%);
-    --card-shadow: 0 4px 24px -4px hsl(200 25% 15% / 0.08);
-    --card-shadow-hover: 0 8px 32px -4px hsl(200 25% 15% / 0.12);
-    --success: 150 42% 29%;
+    --hero-gradient: linear-gradient(135deg, hsl(152 69% 31%) 0%, hsl(160 45% 20%) 100%);
+    --card-shadow: 0 4px 24px -4px hsl(210 20% 15% / 0.06);
+    --card-shadow-hover: 0 12px 40px -8px hsl(210 20% 15% / 0.12);
+    --success: 152 69% 31%;
     --success-foreground: 0 0% 100%;
     
-    /* Sidebar (if needed) */
+    /* Sidebar */
     --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 200 25% 15%;
-    --sidebar-primary: 190 52% 23%;
+    --sidebar-foreground: 210 20% 15%;
+    --sidebar-primary: 152 69% 31%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 190 15% 95%;
-    --sidebar-accent-foreground: 190 52% 23%;
-    --sidebar-border: 200 15% 88%;
-    --sidebar-ring: 190 52% 23%;
+    --sidebar-accent: 152 15% 95%;
+    --sidebar-accent-foreground: 152 69% 31%;
+    --sidebar-border: 210 15% 90%;
+    --sidebar-ring: 152 69% 31%;
   }
 }
 
@@ -106,7 +106,7 @@
   
   .gradient-text {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+    background-image: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(152 69% 40%) 100%);
   }
 }
 
