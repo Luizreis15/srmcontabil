@@ -1,36 +1,33 @@
 
 
-# Redesign do Hero - Replicar Layout da Sigma
+# Pagina "Em Construcao" + Rota de Desenvolvimento
 
-## O Que Esta Errado
+## Objetivo
+Criar uma pagina publica informando que o novo site esta em construcao, enquanto o site sendo desenvolvido fica acessivel em uma rota separada para preview.
 
-O hero atual tem uma imagem circular pequena (440px) flutuando dentro de um container. O hero da Sigma e completamente diferente:
+## Mudancas
 
-- A imagem ocupa **metade direita da tela inteira**, com um **recorte em arco/curva** que sangra ate a borda direita e inferior
-- O fundo escuro ocupa **100% da viewport** (ou quase)
-- O texto fica posicionado mais abaixo, com mais espaco
-- Layout mais dramatico e imersivo
+### 1. Nova pagina: `src/pages/UnderConstruction.tsx`
+- Pagina bonita com fundo azul marinho (cores da SMR)
+- Logo "S" da SMR no topo
+- Titulo: "Novo site em construcao"
+- Mensagem: "Estamos preparando algo incrivel para voce. Em breve, nosso novo site estara no ar."
+- Icone de construcao animado (Hammer ou HardHat do Lucide)
+- Links para WhatsApp e telefone para contato enquanto isso
+- Icones de redes sociais (Instagram, Facebook)
 
-## O Que Sera Feito
+### 2. Ajuste de rotas: `src/App.tsx`
+- Rota `/` --> Pagina "Em Construcao" (o que visitantes veem)
+- Rota `/preview` --> Site atual completo (Index com todas as secoes)
+- Rota `*` --> 404
 
-### Hero.tsx - Redesign Completo do Layout
+Assim voce acessa `/preview` para ver o site em desenvolvimento, e quando estiver pronto, basta trocar as rotas para publicar o definitivo.
 
-1. **Secao full-viewport**: `min-h-[85vh]` com fundo escuro edge-to-edge
-2. **Imagem com clip-path curvo**: Em vez de `border-radius: 50%` (circulo), usar `clip-path: ellipse()` ou um arco CSS que faz a imagem sangrar para a direita e para baixo, criando aquele efeito de "quarto de circulo" da Sigma
-3. **Imagem posicionada absolutamente** na metade direita, ocupando toda a altura da secao
-4. **Texto a esquerda** com mais padding vertical, posicionado mais ao centro vertical
-5. **Botao CTA verde** (teal) com icone do WhatsApp - unico, limpo
-6. **Linha de prova** abaixo do botao mantida, mas mais discreta
-7. **Remover o glow/blur** atras da imagem - a Sigma nao tem isso
+## Detalhes Tecnicos
 
-### Detalhes Tecnicos
+### Arquivo novo
+- `src/pages/UnderConstruction.tsx`: Pagina responsiva com animacao sutil, logo, mensagem e contatos
 
-- `clip-path: ellipse(80% 100% at 70% 50%)` ou similar para criar o arco
-- Imagem com `position: absolute`, `right: 0`, `top: 0`, `bottom: 0` para sangrar na borda
-- Container do texto com `max-w-xl` dentro de um grid ou flex
-- `overflow-hidden` na secao para conter a imagem
-- Responsivo: no mobile, imagem fica acima ou atras com overlay
-
-### Arquivo Modificado
-- `src/components/Hero.tsx` - reescrita completa do layout
+### Arquivo modificado
+- `src/App.tsx`: Adicionar import da nova pagina e ajustar rotas (/ para UnderConstruction, /preview para Index)
 
