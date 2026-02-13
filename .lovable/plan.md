@@ -1,101 +1,108 @@
 
-# Redesign Completo do Site SMR Contabil - Inspirado na Sigma Contabilidade
 
-## Problema Identificado
-O site atual e muito texto-pesado, sem imagens, sem cor vibrante e sem vida visual. A referencia (Sigma Contabilidade) usa:
-- Hero com imagem grande de equipe em formato circular
-- Barra superior com contatos e redes sociais
-- Secoes alternando imagem + texto lado a lado
-- Cards de servicos com icones verdes vibrantes
-- Secao com barras de progresso nos servicos
-- Fundos alternados (branco, cinza claro, secoes com imagens)
-- Fotos reais de escritorio/equipe em varias secoes
-- Visual mais verde e vivo (menos cinza/petrol escuro)
+# Redesign SMR Contabil - Cores Corretas + Vida Visual
 
-## Mudancas Planejadas
+## Problema 1: Paleta de Cores Errada
 
-### 1. Paleta de Cores - Mais Vida e Verde
-- Verde mais vibrante como cor principal dos CTAs e destaques (inspirado no verde da Sigma)
-- Backgrounds alternados: branco puro, cinza bem claro, secoes com fundo verde escuro
-- Menos petrol blue pesado, mais contraste e limpeza
+A paleta atual usa verde (#2a8f5c) como cor principal. Pelo Instagram da SMR, as cores reais sao:
 
-### 2. Top Bar (novo componente)
-- Barra fina no topo com email, telefone e icones de redes sociais (Facebook, Instagram, LinkedIn)
-- Estilo: fundo branco ou cinza claro, texto pequeno
+- **Azul marinho escuro** (fundo principal das pecas): ~hsl(210, 60%, 18%) - #0f2a4a
+- **Azul teal/ciano** (destaque, acentos): ~hsl(195, 85%, 45%) - #0e8bb5  
+- **Branco** para texto e elementos sobre fundo escuro
+- **Cinza claro** para fundos alternados
 
-### 3. Header Redesenhado
-- Logo a esquerda
-- Menu centralizado/direita
-- Botao "Contato" com fundo verde (como na referencia)
+Todos os componentes serao atualizados para refletir essa paleta azul.
 
-### 4. Hero - Layout Split com Imagem
-- Layout em 2 colunas: texto a esquerda, imagem grande a direita
-- Imagem em formato circular/arredondado (como a Sigma faz com clip-path ou border-radius)
-- Usar imagem placeholder de equipe profissional (via Unsplash URL)
-- Headline + sub + botao verde "Falar com o contador" (WhatsApp)
-- Remover badge e bullets do hero, simplificar
+## Problema 2: Site Sem Vida
 
-### 5. Secao "Como Trabalhamos" - Imagem + Texto
-- Layout 2 colunas: imagem circular a esquerda, texto + barras de progresso a direita
-- Barras de progresso verdes para cada servico (Assessoria Contabil, Fiscal, Folha, etc.)
-- Label acima da barra + percentual
+Mudancas para dar impacto e dinamismo:
 
-### 6. Secao Vantagens - Cards com Icones Verdes
-- 3 cards com icones verdes, titulo e descricao
-- Fundo cinza claro
-- Icones maiores e mais coloridos
+- **Hero com fundo azul escuro** em vez de branco - mais impacto visual imediato
+- **Secoes com fundos alternados mais fortes**: azul escuro, branco, cinza, azul escuro
+- **Animacoes de entrada** (scroll-triggered) em cada secao usando Intersection Observer
+- **Gradientes e overlays** nas secoes de destaque
+- **Cards com hover mais agressivo** (sombra, escala, cor)
+- **Bordas e detalhes em teal** para dar destaque visual
+- **Barras de progresso animadas** que crescem ao entrar na viewport
+- **Icones com fundo teal solido** (nao apenas 10% de opacidade)
+- **CTA buttons em teal vibrante** com efeito de pulse/glow
+- **Secoes mais compactas** - reduzir padding vertical excessivo
 
-### 7. Secao Diferenciais - Grid de Cards
-- 6 cards em grid 3x2 ou 2x3
-- Icone verde, titulo, descricao curta
-- Botao "Leia Mais" em cada card
+## Arquivos a Modificar
 
-### 8. Secao "Facilitar sua vida" - Imagem + Texto
-- Layout 2 colunas com imagem da equipe/escritorio
-- Texto motivacional + CTA
+### 1. src/index.css
+- Trocar toda a paleta de `--primary` de verde para azul teal (~195 85% 45%)
+- Trocar `--accent` para azul marinho escuro (~210 60% 18%)
+- Adicionar animacao de scroll-reveal via CSS
+- Reduzir padding do `.section-padding` para secoes mais compactas
+- Adicionar classe `.animate-on-scroll` com transicao de opacidade e translateY
 
-### 9. Secao Contabilidade Online - Icones em Grid
-- Icones circulares com labels (Praticidade, Economia, Agilidade, etc.)
-- CTA verde "Quero uma Contabilidade Online"
+### 2. tailwind.config.ts
+- Ajustar cores para a nova paleta azul
 
-### 10. FAQ Redesenhado
-- Manter acordeao, mas com visual mais limpo
-- Titulo "Duvidas comuns de nossos clientes"
+### 3. src/components/Hero.tsx
+- Fundo azul escuro (bg-accent) com texto branco
+- Imagem circular com borda teal
+- Botao CTA em teal vibrante com animacao pulse sutil
+- Texto branco com destaque teal no "Inteligencia Fiscal"
 
-### 11. Footer Redesenhado
-- Fundo escuro com logo, newsletter (campo de email), CTA
-- Icones de redes sociais
+### 4. src/components/Header.tsx
+- Botao "Contato" em teal (bg-primary)
+- Logo com icone azul
 
-### 12. Imagens Placeholder
-- Usar URLs de imagens do Unsplash para equipe de escritorio/contabilidade
-- Formato circular em varias secoes (hero, como trabalhamos, etc.)
-- Imagens aplicadas via `<img>` com classes de arredondamento
+### 5. src/components/TopBar.tsx
+- Fundo azul escuro com texto branco/cinza claro
 
-## Detalhes Tecnicos
+### 6. src/components/PainPoints.tsx
+- Barras de progresso em teal
+- Borda/destaque teal na imagem
 
-### Arquivos a Modificar
-- **src/index.css**: Ajustar paleta para verde mais vibrante, novos tokens CSS
-- **tailwind.config.ts**: Ajustar cores accent/primary para verde mais vivo
-- **src/components/Header.tsx**: Redesenhar com TopBar + novo layout
-- **src/components/Hero.tsx**: Layout 2 colunas com imagem circular
-- **src/components/PainPoints.tsx**: Transformar em secao "Como Trabalhamos" com barras de progresso
-- **src/components/ValueProposition.tsx**: Redesenhar como secao de vantagens com cards visuais
-- **src/components/ServicesPreview.tsx**: Grid de cards com icones verdes maiores
-- **src/components/SwitchAccountant.tsx**: Adicionar imagem lateral
-- **src/components/SocialProof.tsx**: Redesenhar com mais cor e imagens
-- **src/components/ContentSection.tsx**: Adicionar imagem + layout visual
-- **src/components/FAQ.tsx**: Estilo mais limpo
-- **src/components/FinalCTA.tsx**: Secao com imagem de fundo ou lateral
-- **src/components/Footer.tsx**: Redesenhar com newsletter + redes sociais
+### 7. src/components/ValueProposition.tsx
+- Icones com fundo teal solido e icone branco (mais impacto)
+- Cards com borda superior teal
 
-### Novo Componente
-- **src/components/TopBar.tsx**: Barra superior com contatos e redes sociais
+### 8. src/components/ServicesPreview.tsx
+- Fundo azul escuro para a secao inteira
+- Cards brancos sobre fundo escuro (alto contraste)
+- Icones teal
 
-### Imagens (Unsplash placeholders)
-- Hero: equipe de escritorio trabalhando juntos
-- Como Trabalhamos: profissionais em reuniao
-- Facilitar sua vida: escritorio moderno
-- Todas com formato circular ou arredondado
+### 9. src/components/SwitchAccountant.tsx
+- Manter layout split, adicionar fundo mais contrastante
 
-### Abordagem
-Todas as copys/textos do PRD original serao mantidos. A mudanca e puramente visual: mais imagens, mais verde, mais espacamento, layouts split (texto + imagem), barras de progresso, cards mais coloridos e vivos.
+### 10. src/components/FacilitateSection.tsx
+- Fundo azul escuro com texto branco
+- Imagem com borda teal
+
+### 11. src/components/SocialProof.tsx
+- Manter fundo escuro, ajustar para azul marinho
+- Stats com destaque teal
+
+### 12. src/components/OnlineSection.tsx
+- Icones com fundo teal solido
+
+### 13. src/components/FinalCTA.tsx
+- Gradiente azul escuro para teal
+- Botoes mais vibrantes
+
+### 14. src/components/Footer.tsx
+- Fundo azul escuro (consistente com a marca)
+
+### 15. src/components/FAQ.tsx
+- Detalhes em teal nos acordeoes
+
+### 16. src/hooks/useScrollAnimation.ts (novo)
+- Custom hook com Intersection Observer para animar secoes ao scroll
+- Cada secao entra com fade-in + slide-up ao entrar na viewport
+
+### 17. src/pages/Index.tsx
+- Aplicar animacoes de scroll em cada secao
+
+## Resumo do Impacto Visual
+
+- Verde --> Azul marinho + teal (identidade correta da SMR)
+- Fundos brancos monotonos --> Alternancia de azul escuro / branco / cinza
+- Secoes estaticas --> Animacoes de entrada ao scroll
+- Cards planos --> Cards com hover vibrante e bordas de destaque
+- Icones fracos --> Icones com fundo solido teal
+- Botoes discretos --> CTAs em teal com efeito glow/pulse
+
