@@ -1,6 +1,7 @@
 import { MapPin, Phone, Mail, MessageCircle } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import logoSmr from "@/assets/logo-smr.jpg";
 
 const footerLinks = [
   { label: "Serviços", href: "#servicos" },
@@ -23,9 +24,7 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg">S</span>
-              </div>
+              <img src={logoSmr} alt="SMR Contábil" className="w-10 h-10 rounded-lg object-cover" />
               <span className="font-bold text-xl">SMR Contábil</span>
             </div>
             <p className="text-accent-foreground/70 text-sm leading-relaxed mb-4">
