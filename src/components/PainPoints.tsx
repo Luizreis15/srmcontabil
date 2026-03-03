@@ -2,11 +2,11 @@ import { Progress } from "@/components/ui/progress";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const services = [
-  { label: "Assessoria Contábil", value: 30 },
-  { label: "Inteligência Fiscal", value: 25 },
-  { label: "Folha e Trabalhista", value: 20 },
-  { label: "Regularização", value: 15 },
-  { label: "Planejamento Tributário", value: 10 },
+  { label: "Assessoria Contábil", value: 100 },
+  { label: "Inteligência Fiscal", value: 100 },
+  { label: "Folha e Trabalhista", value: 100 },
+  { label: "Regularização", value: 100 },
+  { label: "Planejamento Tributário", value: 100 },
 ];
 
 export function PainPoints() {
