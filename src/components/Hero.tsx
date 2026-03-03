@@ -4,34 +4,25 @@ import { Button } from "@/components/ui/button";
 export function Hero() {
   return (
     <section className="relative min-h-[85vh] overflow-hidden bg-accent">
-      {/* Dark gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-accent via-accent to-[hsl(210_60%_12%)]" />
-
-      {/* Image - right half */}
-      <div className="absolute top-0 right-0 bottom-0 w-[55%] hidden lg:block">
+      {/* Background image - full width */}
+      <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&h=1000&fit=crop&crop=faces"
+          src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1400&h=1000&fit=crop&crop=faces"
           alt="Equipe SMR Contábil trabalhando em escritório moderno"
           className="w-full h-full object-cover"
         />
-        {/* Half-moon arc overlay on left edge of image */}
-        <div
-          className="absolute inset-y-0 -left-1 w-[120px]"
-          style={{
-            background: "hsl(210 60% 18%)",
-            borderRadius: "0 50% 50% 0",
-          }}
-        />
       </div>
 
-      {/* Mobile image - behind with overlay */}
-      <div className="absolute inset-0 lg:hidden">
-        <img
-          src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&h=600&fit=crop&crop=faces"
-          alt="Equipe SMR Contábil"
-          className="w-full h-full object-cover opacity-20"
-        />
-      </div>
+      {/* Gradient overlay - opaque left, transparent right (desktop) */}
+      <div
+        className="absolute inset-0 hidden lg:block"
+        style={{
+          background: "linear-gradient(to right, hsl(210 60% 18% / 0.95) 0%, hsl(210 60% 18% / 0.85) 35%, hsl(210 60% 18% / 0.4) 60%, transparent 80%)",
+        }}
+      />
+
+      {/* Mobile overlay - uniform dark */}
+      <div className="absolute inset-0 lg:hidden bg-accent/80" />
 
       {/* Text content - left side, pushed further left */}
       <div className="relative z-10 flex items-center min-h-[85vh]">
