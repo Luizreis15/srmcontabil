@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { TopBar } from "@/components/TopBar";
-import logoSmr from "@/assets/logo-smr.jpg";
+import logoSmr from "@/assets/logo-smr.png";
 
 const navLinks = [
   { label: "Início", href: "#" },
@@ -36,8 +36,7 @@ export function Header() {
           <div className="flex items-center justify-between h-16 md:h-18">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2">
-              <img src={logoSmr} alt="SMR Contábil" className="w-10 h-10 rounded-lg object-cover" />
-              <span className="font-bold text-xl text-foreground">SMR Contábil</span>
+              <img src={logoSmr} alt="SMR Assessoria" className="h-10 object-contain" />
             </Link>
 
             {/* Desktop Navigation */}
