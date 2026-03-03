@@ -1,49 +1,32 @@
 
 
-## Plano: Criar Árvore de Links (Mini Site) para SMR Assessoria
+## Plano: Adicionar resumos descritivos nos links "Conheça a SMR"
 
-Inspirado no projeto **Links CSR**, vamos criar uma página de árvore de links no estilo Linktree para a SMR Assessoria, acessível em `/links`.
+Atualmente os botões "Nossos Serviços", "Trocar de Contador" e "Sobre a SMR" na seção "Conheça a SMR" são links simples sem contexto. Vamos transformá-los em cards com resumo extraído do conteúdo que já existe no site.
 
-### Estrutura
+### O que muda
 
-```text
-/links
-├── Background decorativo (logo SMR em marca d'água)
-├── Header (logo + nome + tagline)
-├── Seção CTA Principal
-│   ├── WhatsApp - Falar com Especialista
-│   └── Agendar Diagnóstico Fiscal Gratuito
-├── Seção Links Institucionais
-│   ├── Nossos Serviços
-│   ├── Trocar de Contador
-│   └── Sobre a SMR
-├── Seção Conteúdo
-│   ├── Blog / Conteúdos Fiscais
-│   └── FAQ - Dúvidas Frequentes
-├── Redes Sociais (ícones: Instagram, Facebook, LinkedIn)
-└── Footer (endereço + logo)
-```
+**`src/pages/Links.tsx`** — Substituir os 3 `LinkButton` da seção "Conheça a SMR" por cards expandidos com:
 
-### Arquivos a Criar
+1. **Nossos Serviços** — Ícone + título + resumo:
+   - *"Assessoria contábil, fiscal, folha, planejamento tributário e regularização. Do operacional ao estratégico."*
+   - Link → `/preview#servicos`
 
-1. **`src/pages/Links.tsx`** — Página principal da árvore de links, seguindo o padrão do `Index.tsx` do projeto CSR: layout centralizado (`max-w-md`), logo no topo, seções de links com divisores, footer compacto.
+2. **Trocar de Contador** — Ícone + título + resumo:
+   - *"Migração guiada em 4 passos: diagnóstico, checklist, transição e primeira competência revisada com você."*
+   - Link → `/preview#troca`
 
-2. **`src/components/links/LinkButton.tsx`** — Componente de botão de link reutilizável (baseado no `LinkButton` do CSR), adaptado com as cores da SMR (teal primary, azul marinho accent). Suporta `href`, `onClick`, `icon`, `emoji`, variantes de cor.
+3. **Sobre a SMR** — Ícone + título + resumo:
+   - *"Desde 1998 facilitando a vida empresarial no ABC. Suporte humano, rotina clara e zero sustos."*
+   - Link → `/preview#sobre`
 
-3. **`src/components/links/LinksBackground.tsx`** — Background decorativo com o logo SMR em marca d'água (opacidade baixa) e círculos gradientes nas cores da marca, similar ao `HandsPattern` do CSR.
+### Como implementar
 
-4. **`src/components/links/LinksFooter.tsx`** — Footer compacto com logo pequeno e endereço.
+**`src/components/links/LinkButton.tsx`** — Adicionar prop opcional `description?: string`. Quando presente, renderizar o texto abaixo do título em `text-xs text-muted-foreground`, mantendo o layout existente para botões sem descrição.
 
-### Arquivos a Modificar
+**`src/pages/Links.tsx`** — Passar a prop `description` nos 3 links institucionais. Manter tudo o mais igual.
 
-5. **`src/App.tsx`** — Adicionar rota `/links` apontando para a nova página.
+### Visual
 
-### Detalhes Técnicos
-
-- Os links institucionais (Serviços, Sobre, etc.) apontarão para as âncoras da página principal (`/preview#servicos`).
-- O WhatsApp usará o link já existente: `https://wa.me/551144360780`.
-- Redes sociais com ícones circulares no footer.
-- Animações de entrada (`animate-fade-in`, `animate-slide-up`) com delays escalonados, como no CSR.
-- Design mobile-first, `max-w-md` centralizado.
-- Cores adaptadas ao design system existente da SMR (teal + azul marinho).
+Cada card fica com altura um pouco maior, ícone à esquerda, título em bold e descrição em texto menor abaixo — tudo clicável como link. Mobile-first mantido.
 
