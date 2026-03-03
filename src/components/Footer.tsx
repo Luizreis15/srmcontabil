@@ -1,7 +1,7 @@
 import { MapPin, Phone, Mail, MessageCircle } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import logoSmr from "@/assets/logo-smr.jpg";
+import logoSmr from "@/assets/logo-smr.png";
 
 const footerLinks = [
   { label: "Serviços", href: "#servicos" },
@@ -24,11 +24,10 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <img src={logoSmr} alt="SMR Contábil" className="w-10 h-10 rounded-lg object-cover" />
-              <span className="font-bold text-xl">SMR Contábil</span>
+              <img src={logoSmr} alt="SMR Assessoria" className="h-10 object-contain" />
             </div>
             <p className="text-accent-foreground/70 text-sm leading-relaxed mb-4">
-              Contabilidade com Inteligência Fiscal para empresas do ABC. Desde 1998.
+              Assessoria contábil com Inteligência Fiscal para empresas do ABC. Desde 1998.
             </p>
             <p className="text-accent-foreground/50 text-xs">Atendimento para empresas (exceto MEI)</p>
           </div>
@@ -90,7 +89,7 @@ export function Footer() {
         </div>
 
         <div className="pt-8 border-t border-accent-foreground/10 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-accent-foreground/50 text-sm">© {new Date().getFullYear()} SMR Contábil. Todos os direitos reservados.</p>
+          <p className="text-accent-foreground/50 text-sm">© {new Date().getFullYear()} SMR Assessoria. Todos os direitos reservados.</p>
           <p className="text-accent-foreground/50 text-sm">CRC SP-XXXXXX/O-X</p>
         </div>
       </div>
