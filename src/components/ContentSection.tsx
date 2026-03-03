@@ -46,31 +46,31 @@ export function ContentSection() {
           </div>
 
           {/* Lead Magnet */}
-          <Card className="bg-accent text-accent-foreground border-0 overflow-hidden shadow-xl">
+          <Card className="bg-primary text-primary-foreground border-0 overflow-hidden shadow-xl">
             <CardContent className="p-8">
-              <div className="w-14 h-14 rounded-full bg-primary flex items-center justify-center mb-6">
+              <div className="w-14 h-14 rounded-full bg-primary-foreground/20 flex items-center justify-center mb-6">
                 <FileText className="w-7 h-7 text-primary-foreground" />
               </div>
               <h3 className="text-2xl font-bold mb-2">Checklist gratuito</h3>
-              <p className="text-accent-foreground/75 mb-6">
+              <p className="text-primary-foreground/80 mb-6">
                 "7 sinais de que sua empresa está pagando imposto errado (e o que revisar)"
               </p>
               <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
                 <Input
                   type="text"
                   placeholder="Seu nome"
-                  className="bg-accent-foreground/10 border-accent-foreground/20 text-accent-foreground placeholder:text-accent-foreground/50"
+                  className="bg-primary-foreground/20 border-primary-foreground/30 text-primary-foreground placeholder:text-primary-foreground/60"
                 />
                 <Input
                   type="email"
                   placeholder="Seu e-mail"
-                  className="bg-accent-foreground/10 border-accent-foreground/20 text-accent-foreground placeholder:text-accent-foreground/50"
+                  className="bg-primary-foreground/20 border-primary-foreground/30 text-primary-foreground placeholder:text-primary-foreground/60"
                 />
-                <Button type="submit" size="lg" className="w-full font-bold bg-primary hover:bg-primary/90 text-primary-foreground">
+                <Button type="submit" size="lg" className="w-full font-bold bg-primary-foreground hover:bg-primary-foreground/90 text-primary">
                   Receber o checklist
                 </Button>
               </form>
-              <p className="text-xs text-accent-foreground/50 mt-4">Sem spam. Enviamos apenas conteúdo útil.</p>
+              <p className="text-xs text-primary-foreground/60 mt-4">Sem spam. Enviamos apenas conteúdo útil.</p>
             </CardContent>
           </Card>
         </div>
