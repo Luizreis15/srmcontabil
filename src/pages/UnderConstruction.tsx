@@ -1,4 +1,5 @@
 import { HardHat, Phone, MessageCircle, Instagram, Facebook } from "lucide-react";
+import logoSmr from "@/assets/logo-smr.jpg";
 
 const UnderConstruction = () => {
   return (
@@ -6,8 +7,7 @@ const UnderConstruction = () => {
       <div className="text-center max-w-lg mx-auto animate-fade-in">
         {/* Logo */}
         <div className="mb-8">
-          <span className="text-6xl font-extrabold text-primary tracking-tight">S</span>
-          <span className="text-6xl font-extrabold text-accent-foreground tracking-tight">MR</span>
+          <img src={logoSmr} alt="SMR Contábil" className="w-24 h-24 rounded-xl mx-auto object-cover" />
         </div>
 
         {/* Ícone animado */}
