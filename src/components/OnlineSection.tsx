@@ -39,7 +39,7 @@ export function OnlineSection() {
           <Button
             size="lg"
             className="bg-primary hover:bg-primary/90 text-primary-foreground gap-2 text-base px-8 py-6 pulse-glow"
-            onClick={() => window.open("https://wa.me/5511999999999?text=Olá! Quero uma contabilidade online.", "_blank")}
+            onClick={() => window.open("https://wa.me/551144360780?text=Olá! Quero uma contabilidade online.", "_blank")}
           >
             Quero uma Contabilidade Online
           </Button>

@@ -36,8 +36,7 @@ export function FinalCTA() {
                 </Button>
                 <Button
                   size="lg"
-                  variant="outline"
-                  className="gap-2 text-base px-8 py-6 border-accent-foreground/30 text-accent-foreground hover:bg-accent-foreground/10"
+                  className="gap-2 text-base px-8 py-6 bg-transparent border border-accent-foreground/40 text-accent-foreground hover:bg-accent-foreground/10"
                   onClick={() => document.querySelector("#contato")?.scrollIntoView({ behavior: "smooth" })}
                 >
                   <Phone className="w-5 h-5" />
