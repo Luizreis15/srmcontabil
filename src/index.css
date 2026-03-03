@@ -227,33 +227,4 @@
     from { transform: translateX(-100%); }
     to { transform: translateX(var(--progress-target, -20%)); }
   }
-
-  /* 21st.dev style floating orbs */
-  @keyframes floatSlow {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(30px, -20px) scale(1.05); }
-    66% { transform: translate(-20px, 15px) scale(0.95); }
-  }
-
-  @keyframes floatMedium {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(-25px, -30px) scale(1.08); }
-  }
-
-  @keyframes logoBreathe {
-    0%, 100% { opacity: 0.04; }
-    50% { opacity: 0.06; }
-  }
-
-  .animate-float-slow {
-    animation: floatSlow 12s ease-in-out infinite;
-  }
-
-  .animate-float-medium {
-    animation: floatMedium 8s ease-in-out infinite;
-  }
-
-  .animate-logo-breathe {
-    animation: logoBreathe 6s ease-in-out infinite;
-  }
 }
