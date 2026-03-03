@@ -24,7 +24,7 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <img src={logoSmr} alt="SMR Assessoria" className="h-10 object-contain" />
+              <img src={logoSmr} alt="SMR Assessoria" className="h-24 object-contain" />
             </div>
             <p className="text-accent-foreground/70 text-sm leading-relaxed mb-4">
               Assessoria contábil com Inteligência Fiscal para empresas do ABC. Desde 1998.

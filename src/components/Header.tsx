@@ -33,10 +33,10 @@ export function Header() {
       <TopBar />
       <header className="sticky top-0 z-50 bg-card/95 backdrop-blur-md border-b border-border">
         <div className="container-wide mx-auto px-4 md:px-8">
-          <div className="flex items-center justify-between h-16 md:h-18">
+          <div className="flex items-center justify-between h-28 md:h-32">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2">
-              <img src={logoSmr} alt="SMR Assessoria" className="h-10 object-contain" />
+              <img src={logoSmr} alt="SMR Assessoria" className="h-24 md:h-28 object-contain" />
             </Link>
 
             {/* Desktop Navigation */}
