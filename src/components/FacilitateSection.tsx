@@ -23,7 +23,7 @@ export function FacilitateSection() {
             <Button
               size="lg"
               className="bg-primary hover:bg-primary/90 text-primary-foreground gap-2 text-base px-8 py-6"
-              onClick={() => window.open("https://wa.me/5511999999999?text=Olá! Gostaria de saber mais sobre os serviços.", "_blank")}
+              onClick={() => window.open("https://wa.me/551144360780?text=Olá! Gostaria de saber mais sobre os serviços.", "_blank")}
             >
               <MessageCircle className="w-5 h-5" />
               Falar com um especialista

@@ -28,7 +28,7 @@ const UnderConstruction = () => {
         {/* Contatos */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
           <a
-            href="https://wa.me/5511999999999"
+            href="https://wa.me/551144360780"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors"
@@ -37,7 +37,7 @@ const UnderConstruction = () => {
             WhatsApp
           </a>
           <a
-            href="tel:+551199999999"
+            href="tel:+551144360780"
             className="inline-flex items-center gap-2 border border-accent-foreground/30 text-accent-foreground px-6 py-3 rounded-lg font-semibold hover:bg-accent-foreground/10 transition-colors"
           >
             <Phone className="w-5 h-5" />

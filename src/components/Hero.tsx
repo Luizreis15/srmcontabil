@@ -41,7 +41,7 @@ export function Hero() {
               className="bg-primary hover:bg-primary/90 text-primary-foreground gap-2 text-base px-8 py-6 pulse-glow"
               onClick={() =>
                 window.open(
-                  "https://wa.me/5511999999999?text=Olá! Gostaria de agendar um diagnóstico de 20 minutos.",
+                  "https://wa.me/551144360780?text=Olá! Gostaria de agendar um diagnóstico de 20 minutos.",
                   "_blank"
                 )
               }
