@@ -7,7 +7,7 @@ export function MobileStickyCTA() {
       <Button
         size="lg"
         className="w-full bg-primary hover:bg-primary/90 text-primary-foreground gap-2"
-        onClick={() => window.open("https://wa.me/5511999999999?text=Olá! Gostaria de agendar um diagnóstico.", "_blank")}
+        onClick={() => window.open("https://wa.me/551144360780?text=Olá! Gostaria de agendar um diagnóstico.", "_blank")}
       >
         <MessageCircle className="w-5 h-5" />
         Diagnóstico no WhatsApp

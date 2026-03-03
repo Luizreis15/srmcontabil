@@ -9,9 +9,9 @@ export function TopBar() {
             <Mail className="w-3.5 h-3.5" />
             contato@smrcontabil.com.br
           </a>
-          <a href="tel:+5511999999999" className="flex items-center gap-2 hover:text-accent-foreground transition-colors">
+          <a href="tel:+551144360780" className="flex items-center gap-2 hover:text-accent-foreground transition-colors">
             <Phone className="w-3.5 h-3.5" />
-            (11) 99999-9999
+            (11) 4436-0780
           </a>
         </div>
         <div className="flex items-center gap-4">

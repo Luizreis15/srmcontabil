@@ -57,9 +57,9 @@ export function Footer() {
                 <span>Rua das Empresas, 123<br />Santo André, SP - 09000-000</span>
               </li>
               <li>
-                <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-accent-foreground/70 hover:text-primary transition-colors text-sm">
+                <a href="https://wa.me/551144360780" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-accent-foreground/70 hover:text-primary transition-colors text-sm">
                   <MessageCircle className="w-4 h-4 flex-shrink-0 text-primary" />
-                  (11) 99999-9999
+                  (11) 4436-0780
                 </a>
               </li>
               <li>
