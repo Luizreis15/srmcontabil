@@ -1,19 +1,49 @@
 
 
-# Hero: Divisor com transparencia
+## Plano: Criar Árvore de Links (Mini Site) para SMR Assessoria
 
-## Problema
-O arco azul solido (meia-lua) esta cortando a imagem de forma muito marcada, cobrindo o homem na foto. O efeito fica pesado e pouco elegante.
+Inspirado no projeto **Links CSR**, vamos criar uma página de árvore de links no estilo Linktree para a SMR Assessoria, acessível em `/links`.
 
-## Solucao
-Trocar a abordagem: em vez de um arco solido azul sobre a imagem, fazer a imagem ocupar toda a largura do hero como background, com um overlay escuro semitransparente por cima. O lado esquerdo tera mais opacidade (para o texto ser legivel) e o lado direito menos, revelando a imagem. A meia-lua sera aplicada como um gradiente com transparencia, criando uma transicao suave entre a area de texto e a imagem.
+### Estrutura
 
-## Mudancas em `src/components/Hero.tsx`
+```text
+/links
+├── Background decorativo (logo SMR em marca d'água)
+├── Header (logo + nome + tagline)
+├── Seção CTA Principal
+│   ├── WhatsApp - Falar com Especialista
+│   └── Agendar Diagnóstico Fiscal Gratuito
+├── Seção Links Institucionais
+│   ├── Nossos Serviços
+│   ├── Trocar de Contador
+│   └── Sobre a SMR
+├── Seção Conteúdo
+│   ├── Blog / Conteúdos Fiscais
+│   └── FAQ - Dúvidas Frequentes
+├── Redes Sociais (ícones: Instagram, Facebook, LinkedIn)
+└── Footer (endereço + logo)
+```
 
-1. **Desktop**: Imagem ocupa 100% do fundo (position absolute, inset-0) em vez de apenas 55% a direita
-2. **Overlay com gradiente**: Um div absoluto com `background: linear-gradient(to right, hsl(210 60% 18% / 0.95) 0%, hsl(210 60% 18% / 0.85) 35%, hsl(210 60% 18% / 0.4) 60%, transparent 80%)` — cria transicao suave da esquerda (opaca, legivel) para a direita (transparente, imagem visivel)
-3. **Remover** o div da meia-lua solida e o container de 55% da imagem
-4. Manter o layout mobile com imagem em baixa opacidade como esta
+### Arquivos a Criar
 
-Resultado: a imagem aparece por inteiro no fundo, com uma transicao elegante de azul semitransparente para transparente, sem cortar ninguem.
+1. **`src/pages/Links.tsx`** — Página principal da árvore de links, seguindo o padrão do `Index.tsx` do projeto CSR: layout centralizado (`max-w-md`), logo no topo, seções de links com divisores, footer compacto.
+
+2. **`src/components/links/LinkButton.tsx`** — Componente de botão de link reutilizável (baseado no `LinkButton` do CSR), adaptado com as cores da SMR (teal primary, azul marinho accent). Suporta `href`, `onClick`, `icon`, `emoji`, variantes de cor.
+
+3. **`src/components/links/LinksBackground.tsx`** — Background decorativo com o logo SMR em marca d'água (opacidade baixa) e círculos gradientes nas cores da marca, similar ao `HandsPattern` do CSR.
+
+4. **`src/components/links/LinksFooter.tsx`** — Footer compacto com logo pequeno e endereço.
+
+### Arquivos a Modificar
+
+5. **`src/App.tsx`** — Adicionar rota `/links` apontando para a nova página.
+
+### Detalhes Técnicos
+
+- Os links institucionais (Serviços, Sobre, etc.) apontarão para as âncoras da página principal (`/preview#servicos`).
+- O WhatsApp usará o link já existente: `https://wa.me/551144360780`.
+- Redes sociais com ícones circulares no footer.
+- Animações de entrada (`animate-fade-in`, `animate-slide-up`) com delays escalonados, como no CSR.
+- Design mobile-first, `max-w-md` centralizado.
+- Cores adaptadas ao design system existente da SMR (teal + azul marinho).
 
