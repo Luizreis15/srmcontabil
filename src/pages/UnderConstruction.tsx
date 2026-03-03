@@ -7,7 +7,7 @@ const UnderConstruction = () => {
       <div className="text-center max-w-lg mx-auto animate-fade-in">
         {/* Logo */}
         <div className="mb-8">
-          <img src={logoSmr} alt="SMR Contábil" className="w-24 h-24 rounded-xl mx-auto object-cover" />
+          <img src={logoSmr} alt="SMR Assessoria" className="h-28 mx-auto object-contain" />
         </div>
 
         {/* Ícone animado */}
