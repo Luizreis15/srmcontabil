@@ -18,10 +18,10 @@ const Links = () => {
             alt="SMR Assessoria"
             className="h-24 mx-auto mb-4 object-contain drop-shadow-lg"
           />
-          <h1 className="text-xl font-bold text-accent-foreground">
+          <h1 className="text-xl font-bold text-foreground">
             SMR Assessoria Contábil
           </h1>
-          <p className="text-accent-foreground/70 text-sm mt-1">
+          <p className="text-muted-foreground text-sm mt-1">
             Inteligência Fiscal para empresas do ABC
           </p>
         </div>
@@ -46,11 +46,11 @@ const Links = () => {
           </LinkButton>
         </div>
 
-        <Separator className="bg-accent-foreground/10 my-6" />
+        <Separator className="bg-foreground/10 my-6" />
 
         {/* Links Institucionais */}
         <div className="space-y-3 mb-6">
-          <p className="text-accent-foreground/50 text-xs font-semibold uppercase tracking-wider text-center mb-3">
+          <p className="text-muted-foreground text-xs font-semibold uppercase tracking-wider text-center mb-3">
             Conheça a SMR
           </p>
           <LinkButton href="/preview#servicos" icon={Briefcase} delay={300}>
@@ -64,11 +64,11 @@ const Links = () => {
           </LinkButton>
         </div>
 
-        <Separator className="bg-accent-foreground/10 my-6" />
+        <Separator className="bg-foreground/10 my-6" />
 
         {/* Conteúdo */}
         <div className="space-y-3 mb-6">
-          <p className="text-accent-foreground/50 text-xs font-semibold uppercase tracking-wider text-center mb-3">
+          <p className="text-muted-foreground text-xs font-semibold uppercase tracking-wider text-center mb-3">
             Conteúdos
           </p>
           <LinkButton href="/preview#conteudos" icon={BookOpen} delay={450}>
@@ -79,7 +79,7 @@ const Links = () => {
           </LinkButton>
         </div>
 
-        <Separator className="bg-accent-foreground/10 my-6" />
+        <Separator className="bg-foreground/10 my-6" />
 
         {/* Redes Sociais */}
         <div
@@ -95,7 +95,7 @@ const Links = () => {
               key={social.label}
               href={social.href}
               aria-label={social.label}
-              className="w-11 h-11 rounded-full bg-accent-foreground/10 flex items-center justify-center text-accent-foreground/70 hover:bg-primary hover:text-primary-foreground transition-all duration-300 text-sm font-bold"
+              className="w-11 h-11 rounded-full bg-accent/20 flex items-center justify-center text-foreground/70 hover:bg-primary hover:text-primary-foreground transition-all duration-300 text-sm font-bold"
             >
               {social.icon}
             </a>
