@@ -5,9 +5,8 @@ interface LinkButtonProps {
   href?: string;
   onClick?: () => void;
   icon?: LucideIcon;
-  emoji?: string;
   children: React.ReactNode;
-  variant?: "primary" | "accent" | "outline";
+  variant?: "primary" | "outline";
   className?: string;
   delay?: number;
 }
@@ -16,7 +15,6 @@ export function LinkButton({
   href,
   onClick,
   icon: Icon,
-  emoji,
   children,
   variant = "outline",
   className,
@@ -24,23 +22,20 @@ export function LinkButton({
 }: LinkButtonProps) {
   const variants = {
     primary:
-      "bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg hover:shadow-xl border-primary",
-    accent:
-      "bg-accent text-accent-foreground hover:bg-accent/90 shadow-lg hover:shadow-xl border-accent",
+      "bg-primary/90 text-primary-foreground border-primary/50 hover:bg-primary hover:shadow-[0_0_30px_hsl(195_85%_45%/0.4)]",
     outline:
-      "bg-card/80 backdrop-blur-sm text-foreground hover:bg-primary/10 border-border hover:border-primary/50",
+      "bg-white/[0.07] text-accent-foreground border-white/10 hover:bg-white/[0.12] hover:border-white/20 hover:shadow-[0_0_20px_hsl(195_85%_45%/0.2)]",
   };
 
   const content = (
     <>
-      {emoji && <span className="text-xl">{emoji}</span>}
       {Icon && <Icon className="w-5 h-5 flex-shrink-0" />}
       <span className="font-semibold text-sm">{children}</span>
     </>
   );
 
   const sharedClass = cn(
-    "w-full flex items-center justify-center gap-3 px-6 py-4 rounded-xl border transition-all duration-300 animate-fade-in-up",
+    "w-full flex items-center justify-center gap-3 px-6 py-4 rounded-xl border backdrop-blur-md transition-all duration-300 animate-fade-in-up hover:scale-[1.02]",
     variants[variant],
     className
   );
