@@ -53,13 +53,13 @@ const Links = () => {
           <p className="text-muted-foreground text-xs font-semibold uppercase tracking-wider text-center mb-3">
             Conheça a SMR
           </p>
-          <LinkButton href="/preview#servicos" icon={Briefcase} delay={300}>
+          <LinkButton href="/preview#servicos" icon={Briefcase} delay={300} description="Assessoria contábil, fiscal, folha, planejamento tributário e regularização. Do operacional ao estratégico.">
             Nossos Serviços
           </LinkButton>
-          <LinkButton href="/preview#troca" icon={RefreshCw} delay={350}>
+          <LinkButton href="/preview#troca" icon={RefreshCw} delay={350} description="Migração guiada em 4 passos: diagnóstico, checklist, transição e primeira competência revisada com você.">
             Trocar de Contador
           </LinkButton>
-          <LinkButton href="/preview#sobre" icon={Info} delay={400}>
+          <LinkButton href="/preview#sobre" icon={Info} delay={400} description="Desde 1998 facilitando a vida empresarial no ABC. Suporte humano, rotina clara e zero sustos.">
             Sobre a SMR
           </LinkButton>
         </div>
