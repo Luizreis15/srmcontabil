@@ -7,6 +7,7 @@ interface LinkButtonProps {
   icon?: LucideIcon;
   emoji?: string;
   children: React.ReactNode;
+  description?: string;
   variant?: "primary" | "accent" | "outline";
   className?: string;
   delay?: number;
@@ -18,6 +19,7 @@ export function LinkButton({
   icon: Icon,
   emoji,
   children,
+  description,
   variant = "outline",
   className,
   delay = 0,
@@ -34,13 +36,16 @@ export function LinkButton({
   const content = (
     <>
       {emoji && <span className="text-xl">{emoji}</span>}
-      {Icon && <Icon className="w-5 h-5 flex-shrink-0" />}
-      <span className="font-semibold text-sm">{children}</span>
+      {Icon && <Icon className={cn("w-5 h-5 flex-shrink-0", description && "mt-0.5")} />}
+      <div className={description ? "flex flex-col gap-0.5 text-left" : undefined}>
+        <span className="font-semibold text-sm">{children}</span>
+        {description && <span className="text-xs text-muted-foreground leading-snug">{description}</span>}
+      </div>
     </>
   );
 
   const sharedClass = cn(
-    "w-full flex items-center justify-center gap-3 px-6 py-4 rounded-xl border transition-all duration-300 animate-fade-in-up",
+    cn("w-full flex gap-3 px-6 rounded-xl border transition-all duration-300 animate-fade-in-up", description ? "items-start py-4" : "items-center justify-center py-4"),
     variants[variant],
     className
   );
