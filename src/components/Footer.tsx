@@ -36,7 +36,7 @@ export function Footer() {
 
           {/* Links */}
           <div>
-            <h4 className="font-bold mb-4">Links</h4>
+            <h4 className="font-bold mb-4 text-accent-foreground">Links</h4>
             <ul className="space-y-3">
               {footerLinks.map((link) => (
                 <li key={link.href}>
@@ -50,7 +50,7 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="font-bold mb-4">Contato</h4>
+            <h4 className="font-bold mb-4 text-accent-foreground">Contato</h4>
             <ul className="space-y-3">
               <li className="flex items-center gap-3 text-accent-foreground/70 text-sm">
                 <MapPin className="w-4 h-4 flex-shrink-0 text-primary" />
@@ -73,7 +73,7 @@ export function Footer() {
 
           {/* Newsletter */}
           <div>
-            <h4 className="font-bold mb-4">Newsletter</h4>
+            <h4 className="font-bold mb-4 text-accent-foreground">Newsletter</h4>
             <p className="text-accent-foreground/70 text-sm mb-4">Receba dicas fiscais e novidades.</p>
             <form className="space-y-3" onSubmit={(e) => e.preventDefault()}>
               <Input type="email" placeholder="Seu e-mail" className="bg-accent-foreground/10 border-accent-foreground/20 text-accent-foreground placeholder:text-accent-foreground/50" />

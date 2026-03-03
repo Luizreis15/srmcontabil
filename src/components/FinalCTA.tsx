@@ -19,7 +19,7 @@ export function FinalCTA() {
               <div className="absolute inset-0 bg-gradient-to-r from-accent/95 to-accent/85" />
             </div>
             <div className="relative text-center p-8 md:p-14 text-accent-foreground">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-accent-foreground">
                 Quer clareza fiscal e rotina sem susto?
               </h2>
               <p className="text-lg text-accent-foreground/75 mb-8 max-w-2xl mx-auto">
