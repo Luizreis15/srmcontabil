@@ -1,5 +1,5 @@
 import { HardHat, Phone, MessageCircle, Instagram, Facebook } from "lucide-react";
-import logoSmr from "@/assets/logo-smr.png";
+import logoSmr from "@/assets/logo-smr-alta.jpeg";
 
 const UnderConstruction = () => {
   return (

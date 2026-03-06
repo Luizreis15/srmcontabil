@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { TopBar } from "@/components/TopBar";
-import logoSmr from "@/assets/logo-smr.png";
+import logoSmr from "@/assets/logo-smr-alta.jpeg";
 
 const navLinks = [
   { label: "Início", href: "#" },

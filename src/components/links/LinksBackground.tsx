@@ -1,4 +1,4 @@
-import logoSmr from "@/assets/logo-smr.png";
+import logoSmr from "@/assets/logo-smr-alta.jpeg";
 
 export function LinksBackground() {
   return (

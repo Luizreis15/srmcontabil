@@ -4,7 +4,7 @@ import { LinkButton } from "@/components/links/LinkButton";
 import { LinksFooter } from "@/components/links/LinksFooter";
 import { JoinTeamSection } from "@/components/links/JoinTeamSection";
 import { Separator } from "@/components/ui/separator";
-import logoSmr from "@/assets/logo-smr.png";
+import logoSmr from "@/assets/logo-smr-alta.jpeg";
 
 const Links = () => {
   return (
