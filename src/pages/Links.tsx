@@ -2,6 +2,7 @@ import { MessageCircle, Calendar, Briefcase, RefreshCw, Info, BookOpen, HelpCirc
 import { LinksBackground } from "@/components/links/LinksBackground";
 import { LinkButton } from "@/components/links/LinkButton";
 import { LinksFooter } from "@/components/links/LinksFooter";
+import { JoinTeamSection } from "@/components/links/JoinTeamSection";
 import { Separator } from "@/components/ui/separator";
 import logoSmr from "@/assets/logo-smr.png";
 
@@ -78,6 +79,11 @@ const Links = () => {
             FAQ — Dúvidas Frequentes
           </LinkButton>
         </div>
+
+        <Separator className="bg-foreground/10 my-6" />
+
+        {/* Faça parte da equipe */}
+        <JoinTeamSection />
 
         <Separator className="bg-foreground/10 my-6" />
 

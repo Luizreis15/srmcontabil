@@ -11,8 +11,8 @@ export function LinksFooter() {
           <div className="flex items-start gap-3">
             <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0 text-primary" />
             <span className="text-accent-foreground/80">
-              Rua das Empresas, 123<br />
-              Santo André, SP — 09000-000
+              R. Cel. Fernando Prestes, 350 - Vila Assunção<br />
+              Santo André - SP, 09020-110
             </span>
           </div>
 
