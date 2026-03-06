@@ -1,7 +1,7 @@
 import { MapPin, Phone, Mail, MessageCircle } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import logoSmr from "@/assets/logo-smr.png";
+import logoSmr from "@/assets/logo-smr-alta.jpeg";
 
 const footerLinks = [
   { label: "Serviços", href: "#servicos" },
