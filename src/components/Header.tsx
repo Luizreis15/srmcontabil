@@ -33,7 +33,7 @@ export function Header() {
       <TopBar />
       <header className="sticky top-0 z-50 bg-card/95 backdrop-blur-md border-b border-border">
         <div className="container-wide mx-auto px-4 md:px-8">
-          <div className="flex items-center justify-between h-28 md:h-32">
+          <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2">
               <img src={logoSmr} alt="SMR Assessoria" className="h-10 md:h-14 object-contain" />
@@ -45,7 +45,7 @@ export function Header() {
                 <button
                   key={link.href}
                   onClick={() => scrollToSection(link.href)}
-                  className="text-muted-foreground hover:text-primary font-medium transition-colors"
+                  className="text-muted-foreground hover:text-primary font-semibold transition-colors"
                 >
                   {link.label}
                 </button>
@@ -83,7 +83,7 @@ export function Header() {
                 <button
                   key={link.href}
                   onClick={() => scrollToSection(link.href)}
-                  className="text-left text-muted-foreground hover:text-primary font-medium py-2 transition-colors"
+                  className="text-left text-muted-foreground hover:text-primary font-semibold py-2 transition-colors"
                 >
                   {link.label}
                 </button>
