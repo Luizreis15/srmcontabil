@@ -36,7 +36,7 @@ export function Header() {
           <div className="flex items-center justify-between h-28 md:h-32">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2">
-              <img src={logoSmr} alt="SMR Assessoria" className="h-16 md:h-20 object-contain" />
+              <img src={logoSmr} alt="SMR Assessoria" className="h-10 md:h-14 object-contain" />
             </Link>
 
             {/* Desktop Navigation */}
