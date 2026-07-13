@@ -4,7 +4,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
-import UnderConstruction from "./pages/UnderConstruction";
 import Links from "./pages/Links";
 import NotFound from "./pages/NotFound";
 
@@ -17,10 +16,8 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<UnderConstruction />} />
+          <Route path="/" element={<Index />} />
           <Route path="/links" element={<Links />} />
-          <Route path="/preview" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
