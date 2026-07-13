@@ -1,7 +1,7 @@
 import { MapPin, Phone, Mail, MessageCircle } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import logoSmr from "@/assets/logo-smr-alta.jpeg";
+import logoSmr from "@/assets/logo-smr-transparent.png";
 
 const footerLinks = [
   { label: "Serviços", href: "#servicos" },
@@ -52,7 +52,7 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-center gap-3 text-accent-foreground/70 text-sm">
                 <MapPin className="w-4 h-4 flex-shrink-0 text-primary" />
-                <span>Rua das Empresas, 123<br />Santo André, SP - 09000-000</span>
+                <span>Rua Coronel Fernando Prestes, 350, Sala 131<br />Centro - Santo André, SP<br />CEP: 09020-110</span>
               </li>
               <li>
                 <a href="https://wa.me/551144360780" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-accent-foreground/70 hover:text-primary transition-colors text-sm">
@@ -88,9 +88,8 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-accent-foreground/10 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="pt-8 border-t border-accent-foreground/10 text-center">
           <p className="text-accent-foreground/50 text-sm">© {new Date().getFullYear()} SMR Assessoria. Todos os direitos reservados.</p>
-          <p className="text-accent-foreground/50 text-sm">CRC SP-XXXXXX/O-X</p>
         </div>
       </div>
     </footer>
