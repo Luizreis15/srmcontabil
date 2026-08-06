@@ -31,6 +31,8 @@ import {
 import { especialistas, getEspecialista } from "@/data/roda/especialistas";
 import { conteudos } from "@/data/roda/conteudos";
 import { trackEvent } from "@/lib/rodaAnalytics";
+import heroSueli from "@/assets/roda-hero-sueli.png.asset.json";
+
 
 const RodaHub = () => {
   const { abrirFormulario } = useFormularioModal();
@@ -153,7 +155,33 @@ const RodaHub = () => {
           </Reveal>
 
           <Reveal delay={120}>
+            <figure className="relative mb-6 rounded-3xl overflow-hidden border border-white/15 shadow-2xl">
+              <img
+                src={heroSueli.url}
+                alt="Sueli Rocha, da SMR Assessoria Contábil, anfitriã da Roda de Conversa SMR"
+                className="w-full h-auto object-cover"
+                loading="eager"
+                decoding="async"
+              />
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  background:
+                    "linear-gradient(to top, hsl(210 90% 10% / 0.85) 0%, transparent 45%)",
+                }}
+                aria-hidden
+              />
+              <figcaption className="absolute bottom-4 left-5 right-5">
+                <span className="block text-xs font-semibold uppercase tracking-widest text-gold">
+                  Anfitriã
+                </span>
+                <span className="block font-display text-lg font-bold text-white">
+                  Sueli Rocha · SMR Assessoria Contábil
+                </span>
+              </figcaption>
+            </figure>
             <div className="rounded-3xl border border-white/15 bg-white/[0.06] backdrop-blur-sm p-6 sm:p-7">
+
               <span className="text-xs font-semibold uppercase tracking-widest text-gold">
                 Primeira edição
               </span>
