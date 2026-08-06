@@ -5,7 +5,7 @@ export const especialistas: Especialista[] = [
   {
     nome: "Dra. Daniela Marinho",
     slug: "daniela-marinho",
-    foto: danielaFoto.url,
+    foto: danielaFoto,
     cargo: "Advogada tributarista e sócia fundadora",
     empresa: "Marinho Advogados Associados",
     minicurriculo:

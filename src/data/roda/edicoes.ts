@@ -1,5 +1,5 @@
 import type { Edicao } from "./types";
-import convite from "@/assets/convite-split-payment.jpg.asset.json";
+import convite from "@/assets/convite-split-payment.jpg";
 
 
 export const edicoes: Edicao[] = [
@@ -18,8 +18,8 @@ export const edicoes: Edicao[] = [
     plataforma: "Transmissão ao vivo e presencial no escritório SMR",
     status: "realizado",
     participantes: 50,
-    imagemCapa: convite.url,
-    thumbnail: convite.url,
+    imagemCapa: convite,
+    thumbnail: convite,
 
     youtubeId: "",
     statusVideo: "em-preparacao",
