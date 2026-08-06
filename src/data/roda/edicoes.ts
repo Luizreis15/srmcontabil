@@ -1,4 +1,6 @@
 import type { Edicao } from "./types";
+import convite from "@/assets/convite-split-payment.jpg";
+
 
 export const edicoes: Edicao[] = [
   {
@@ -12,12 +14,13 @@ export const edicoes: Edicao[] = [
       "Uma conversa entre a SMR Assessoria Contábil, a Dra. Daniela Marinho e aproximadamente 50 empresários sobre uma das principais mudanças trazidas pela Reforma Tributária. O encontro foi marcado por perguntas, interação e troca de experiências sobre o que muda no dia a dia das empresas.",
     dataISO: "2026-08-06T16:00:00-03:00",
     horario: "16h",
-    formato: "Online",
-    plataforma: "Google Meet",
+    formato: "Híbrido",
+    plataforma: "Transmissão ao vivo e presencial no escritório SMR",
     status: "realizado",
     participantes: 50,
-    imagemCapa: null,
-    thumbnail: null,
+    imagemCapa: convite,
+    thumbnail: convite,
+
     youtubeId: "",
     statusVideo: "em-preparacao",
     linkInscricao: "",
