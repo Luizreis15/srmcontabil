@@ -17,20 +17,38 @@ export function VideoEdicao({ edicao, convidado, url }: VideoEdicaoProps) {
 
   if (!temVideo) {
     return (
-      <div className="rounded-3xl border border-dashed border-border bg-secondary/60 p-10 md:p-16 text-center">
-        <div className="mx-auto w-14 h-14 rounded-full bg-gold/15 flex items-center justify-center">
-          <Play className="w-6 h-6 text-gold" />
+      <div className="rounded-3xl border border-dashed border-border bg-secondary/60 p-6 md:p-10">
+        <div className="grid md:grid-cols-[minmax(0,320px)_1fr] gap-8 items-center">
+          {edicao.imagemCapa ? (
+            <img
+              src={edicao.imagemCapa}
+              alt={`Convite do encontro: ${edicao.tema}`}
+              loading="lazy"
+              decoding="async"
+              className="w-full rounded-2xl shadow-card"
+            />
+          ) : null}
+          <div className={edicao.imagemCapa ? "text-left" : "text-center"}>
+            <div
+              className={`w-14 h-14 rounded-full bg-gold/15 flex items-center justify-center ${
+                edicao.imagemCapa ? "" : "mx-auto"
+              }`}
+            >
+              <Play className="w-6 h-6 text-gold" />
+            </div>
+            <h3 className="mt-5 font-display text-xl md:text-2xl font-bold">
+              A gravação está sendo preparada
+            </h3>
+            <p className="mt-3 text-muted-foreground max-w-lg">
+              Em breve, você poderá rever os principais momentos desta Roda de
+              Conversa. Enquanto isso, veja o convite do encontro ao lado.
+            </p>
+          </div>
         </div>
-        <h3 className="mt-5 font-display text-xl md:text-2xl font-bold">
-          A gravação está sendo preparada
-        </h3>
-        <p className="mt-3 text-muted-foreground max-w-lg mx-auto">
-          Em breve, você poderá rever os principais momentos da nossa primeira
-          Roda de Conversa.
-        </p>
       </div>
     );
   }
+
 
   const thumb =
     edicao.thumbnail ??
