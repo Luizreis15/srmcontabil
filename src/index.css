@@ -228,3 +228,108 @@
     to { transform: translateX(var(--progress-target, -20%)); }
   }
 }
+
+/* ============================================================
+   Roda de Conversa SMR — tema próprio do hub (escopo .roda-theme)
+   Não altera o tema do site institucional.
+   ============================================================ */
+@layer base {
+  :root {
+    --gold: 38 63% 48%;
+    --gold-foreground: 210 90% 12%;
+    --sand: 32 37% 93%;
+    --sand-foreground: 218 42% 14%;
+    --navy: 209 89% 18%;
+    --navy-deep: 210 90% 12%;
+  }
+
+  .roda-theme {
+    --background: 0 0% 100%;
+    --foreground: 218 42% 14%;
+
+    --primary: 209 89% 18%;
+    --primary-foreground: 0 0% 100%;
+
+    --accent: 210 90% 12%;
+    --accent-foreground: 0 0% 100%;
+
+    --secondary: 32 37% 93%;
+    --secondary-foreground: 218 42% 14%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 218 42% 14%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 218 42% 14%;
+
+    --muted: 32 37% 93%;
+    --muted-foreground: 221 13% 46%;
+
+    --border: 32 20% 88%;
+    --input: 32 20% 88%;
+    --ring: 38 63% 48%;
+
+    --radius: 1rem;
+
+    --card-shadow: 0 2px 16px -6px hsl(209 89% 18% / 0.12);
+    --card-shadow-hover: 0 18px 40px -14px hsl(209 89% 18% / 0.28);
+
+    font-family: 'Manrope', 'Inter', system-ui, sans-serif;
+  }
+
+  .roda-theme h1,
+  .roda-theme h2,
+  .roda-theme h3,
+  .roda-theme h4,
+  .roda-theme h5,
+  .roda-theme h6 {
+    font-family: 'Manrope', 'Inter', system-ui, sans-serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+  /* Detalhe manuscrito — usar apenas na expressão "Roda de" */
+  .roda-script {
+    font-family: 'Caveat', cursive;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+
+  .roda-card {
+    @apply rounded-2xl bg-card border border-border shadow-card transition-all duration-300;
+  }
+
+  .roda-card-hover {
+    @apply hover:shadow-card-hover hover:-translate-y-1;
+  }
+
+  .roda-section {
+    @apply py-16 md:py-24 px-5 md:px-8;
+  }
+
+  .roda-badge {
+    @apply inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-3 py-1 text-xs font-semibold text-gold;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .roda-theme *,
+  .roda-theme *::before,
+  .roda-theme *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .roda-theme .scroll-animate,
+  .roda-theme .scroll-animate-left,
+  .roda-theme .scroll-animate-right {
+    opacity: 1;
+    transform: none;
+  }
+
+  .roda-theme .roda-card-hover:hover {
+    transform: none;
+  }
+}
