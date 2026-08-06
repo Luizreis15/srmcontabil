@@ -245,7 +245,7 @@ const EspecialistaPerfil = () => {
         <div className="max-w-4xl mx-auto">
           <Link
             to="/especialistas"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-gold"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-gold-ink"
           >
             Ver todos os especialistas
             <ArrowRight className="w-4 h-4" />

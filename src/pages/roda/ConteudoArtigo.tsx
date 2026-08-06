@@ -92,7 +92,7 @@ const ConteudoArtigo = () => {
               </p>
               <Link
                 to={`/roda-de-conversa/${edicao.slug}`}
-                className="mt-2 inline-flex items-center gap-2 font-display font-bold text-primary hover:text-gold"
+                className="mt-2 inline-flex items-center gap-2 font-display font-bold text-primary hover:text-gold-ink"
               >
                 {edicao.tema}
                 <ArrowRight className="w-4 h-4" />
