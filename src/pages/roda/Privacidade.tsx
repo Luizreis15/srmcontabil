@@ -103,7 +103,7 @@ const Privacidade = () => (
             qualquer momento pelo e-mail{" "}
             <a
               href={`mailto:${rodaConfig.email}`}
-              className="text-primary underline hover:text-gold"
+              className="text-primary underline hover:text-gold-ink"
             >
               {rodaConfig.email}
             </a>{" "}

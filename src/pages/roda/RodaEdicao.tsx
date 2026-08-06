@@ -189,7 +189,7 @@ const RodaEdicao = () => {
                     href={m.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 font-semibold text-primary hover:text-gold"
+                    className="inline-flex items-center gap-2 font-semibold text-primary hover:text-gold-ink"
                   >
                     {m.titulo}
                     <ArrowRight className="w-4 h-4" />
