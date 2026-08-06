@@ -91,7 +91,7 @@ const RodaHub = () => {
       />
 
       {/* HERO */}
-      <section className="relative overflow-hidden bg-navy-deep text-white">
+      <section className="relative overflow-hidden bg-navy-deep text-white min-h-[calc(100vh-4rem)] flex items-center">
         <div
           className="absolute inset-0 opacity-70"
           style={{
@@ -100,30 +100,36 @@ const RodaHub = () => {
           }}
           aria-hidden
         />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-24 grid lg:grid-cols-[1.15fr_0.85fr] gap-10 md:gap-12 items-center">
-          <Reveal>
-            <span className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-3 py-1 text-xs font-semibold text-gold">
-              Iniciativa permanente da SMR Assessoria Contábil
-            </span>
-            <h1 className="mt-6 font-display text-[2rem] sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.05]">
-              <span className="roda-script text-gold text-[2.75rem] sm:text-5xl md:text-6xl lg:text-7xl block leading-none">
-                Roda de
-              </span>
-              Conversa SMR
-            </h1>
-            <p className="mt-5 text-lg md:text-xl text-gold font-semibold">
-              {rodaConfig.assinatura}
-            </p>
-            <p className="mt-4 text-base md:text-lg text-white/85 leading-relaxed max-w-xl">
-              Um espaço criado para empresários que querem compreender as
-              mudanças, antecipar impactos e tomar decisões com mais clareza.
-            </p>
-            <p className="mt-4 text-base text-white/80 max-w-xl">
-              50 empresários participaram da nossa primeira conversa. E esse foi
-              apenas o começo.
-            </p>
+        <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-5 md:px-8 py-10 sm:py-12 md:py-16 grid lg:grid-cols-[1.1fr_0.9fr] gap-8 md:gap-10 items-center">
+          {/* Imagem + CTAs */}
+          <Reveal className="order-1">
+            <figure className="relative rounded-2xl md:rounded-3xl overflow-hidden border border-white/15 shadow-2xl">
+              <img
+                src={heroSueli.url}
+                alt="Sueli Rocha, da SMR Assessoria Contábil, anfitriã da Roda de Conversa SMR"
+                className="w-full h-auto object-cover"
+                loading="eager"
+                decoding="async"
+              />
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  background:
+                    "linear-gradient(to top, hsl(210 90% 10% / 0.85) 0%, transparent 40%)",
+                }}
+                aria-hidden
+              />
+              <figcaption className="absolute bottom-3 left-4 right-4 md:bottom-5 md:left-6 md:right-6">
+                <span className="block text-[10px] md:text-xs font-semibold uppercase tracking-widest text-gold">
+                  Anfitriã
+                </span>
+                <span className="block font-display text-base md:text-lg font-bold text-white">
+                  Sueli Rocha · SMR Assessoria Contábil
+                </span>
+              </figcaption>
+            </figure>
 
-            <div className="mt-8 flex flex-col sm:flex-row gap-3">
+            <div className="mt-4 md:mt-5 flex flex-col sm:flex-row gap-2 md:gap-3">
               <Button
                 size="lg"
                 asChild
@@ -154,67 +160,17 @@ const RodaHub = () => {
             </div>
           </Reveal>
 
-          <Reveal delay={120}>
-            <figure className="relative mb-6 rounded-3xl overflow-hidden border border-white/15 shadow-2xl">
-              <img
-                src={heroSueli.url}
-                alt="Sueli Rocha, da SMR Assessoria Contábil, anfitriã da Roda de Conversa SMR"
-                className="w-full h-auto object-cover"
-                loading="eager"
-                decoding="async"
-              />
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                  background:
-                    "linear-gradient(to top, hsl(210 90% 10% / 0.85) 0%, transparent 45%)",
-                }}
-                aria-hidden
-              />
-              <figcaption className="absolute bottom-4 left-5 right-5">
-                <span className="block text-xs font-semibold uppercase tracking-widest text-gold">
-                  Anfitriã
-                </span>
-                <span className="block font-display text-lg font-bold text-white">
-                  Sueli Rocha · SMR Assessoria Contábil
-                </span>
-              </figcaption>
-            </figure>
-            <div className="rounded-3xl border border-white/15 bg-white/[0.06] backdrop-blur-sm p-6 sm:p-7">
-
-              <span className="text-xs font-semibold uppercase tracking-widest text-gold">
-                Primeira edição
+          {/* Texto */}
+          <Reveal delay={120} className="order-2">
+            <h1 className="font-display text-[2.25rem] sm:text-5xl md:text-5xl lg:text-6xl font-extrabold leading-[1.05]">
+              <span className="roda-script text-gold text-[2.5rem] sm:text-6xl md:text-6xl lg:text-7xl block leading-none mb-1">
+                Roda de
               </span>
-              <h2 className="mt-3 font-display text-2xl font-bold">
-                Split Payment
-              </h2>
-              <p className="mt-3 text-white/85 text-sm leading-relaxed">
-                50 empresários conectados em uma conversa prática sobre os
-                impactos da Reforma Tributária no caixa e na rotina das
-                empresas.
-              </p>
-              <dl className="mt-6 space-y-3 text-sm">
-                <div className="flex items-center gap-3 text-white/85">
-                  <CalendarDays className="w-4 h-4 text-gold" />
-                  6 de agosto de 2026, às 16h
-                </div>
-                <div className="flex items-center gap-3 text-white/85">
-                  <Monitor className="w-4 h-4 text-gold" />
-                  Encontro online pelo Google Meet
-                </div>
-                <div className="flex items-center gap-3 text-white/85">
-                  <Users className="w-4 h-4 text-gold" />
-                  Convidada: Dra. Daniela Marinho
-                </div>
-              </dl>
-              <Link
-                to="/roda-de-conversa/split-payment"
-                className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-gold hover:text-white transition-colors"
-              >
-                Ver a página da edição
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
+              Conversa SMR
+            </h1>
+            <p className="mt-4 text-lg md:text-xl text-gold font-semibold">
+              {rodaConfig.assinatura}
+            </p>
           </Reveal>
         </div>
       </section>
