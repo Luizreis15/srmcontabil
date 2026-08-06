@@ -307,13 +307,118 @@
   }
 
   .roda-section {
-    @apply py-16 md:py-24 px-5 md:px-8;
+    @apply py-12 sm:py-16 md:py-24 px-4 sm:px-5 md:px-8;
   }
 
   .roda-badge {
     @apply inline-flex items-center gap-2 rounded-full border border-gold-ink/35 bg-gold-ink/10 px-3 py-1 text-xs font-semibold text-gold-ink;
   }
+
+  /* ---- Movimento estilo 21st.dev para cards ---- */
+  .roda-motion-card {
+    position: relative;
+    isolation: isolate;
+    transform-style: preserve-3d;
+    transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 400ms cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 400ms ease;
+    will-change: transform;
+  }
+
+  /* brilho que segue o cursor */
+  .roda-motion-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 350ms ease;
+    background: radial-gradient(
+      340px circle at var(--mx, 50%) var(--my, 50%),
+      hsl(var(--gold) / 0.16),
+      transparent 65%
+    );
+    z-index: 0;
+  }
+
+  /* borda luminosa */
+  .roda-motion-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 350ms ease;
+    background: radial-gradient(
+      260px circle at var(--mx, 50%) var(--my, 50%),
+      hsl(var(--gold) / 0.65),
+      transparent 70%
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    z-index: 1;
+  }
+
+  .roda-motion-card:hover::before,
+  .roda-motion-card:hover::after,
+  .roda-motion-card:focus-within::before,
+  .roda-motion-card:focus-within::after {
+    opacity: 1;
+  }
+
+  .roda-motion-card > * {
+    position: relative;
+    z-index: 2;
+  }
+
+  .roda-motion-card:hover,
+  .roda-motion-card:focus-within {
+    @apply shadow-card-hover;
+    border-color: hsl(var(--gold) / 0.4);
+  }
+
+  /* elevação/tilt calculado via JS (variáveis --rx/--ry) */
+  .roda-motion-tilt:hover,
+  .roda-motion-tilt:focus-within {
+    transform: perspective(1000px) rotateX(var(--rx, 0deg))
+      rotateY(var(--ry, 0deg)) translateY(-6px) scale(1.012);
+  }
+
+  /* seta que desliza nos links dos cards */
+  .roda-motion-card .roda-arrow {
+    transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .roda-motion-card:hover .roda-arrow {
+    transform: translateX(4px);
+  }
+
+  /* zoom suave em imagens de card */
+  .roda-motion-card .roda-zoom {
+    transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .roda-motion-card:hover .roda-zoom {
+    transform: scale(1.05);
+  }
 }
+
+/* Em telas de toque o tilt/brilho é desativado */
+@media (hover: none) {
+  .roda-motion-card::before,
+  .roda-motion-card::after {
+    display: none;
+  }
+  .roda-motion-tilt:hover,
+  .roda-motion-tilt:focus-within {
+    transform: none;
+  }
+}
+
 
 @media (prefers-reduced-motion: reduce) {
   .roda-theme *,
@@ -331,7 +436,15 @@
     transform: none;
   }
 
-  .roda-theme .roda-card-hover:hover {
+  .roda-theme .roda-card-hover:hover,
+  .roda-motion-tilt:hover,
+  .roda-motion-tilt:focus-within {
     transform: none;
   }
+
+  .roda-motion-card::before,
+  .roda-motion-card::after {
+    display: none;
+  }
 }
+

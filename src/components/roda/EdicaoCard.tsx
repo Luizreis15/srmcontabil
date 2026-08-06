@@ -3,6 +3,7 @@ import { CalendarDays, Users, Video, ArrowRight } from "lucide-react";
 import type { Edicao } from "@/data/roda/types";
 import { formatarData, rotuloStatus } from "@/data/roda/edicoes";
 import { getEspecialista } from "@/data/roda/especialistas";
+import { MotionCard } from "@/components/roda/MotionCard";
 
 export function EdicaoCard({ edicao }: { edicao: Edicao }) {
   const convidado = edicao.convidados
@@ -11,15 +12,15 @@ export function EdicaoCard({ edicao }: { edicao: Edicao }) {
     .join(", ");
 
   return (
-    <article className="roda-card roda-card-hover overflow-hidden flex flex-col h-full">
-      <div className="aspect-[16/9] bg-navy relative">
+    <MotionCard as="article" className="overflow-hidden flex flex-col h-full">
+      <div className="aspect-[16/9] bg-navy relative overflow-hidden">
         {edicao.thumbnail || edicao.imagemCapa ? (
           <img
             src={(edicao.thumbnail ?? edicao.imagemCapa) as string}
             alt={`Capa da edição ${edicao.tema}`}
             loading="lazy"
             decoding="async"
-            className="w-full h-full object-cover"
+            className="roda-zoom w-full h-full object-cover"
           />
         ) : (
           <div className="w-full h-full flex flex-col items-center justify-center text-white/80 px-6 text-center">
@@ -39,8 +40,8 @@ export function EdicaoCard({ edicao }: { edicao: Edicao }) {
         </span>
       </div>
 
-      <div className="p-6 flex flex-col flex-1">
-        <h3 className="font-display text-lg font-bold leading-snug">
+      <div className="p-5 sm:p-6 flex flex-col flex-1">
+        <h3 className="font-display text-base sm:text-lg font-bold leading-snug">
           {edicao.tema}
         </h3>
         <p className="mt-2 text-sm text-muted-foreground line-clamp-3">
@@ -49,17 +50,17 @@ export function EdicaoCard({ edicao }: { edicao: Edicao }) {
 
         <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
           <li className="flex items-center gap-2">
-            <CalendarDays className="w-4 h-4 text-gold-ink" />
+            <CalendarDays className="w-4 h-4 text-gold-ink shrink-0" />
             {formatarData(edicao.dataISO, edicao.dataTexto)}
           </li>
           {convidado ? (
             <li className="flex items-center gap-2">
-              <Users className="w-4 h-4 text-gold-ink" />
-              Com {convidado}
+              <Users className="w-4 h-4 text-gold-ink shrink-0" />
+              <span className="truncate">Com {convidado}</span>
             </li>
           ) : null}
           <li className="flex items-center gap-2">
-            <Video className="w-4 h-4 text-gold-ink" />
+            <Video className="w-4 h-4 text-gold-ink shrink-0" />
             {edicao.youtubeId
               ? "Gravação disponível"
               : "Gravação em preparação"}
@@ -68,12 +69,12 @@ export function EdicaoCard({ edicao }: { edicao: Edicao }) {
 
         <Link
           to={`/roda-de-conversa/${edicao.slug}`}
-          className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-gold-ink-ink transition-colors"
+          className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-gold-ink transition-colors"
         >
           Ver esta edição
-          <ArrowRight className="w-4 h-4" />
+          <ArrowRight className="roda-arrow w-4 h-4" />
         </Link>
       </div>
-    </article>
+    </MotionCard>
   );
 }

@@ -98,13 +98,13 @@ const RodaHub = () => {
           }}
           aria-hidden
         />
-        <div className="relative max-w-7xl mx-auto px-5 md:px-8 py-16 md:py-24 grid lg:grid-cols-[1.15fr_0.85fr] gap-12 items-center">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-5 md:px-8 py-12 sm:py-16 md:py-24 grid lg:grid-cols-[1.15fr_0.85fr] gap-10 md:gap-12 items-center">
           <Reveal>
             <span className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-3 py-1 text-xs font-semibold text-gold">
               Iniciativa permanente da SMR Assessoria Contábil
             </span>
-            <h1 className="mt-6 font-display text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.05]">
-              <span className="roda-script text-gold text-5xl md:text-6xl lg:text-7xl block leading-none">
+            <h1 className="mt-6 font-display text-[2rem] sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.05]">
+              <span className="roda-script text-gold text-[2.75rem] sm:text-5xl md:text-6xl lg:text-7xl block leading-none">
                 Roda de
               </span>
               Conversa SMR
@@ -153,7 +153,7 @@ const RodaHub = () => {
           </Reveal>
 
           <Reveal delay={120}>
-            <div className="rounded-3xl border border-white/15 bg-white/[0.06] backdrop-blur-sm p-7">
+            <div className="rounded-3xl border border-white/15 bg-white/[0.06] backdrop-blur-sm p-6 sm:p-7">
               <span className="text-xs font-semibold uppercase tracking-widest text-gold">
                 Primeira edição
               </span>
@@ -235,12 +235,12 @@ const RodaHub = () => {
         <section className="roda-section pt-0">
           <div className="max-w-7xl mx-auto">
             <Reveal>
-              <div className="roda-card roda-card-hover overflow-hidden grid lg:grid-cols-[0.9fr_1.1fr]">
-                <div className="bg-navy text-white p-8 md:p-10 flex flex-col justify-center">
+              <div className="roda-card roda-motion-card overflow-hidden grid lg:grid-cols-[0.9fr_1.1fr]">
+                <div className="bg-navy text-white p-6 sm:p-8 md:p-10 flex flex-col justify-center">
                   <span className="text-xs font-semibold uppercase tracking-widest text-gold">
                     Edição mais recente
                   </span>
-                  <h2 className="mt-3 font-display text-3xl font-extrabold">
+                  <h2 className="mt-3 font-display text-2xl sm:text-3xl font-extrabold">
                     {destaque.tema}
                   </h2>
                   <p className="mt-4 text-white/85 leading-relaxed">
@@ -250,7 +250,7 @@ const RodaHub = () => {
                     Realização: SMR Assessoria Contábil
                   </p>
                 </div>
-                <div className="p-8 md:p-10">
+                <div className="p-6 sm:p-8 md:p-10">
                   <ul className="space-y-3 text-sm text-muted-foreground">
                     <li className="flex items-center gap-3">
                       <CalendarDays className="w-4 h-4 text-gold" />
@@ -335,7 +335,7 @@ const RodaHub = () => {
             <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
               {destaque.aprendizados.map((item, i) => (
                 <Reveal key={item.titulo} delay={i * 80}>
-                  <div className="roda-card roda-card-hover p-6 h-full">
+                  <div className="roda-card roda-motion-card roda-motion-tilt p-5 sm:p-6 h-full">
                     <h3 className="font-display font-bold text-base">
                       {item.titulo}
                     </h3>
@@ -370,7 +370,7 @@ const RodaHub = () => {
       <section className="roda-section bg-navy text-white">
         <div className="max-w-3xl mx-auto text-center">
           <Reveal>
-            <h2 className="font-display text-2xl md:text-4xl font-extrabold">
+            <h2 className="font-display text-xl sm:text-2xl md:text-4xl font-extrabold">
               Sua opinião constrói os próximos encontros
             </h2>
             <p className="mt-5 text-white/85 leading-relaxed">
@@ -408,7 +408,7 @@ const RodaHub = () => {
             <div className="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {proximasEdicoes.map((edicao, i) => (
                 <Reveal key={edicao.slug} delay={i * 80}>
-                  <div className="roda-card roda-card-hover p-6 h-full flex flex-col">
+                  <div className="roda-card roda-motion-card roda-motion-tilt p-5 sm:p-6 h-full flex flex-col">
                     <span className="roda-badge self-start">
                       {rotuloStatus[edicao.status]}
                     </span>
@@ -494,7 +494,7 @@ const RodaHub = () => {
       <section className="roda-section pt-0">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-6">
           <Reveal>
-            <div className="roda-card roda-card-hover p-8 h-full">
+            <div className="roda-card roda-motion-card roda-motion-tilt p-6 sm:p-8 h-full">
               <h3 className="font-display text-xl font-bold">
                 Ajude a construir a próxima edição
               </h3>
@@ -509,7 +509,7 @@ const RodaHub = () => {
             </div>
           </Reveal>
           <Reveal delay={100}>
-            <div className="roda-card roda-card-hover p-8 h-full">
+            <div className="roda-card roda-motion-card roda-motion-tilt p-6 sm:p-8 h-full">
               <h3 className="font-display text-xl font-bold">
                 Qual é o melhor momento para conversarmos?
               </h3>
@@ -549,7 +549,7 @@ const RodaHub = () => {
               </Link>
             </div>
           </Reveal>
-          <div className="mt-10 flex gap-6 overflow-x-auto snap-x snap-mandatory pb-4 -mx-5 px-5 md:mx-0 md:px-0">
+          <div className="mt-10 flex gap-4 sm:gap-6 overflow-x-auto snap-x snap-mandatory pb-4 -mx-4 px-4 sm:-mx-5 sm:px-5 md:mx-0 md:px-0">
             {edicoesRealizadas.map((edicao) => (
               <div
                 key={edicao.slug}
@@ -615,7 +615,7 @@ const RodaHub = () => {
       <section className="roda-section bg-navy-deep text-white">
         <div className="max-w-3xl mx-auto text-center">
           <Reveal>
-            <h2 className="font-display text-2xl md:text-4xl font-extrabold">
+            <h2 className="font-display text-xl sm:text-2xl md:text-4xl font-extrabold">
               Continue perto da SMR
             </h2>
             <p className="mt-5 text-white/85 leading-relaxed">

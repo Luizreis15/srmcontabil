@@ -57,7 +57,7 @@ export function StatCounter({
   return (
     <div
       ref={ref}
-      className="roda-card roda-card-hover p-6 text-center bg-card/80"
+      className="roda-card roda-motion-card roda-motion-tilt p-4 sm:p-6 text-center bg-card/80"
     >
       <div className="text-3xl md:text-4xl font-extrabold text-primary tabular-nums">
         {valor === null ? textoAlternativo : `${prefixo}${display}${sufixo}`}
