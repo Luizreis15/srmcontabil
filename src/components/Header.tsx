@@ -50,7 +50,14 @@ export function Header() {
                   {link.label}
                 </button>
               ))}
+              <Link
+                to="/roda-de-conversa"
+                className="text-muted-foreground hover:text-primary font-semibold transition-colors"
+              >
+                Roda de Conversa
+              </Link>
             </nav>
+
 
             {/* CTA Button */}
             <div className="hidden md:flex items-center">
