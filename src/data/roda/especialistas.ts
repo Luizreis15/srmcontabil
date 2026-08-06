@@ -9,12 +9,12 @@ export const especialistas: Especialista[] = [
     cargo: "Advogada tributarista e sócia fundadora",
     empresa: "Marinho Advogados Associados",
     minicurriculo:
-      "Advogada tributarista, professora universitária e sócia fundadora do Marinho Advogados Associados. Atua em Direito Tributário e Empresarial nas esferas consultiva, administrativa e judicial, com ênfase em planejamento tributário, recuperação de tributos e redução da carga tributária. Mestre em Direito Negocial e doutoranda em Direito, é também palestrante e autora de obras jurídicas voltadas a empresários.",
+      "Advogada tributarista, professora universitária e sócia fundadora do Marinho Advogados Associados. Atua em Direito Tributário e Empresarial nas esferas consultiva, administrativa e judicial, com ênfase em planejamento tributário, recuperação de tributos e redução da carga tributária. Mestre e Doutora em Direito, é também palestrante e autora de obras jurídicas voltadas a empresários.",
     formacao: [
       "Graduada em Direito pelo UNIVEM — Centro Universitário Eurípides de Marília",
       "Especialista em Direito Empresarial com ênfase em Direito Tributário (UEL)",
       "Mestre em Direito Negocial, com concentração em relações empresariais (UEL)",
-      "Doutoranda em Direito pela UNIMAR — Relações Empresariais, Desenvolvimento e Demandas Sociais",
+      "Doutora em Direito pela UNIMAR — Relações Empresariais, Desenvolvimento e Demandas Sociais",
     ],
     experiencia: [
       "Sócia fundadora do Marinho Advogados Associados",
