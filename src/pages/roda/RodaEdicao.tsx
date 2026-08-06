@@ -125,7 +125,7 @@ const RodaEdicao = () => {
             <div className="mt-10 grid sm:grid-cols-2 gap-5">
               {edicao.aprendizados.map((item, i) => (
                 <Reveal key={item.titulo} delay={i * 80}>
-                  <div className="roda-card roda-card-hover p-6 h-full">
+                  <div className="roda-card roda-motion-card roda-motion-tilt p-6 h-full">
                     <h3 className="font-display font-bold">{item.titulo}</h3>
                     <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
                       {item.descricao}
