@@ -286,6 +286,7 @@
   .roda-theme h6 {
     font-family: 'Manrope', 'Inter', system-ui, sans-serif;
     letter-spacing: -0.02em;
+    color: inherit;
   }
 }
 
