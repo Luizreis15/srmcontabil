@@ -100,10 +100,23 @@ const RodaHub = () => {
           }}
           aria-hidden
         />
-        <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-5 md:px-8 py-10 sm:py-12 md:py-16 grid lg:grid-cols-[1.1fr_0.9fr] gap-8 md:gap-10 items-center">
-          {/* Imagem + CTAs */}
-          <Reveal className="order-1">
-            <figure className="relative rounded-2xl md:rounded-3xl overflow-hidden border border-white/15 shadow-2xl">
+        <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-5 md:px-8 py-8 sm:py-12 md:py-16 grid lg:grid-cols-[1.1fr_0.9fr] gap-5 md:gap-10 items-center">
+          {/* Texto — mobile first, desktop second */}
+          <Reveal delay={120} className="order-1 lg:order-2">
+            <h1 className="font-display text-3xl sm:text-5xl md:text-5xl lg:text-6xl font-extrabold leading-[1.05]">
+              <span className="roda-script text-gold text-[2.25rem] sm:text-6xl md:text-6xl lg:text-7xl block leading-none mb-1">
+                Roda de
+              </span>
+              Conversa SMR
+            </h1>
+            <p className="mt-3 text-base sm:text-lg md:text-xl text-gold font-semibold">
+              {rodaConfig.assinatura}
+            </p>
+          </Reveal>
+
+          {/* Imagem + CTAs — mobile second, desktop first */}
+          <Reveal className="order-2 lg:order-1">
+            <figure className="relative rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden border border-white/15 shadow-2xl">
               <img
                 src={heroSueli}
                 alt="Sueli Rocha, da SMR Assessoria Contábil, anfitriã da Roda de Conversa SMR"
@@ -119,17 +132,17 @@ const RodaHub = () => {
                 }}
                 aria-hidden
               />
-              <figcaption className="absolute bottom-3 left-4 right-4 md:bottom-5 md:left-6 md:right-6">
+              <figcaption className="absolute bottom-2.5 left-3 right-3 md:bottom-5 md:left-6 md:right-6">
                 <span className="block text-[10px] md:text-xs font-semibold uppercase tracking-widest text-gold">
                   Anfitriã
                 </span>
-                <span className="block font-display text-base md:text-lg font-bold text-white">
+                <span className="block font-display text-sm md:text-lg font-bold text-white">
                   Sueli Rocha · SMR Assessoria Contábil
                 </span>
               </figcaption>
             </figure>
 
-            <div className="mt-4 md:mt-5 flex flex-col sm:flex-row gap-2 md:gap-3">
+            <div className="mt-3 md:mt-5 flex flex-col sm:flex-row gap-2 md:gap-3">
               <Button
                 size="lg"
                 asChild
@@ -158,19 +171,6 @@ const RodaHub = () => {
                 Sugerir o próximo tema
               </Button>
             </div>
-          </Reveal>
-
-          {/* Texto */}
-          <Reveal delay={120} className="order-2">
-            <h1 className="font-display text-[2.25rem] sm:text-5xl md:text-5xl lg:text-6xl font-extrabold leading-[1.05]">
-              <span className="roda-script text-gold text-[2.5rem] sm:text-6xl md:text-6xl lg:text-7xl block leading-none mb-1">
-                Roda de
-              </span>
-              Conversa SMR
-            </h1>
-            <p className="mt-4 text-lg md:text-xl text-gold font-semibold">
-              {rodaConfig.assinatura}
-            </p>
           </Reveal>
         </div>
       </section>
