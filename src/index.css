@@ -436,7 +436,15 @@
     transform: none;
   }
 
-  .roda-theme .roda-card-hover:hover {
+  .roda-theme .roda-card-hover:hover,
+  .roda-motion-tilt:hover,
+  .roda-motion-tilt:focus-within {
     transform: none;
   }
+
+  .roda-motion-card::before,
+  .roda-motion-card::after {
+    display: none;
+  }
 }
+
