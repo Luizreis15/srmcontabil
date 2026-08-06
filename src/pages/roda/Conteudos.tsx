@@ -26,7 +26,7 @@ const Conteudos = () => {
           <h1 className="font-display text-3xl md:text-5xl font-extrabold">
             Informação que ajuda sua empresa a decidir melhor
           </h1>
-          <p className="mt-4 text-white/75 max-w-2xl">
+          <p className="mt-4 text-white/85 max-w-2xl">
             Conteúdos práticos, em linguagem de empresário, ligados aos temas das
             nossas conversas.
           </p>

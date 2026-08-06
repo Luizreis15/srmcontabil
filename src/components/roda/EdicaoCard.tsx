@@ -28,7 +28,7 @@ export function EdicaoCard({ edicao }: { edicao: Edicao }) {
               CONVERSA SMR
             </span>
             {edicao.numero ? (
-              <span className="mt-1 text-xs text-white/50">
+              <span className="mt-1 text-xs text-white/80">
                 Edição #{String(edicao.numero).padStart(2, "0")}
               </span>
             ) : null}

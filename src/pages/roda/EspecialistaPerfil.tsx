@@ -89,7 +89,7 @@ const EspecialistaPerfil = () => {
                 className="w-full h-full object-cover"
               />
             ) : (
-              <UserRound className="w-12 h-12 text-white/50" aria-hidden />
+              <UserRound className="w-12 h-12 text-white/80" aria-hidden />
             )}
           </div>
           <div>
@@ -99,7 +99,7 @@ const EspecialistaPerfil = () => {
             <p className="mt-2 text-gold font-semibold">
               {esp.cargo} · {esp.empresa}
             </p>
-            <p className="mt-4 text-white/75 leading-relaxed">
+            <p className="mt-4 text-white/85 leading-relaxed">
               {esp.minicurriculo}
             </p>
           </div>

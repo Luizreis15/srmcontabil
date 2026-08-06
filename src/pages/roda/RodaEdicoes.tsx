@@ -25,7 +25,7 @@ const RodaEdicoes = () => {
           <h1 className="font-display text-3xl md:text-5xl font-extrabold">
             Todas as edições
           </h1>
-          <p className="mt-4 text-white/75 max-w-2xl">
+          <p className="mt-4 text-white/85 max-w-2xl">
             Cada encontro traz um tema, um convidado e uma conversa direta sobre
             os assuntos que podem impactar a rotina, o caixa e o futuro das
             empresas.
