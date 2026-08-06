@@ -542,7 +542,7 @@ const RodaHub = () => {
               />
               <Link
                 to="/roda-de-conversa/edicoes"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-gold transition-colors"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-gold-ink transition-colors"
               >
                 Ver todas as edições
                 <ArrowRight className="w-4 h-4" />
@@ -594,7 +594,7 @@ const RodaHub = () => {
               />
               <Link
                 to="/conteudos"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-gold transition-colors"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-gold-ink transition-colors"
               >
                 Ver todos os conteúdos
                 <ArrowRight className="w-4 h-4" />
@@ -678,7 +678,7 @@ const RodaHub = () => {
               Você não é incluído em nenhuma lista automaticamente. O envio só
               acontece após a sua solicitação e pode ser interrompido quando você
               quiser.{" "}
-              <Link to="/privacidade" className="underline hover:text-gold">
+              <Link to="/privacidade" className="underline hover:text-gold-ink">
                 Política de privacidade
               </Link>
               .

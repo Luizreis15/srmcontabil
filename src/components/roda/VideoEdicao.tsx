@@ -97,17 +97,17 @@ export function VideoEdicao({ edicao, convidado, url }: VideoEdicaoProps) {
         <span className="font-semibold text-foreground">{edicao.titulo}</span>
         {edicao.duracao ? (
           <span className="inline-flex items-center gap-2">
-            <Clock className="w-4 h-4 text-gold" />
+            <Clock className="w-4 h-4 text-gold-ink" />
             {edicao.duracao}
           </span>
         ) : null}
         <span className="inline-flex items-center gap-2">
-          <CalendarDays className="w-4 h-4 text-gold" />
+          <CalendarDays className="w-4 h-4 text-gold-ink" />
           {formatarData(edicao.dataISO, edicao.dataTexto)}
         </span>
         {convidado ? (
           <span className="inline-flex items-center gap-2">
-            <UserRound className="w-4 h-4 text-gold" />
+            <UserRound className="w-4 h-4 text-gold-ink" />
             {convidado}
           </span>
         ) : null}

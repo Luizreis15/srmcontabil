@@ -43,8 +43,8 @@ const Conteudos = () => {
                 className={cn(
                   "rounded-full border px-4 py-2 text-sm font-semibold transition-colors",
                   categoria === cat
-                    ? "border-gold bg-gold/10 text-gold"
-                    : "border-border text-muted-foreground hover:border-gold hover:text-gold"
+                    ? "border-gold bg-gold/10 text-gold-ink"
+                    : "border-border text-muted-foreground hover:border-gold hover:text-gold-ink"
                 )}
               >
                 {cat}

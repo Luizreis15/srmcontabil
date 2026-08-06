@@ -49,17 +49,17 @@ export function EdicaoCard({ edicao }: { edicao: Edicao }) {
 
         <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
           <li className="flex items-center gap-2">
-            <CalendarDays className="w-4 h-4 text-gold" />
+            <CalendarDays className="w-4 h-4 text-gold-ink" />
             {formatarData(edicao.dataISO, edicao.dataTexto)}
           </li>
           {convidado ? (
             <li className="flex items-center gap-2">
-              <Users className="w-4 h-4 text-gold" />
+              <Users className="w-4 h-4 text-gold-ink" />
               Com {convidado}
             </li>
           ) : null}
           <li className="flex items-center gap-2">
-            <Video className="w-4 h-4 text-gold" />
+            <Video className="w-4 h-4 text-gold-ink" />
             {edicao.youtubeId
               ? "Gravação disponível"
               : "Gravação em preparação"}
@@ -68,7 +68,7 @@ export function EdicaoCard({ edicao }: { edicao: Edicao }) {
 
         <Link
           to={`/roda-de-conversa/${edicao.slug}`}
-          className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-gold transition-colors"
+          className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-gold-ink-ink transition-colors"
         >
           Ver esta edição
           <ArrowRight className="w-4 h-4" />

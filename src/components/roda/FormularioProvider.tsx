@@ -58,7 +58,7 @@ export function FormularioProvider({ children }: { children: ReactNode }) {
                 allow="camera; microphone; autoplay; encrypted-media;"
               />
               <p className="px-6 py-3 text-xs text-muted-foreground border-t border-border flex items-start gap-2">
-                <ShieldCheck className="w-4 h-4 mt-0.5 shrink-0 text-gold" />
+                <ShieldCheck className="w-4 h-4 mt-0.5 shrink-0 text-gold-ink" />
                 <span>
                   Este formulário é hospedado pelo Typeform, um serviço externo. Ao
                   enviar, seus dados serão tratados pela SMR conforme a nossa{" "}
