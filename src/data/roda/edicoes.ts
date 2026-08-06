@@ -1,4 +1,6 @@
 import type { Edicao } from "./types";
+import convite from "@/assets/convite-split-payment.jpg.asset.json";
+
 
 export const edicoes: Edicao[] = [
   {
