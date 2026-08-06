@@ -60,6 +60,7 @@ export default {
         gold: {
           DEFAULT: "hsl(var(--gold))",
           foreground: "hsl(var(--gold-foreground))",
+          ink: "hsl(var(--gold-ink))",
         },
         sand: {
           DEFAULT: "hsl(var(--sand))",
