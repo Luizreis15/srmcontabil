@@ -21,7 +21,7 @@ export function EspecialistaCard({ especialista }: { especialista: Especialista 
       </div>
       <div className="min-w-0">
         <h3 className="font-display text-lg font-bold">{especialista.nome}</h3>
-        <p className="text-sm text-gold font-semibold">
+        <p className="text-sm text-gold-ink font-semibold">
           {especialista.cargo} · {especialista.empresa}
         </p>
         <p className="mt-3 text-sm text-muted-foreground line-clamp-4">
@@ -32,7 +32,7 @@ export function EspecialistaCard({ especialista }: { especialista: Especialista 
           onClick={() =>
             trackEvent("guest_profile_view", { convidado: especialista.slug })
           }
-          className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-gold transition-colors"
+          className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-gold-ink transition-colors"
         >
           Conhecer a especialista
           <ArrowRight className="w-4 h-4" />

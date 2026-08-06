@@ -16,7 +16,7 @@ const Privacidade = () => (
         <h1 className="font-display text-3xl md:text-4xl font-extrabold">
           Política de privacidade
         </h1>
-        <p className="mt-3 text-white/70">
+        <p className="mt-3 text-white/85">
           Como tratamos os dados coletados nas páginas da Roda de Conversa SMR.
         </p>
       </div>
@@ -103,7 +103,7 @@ const Privacidade = () => (
             qualquer momento pelo e-mail{" "}
             <a
               href={`mailto:${rodaConfig.email}`}
-              className="text-primary underline hover:text-gold"
+              className="text-primary underline hover:text-gold-ink"
             >
               {rodaConfig.email}
             </a>{" "}

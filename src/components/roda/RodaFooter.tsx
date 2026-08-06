@@ -24,7 +24,7 @@ export function RodaFooter() {
               className="h-20 object-contain"
               style={{ mixBlendMode: "screen" }}
             />
-            <p className="mt-4 text-white/70 text-sm leading-relaxed max-w-sm">
+            <p className="mt-4 text-white/85 text-sm leading-relaxed max-w-sm">
               A <span className="roda-script text-gold text-lg">Roda de</span>{" "}
               <span className="font-semibold text-white">Conversa SMR</span> é um
               espaço de atualização e troca de experiências entre empresários,
@@ -39,7 +39,7 @@ export function RodaFooter() {
                 <li key={item.to}>
                   <Link
                     to={item.to}
-                    className="text-white/70 hover:text-gold transition-colors text-sm"
+                    className="text-white/85 hover:text-gold transition-colors text-sm"
                   >
                     {item.label}
                   </Link>
@@ -48,7 +48,7 @@ export function RodaFooter() {
               <li>
                 <Link
                   to="/privacidade"
-                  className="text-white/70 hover:text-gold transition-colors text-sm"
+                  className="text-white/85 hover:text-gold transition-colors text-sm"
                 >
                   Política de privacidade
                 </Link>
@@ -59,7 +59,7 @@ export function RodaFooter() {
           <div>
             <h4 className="font-display font-bold mb-4">Contato</h4>
             <ul className="space-y-3 text-sm">
-              <li className="flex gap-3 text-white/70">
+              <li className="flex gap-3 text-white/85">
                 <MapPin className="w-4 h-4 shrink-0 mt-0.5 text-gold" />
                 <span>
                   Rua Coronel Fernando Prestes, 350, Sala 131
@@ -73,7 +73,7 @@ export function RodaFooter() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => trackEvent("whatsapp_click", { origem: "footer" })}
-                  className="flex items-center gap-3 text-white/70 hover:text-gold transition-colors"
+                  className="flex items-center gap-3 text-white/85 hover:text-gold transition-colors"
                 >
                   <MessageCircle className="w-4 h-4 text-gold" />
                   (11) 4436-0780
@@ -82,7 +82,7 @@ export function RodaFooter() {
               <li>
                 <a
                   href={`mailto:${rodaConfig.email}`}
-                  className="flex items-center gap-3 text-white/70 hover:text-gold transition-colors"
+                  className="flex items-center gap-3 text-white/85 hover:text-gold transition-colors"
                 >
                   <Mail className="w-4 h-4 text-gold" />
                   {rodaConfig.email}
@@ -92,7 +92,7 @@ export function RodaFooter() {
           </div>
         </div>
 
-        <div className="mt-12 pt-6 border-t border-white/10 text-center text-white/50 text-sm">
+        <div className="mt-12 pt-6 border-t border-white/10 text-center text-white/80 text-sm">
           © {new Date().getFullYear()} SMR Assessoria Contábil. Todos os direitos
           reservados.
         </div>

@@ -109,14 +109,14 @@ const RodaHub = () => {
               </span>
               Conversa SMR
             </h1>
-            <p className="mt-5 text-lg md:text-xl text-gold/90 font-semibold">
+            <p className="mt-5 text-lg md:text-xl text-gold font-semibold">
               {rodaConfig.assinatura}
             </p>
-            <p className="mt-4 text-base md:text-lg text-white/75 leading-relaxed max-w-xl">
+            <p className="mt-4 text-base md:text-lg text-white/85 leading-relaxed max-w-xl">
               Um espaço criado para empresários que querem compreender as
               mudanças, antecipar impactos e tomar decisões com mais clareza.
             </p>
-            <p className="mt-4 text-base text-white/60 max-w-xl">
+            <p className="mt-4 text-base text-white/80 max-w-xl">
               50 empresários participaram da nossa primeira conversa. E esse foi
               apenas o começo.
             </p>
@@ -160,21 +160,21 @@ const RodaHub = () => {
               <h2 className="mt-3 font-display text-2xl font-bold">
                 Split Payment
               </h2>
-              <p className="mt-3 text-white/70 text-sm leading-relaxed">
+              <p className="mt-3 text-white/85 text-sm leading-relaxed">
                 50 empresários conectados em uma conversa prática sobre os
                 impactos da Reforma Tributária no caixa e na rotina das
                 empresas.
               </p>
               <dl className="mt-6 space-y-3 text-sm">
-                <div className="flex items-center gap-3 text-white/75">
+                <div className="flex items-center gap-3 text-white/85">
                   <CalendarDays className="w-4 h-4 text-gold" />
                   6 de agosto de 2026, às 16h
                 </div>
-                <div className="flex items-center gap-3 text-white/75">
+                <div className="flex items-center gap-3 text-white/85">
                   <Monitor className="w-4 h-4 text-gold" />
                   Encontro online pelo Google Meet
                 </div>
-                <div className="flex items-center gap-3 text-white/75">
+                <div className="flex items-center gap-3 text-white/85">
                   <Users className="w-4 h-4 text-gold" />
                   Convidada: Dra. Daniela Marinho
                 </div>
@@ -243,10 +243,10 @@ const RodaHub = () => {
                   <h2 className="mt-3 font-display text-3xl font-extrabold">
                     {destaque.tema}
                   </h2>
-                  <p className="mt-4 text-white/75 leading-relaxed">
+                  <p className="mt-4 text-white/85 leading-relaxed">
                     {destaque.resumo}
                   </p>
-                  <p className="mt-6 text-sm text-white/55">
+                  <p className="mt-6 text-sm text-white/80">
                     Realização: SMR Assessoria Contábil
                   </p>
                 </div>
@@ -373,7 +373,7 @@ const RodaHub = () => {
             <h2 className="font-display text-2xl md:text-4xl font-extrabold">
               Sua opinião constrói os próximos encontros
             </h2>
-            <p className="mt-5 text-white/75 leading-relaxed">
+            <p className="mt-5 text-white/85 leading-relaxed">
               Queremos que cada edição seja ainda mais útil, prática e próxima da
               realidade da sua empresa. Conte como foi sua experiência e ajude a
               SMR a construir os próximos encontros.
@@ -385,7 +385,7 @@ const RodaHub = () => {
             >
               Avaliar esta edição
             </Button>
-            <p className="mt-4 text-xs text-white/50">
+            <p className="mt-4 text-xs text-white/80">
               Coletamos apenas o necessário para melhorar os encontros. Seus dados
               não são compartilhados sem consentimento.
             </p>
@@ -542,7 +542,7 @@ const RodaHub = () => {
               />
               <Link
                 to="/roda-de-conversa/edicoes"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-gold transition-colors"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-gold-ink transition-colors"
               >
                 Ver todas as edições
                 <ArrowRight className="w-4 h-4" />
@@ -594,7 +594,7 @@ const RodaHub = () => {
               />
               <Link
                 to="/conteudos"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-gold transition-colors"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-gold-ink transition-colors"
               >
                 Ver todos os conteúdos
                 <ArrowRight className="w-4 h-4" />
@@ -618,7 +618,7 @@ const RodaHub = () => {
             <h2 className="font-display text-2xl md:text-4xl font-extrabold">
               Continue perto da SMR
             </h2>
-            <p className="mt-5 text-white/75 leading-relaxed">
+            <p className="mt-5 text-white/85 leading-relaxed">
               A informação certa pode mudar a próxima decisão da sua empresa.
               Receba os próximos convites, novos conteúdos e atualizações
               importantes para o seu negócio.
@@ -674,11 +674,11 @@ const RodaHub = () => {
                 </a>
               </Button>
             </div>
-            <p className="mt-5 text-xs text-white/50 max-w-xl mx-auto">
+            <p className="mt-5 text-xs text-white/80 max-w-xl mx-auto">
               Você não é incluído em nenhuma lista automaticamente. O envio só
               acontece após a sua solicitação e pode ser interrompido quando você
               quiser.{" "}
-              <Link to="/privacidade" className="underline hover:text-gold">
+              <Link to="/privacidade" className="underline hover:text-gold-ink">
                 Política de privacidade
               </Link>
               .

@@ -34,14 +34,14 @@ export function VideoEdicao({ edicao, convidado, url }: VideoEdicaoProps) {
                 edicao.imagemCapa ? "" : "mx-auto"
               }`}
             >
-              <Play className="w-6 h-6 text-gold" />
+              <Play className="w-6 h-6 text-gold-ink" />
             </div>
             <h3 className="mt-5 font-display text-xl md:text-2xl font-bold">
               A gravação está sendo preparada
             </h3>
             <p className="mt-3 text-muted-foreground max-w-lg">
               Em breve, você poderá rever os principais momentos desta Roda de
-              Conversa. Enquanto isso, veja o convite do encontro ao lado.
+              Conversa. Assim que estiver disponível, o vídeo aparece aqui.
             </p>
           </div>
         </div>
@@ -97,17 +97,17 @@ export function VideoEdicao({ edicao, convidado, url }: VideoEdicaoProps) {
         <span className="font-semibold text-foreground">{edicao.titulo}</span>
         {edicao.duracao ? (
           <span className="inline-flex items-center gap-2">
-            <Clock className="w-4 h-4 text-gold" />
+            <Clock className="w-4 h-4 text-gold-ink" />
             {edicao.duracao}
           </span>
         ) : null}
         <span className="inline-flex items-center gap-2">
-          <CalendarDays className="w-4 h-4 text-gold" />
+          <CalendarDays className="w-4 h-4 text-gold-ink" />
           {formatarData(edicao.dataISO, edicao.dataTexto)}
         </span>
         {convidado ? (
           <span className="inline-flex items-center gap-2">
-            <UserRound className="w-4 h-4 text-gold" />
+            <UserRound className="w-4 h-4 text-gold-ink" />
             {convidado}
           </span>
         ) : null}

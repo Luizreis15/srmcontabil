@@ -17,7 +17,7 @@ const Especialistas = () => (
         <h1 className="font-display text-3xl md:text-5xl font-extrabold">
           Especialistas convidados
         </h1>
-        <p className="mt-4 text-white/75 max-w-2xl">
+        <p className="mt-4 text-white/85 max-w-2xl">
           Profissionais que se sentam à mesa com a SMR e com os empresários para
           traduzir temas complexos em decisões práticas.
         </p>

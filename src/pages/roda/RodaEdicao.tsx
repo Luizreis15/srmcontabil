@@ -79,10 +79,10 @@ const RodaEdicao = () => {
           <h1 className="mt-5 font-display text-3xl md:text-5xl font-extrabold leading-tight">
             {edicao.titulo}
           </h1>
-          <p className="mt-5 text-white/75 text-lg leading-relaxed">
+          <p className="mt-5 text-white/85 text-lg leading-relaxed">
             {edicao.descricao}
           </p>
-          <ul className="mt-7 flex flex-wrap gap-x-6 gap-y-3 text-sm text-white/70">
+          <ul className="mt-7 flex flex-wrap gap-x-6 gap-y-3 text-sm text-white/85">
             <li className="flex items-center gap-2">
               <CalendarDays className="w-4 h-4 text-gold" />
               {formatarData(edicao.dataISO, edicao.dataTexto)}
@@ -189,7 +189,7 @@ const RodaEdicao = () => {
                     href={m.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 font-semibold text-primary hover:text-gold"
+                    className="inline-flex items-center gap-2 font-semibold text-primary hover:text-gold-ink"
                   >
                     {m.titulo}
                     <ArrowRight className="w-4 h-4" />
@@ -206,7 +206,7 @@ const RodaEdicao = () => {
           <h2 className="font-display text-2xl md:text-3xl font-extrabold">
             Sua opinião constrói os próximos encontros
           </h2>
-          <p className="mt-4 text-white/75">
+          <p className="mt-4 text-white/85">
             Conte como foi sua experiência nesta edição e ajude a SMR a preparar
             a próxima conversa.
           </p>

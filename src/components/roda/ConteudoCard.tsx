@@ -28,7 +28,7 @@ export function ConteudoCard({ conteudo }: { conteudo: Conteudo }) {
       </p>
       <Link
         to={`/conteudos/${conteudo.slug}`}
-        className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-gold transition-colors"
+        className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-gold-ink transition-colors"
       >
         Ler o conteúdo
         <ArrowRight className="w-4 h-4" />
