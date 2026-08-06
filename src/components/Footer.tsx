@@ -43,8 +43,14 @@ export function Footer() {
                   </button>
                 </li>
               ))}
+              <li>
+                <Link to="/roda-de-conversa" className="text-accent-foreground/70 hover:text-primary transition-colors text-sm">
+                  Roda de Conversa
+                </Link>
+              </li>
             </ul>
           </div>
+
 
           {/* Contact */}
           <div>
