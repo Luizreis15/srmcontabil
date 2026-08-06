@@ -105,7 +105,7 @@ const RodaHub = () => {
           <Reveal className="order-1">
             <figure className="relative rounded-2xl md:rounded-3xl overflow-hidden border border-white/15 shadow-2xl">
               <img
-                src={heroSueli.url}
+                src={heroSueli}
                 alt="Sueli Rocha, da SMR Assessoria Contábil, anfitriã da Roda de Conversa SMR"
                 className="w-full h-auto object-cover"
                 loading="eager"
