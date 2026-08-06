@@ -31,7 +31,7 @@ import {
 import { especialistas, getEspecialista } from "@/data/roda/especialistas";
 import { conteudos } from "@/data/roda/conteudos";
 import { trackEvent } from "@/lib/rodaAnalytics";
-import heroSueli from "@/assets/roda-hero-sueli.png.asset.json";
+import heroSueli from "@/assets/roda-hero-sueli.png";
 
 
 const RodaHub = () => {
