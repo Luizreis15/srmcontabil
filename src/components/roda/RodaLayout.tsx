@@ -62,9 +62,9 @@ export function RodaLayout({ children }: { children: ReactNode }) {
 
   return (
     <FormularioProvider>
-      <div className="roda-theme min-h-screen bg-background text-foreground font-display">
+      <div className="roda-theme flex flex-col min-h-screen bg-background text-foreground font-display">
         <RodaHeader />
-        <main className="pb-24 md:pb-0">{children}</main>
+        <main className="flex-1">{children}</main>
         <RodaFooter />
         <RodaMobileCTA />
       </div>

@@ -14,18 +14,18 @@ const navegacao = [
 
 export function RodaFooter() {
   return (
-    <footer className="bg-navy-deep text-white py-8 px-5 md:px-8">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+    <footer className="bg-navy-deep text-white pt-5 pb-24 md:pb-5 px-5 md:px-8">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <Link to="/roda-de-conversa" className="shrink-0">
           <img
             src={logoSmr}
             alt="SMR Assessoria"
-            className="h-12 object-contain"
+            className="h-10 object-contain"
             style={{ mixBlendMode: "screen" }}
           />
         </Link>
 
-        <nav className="flex flex-wrap gap-x-6 gap-y-2">
+        <nav className="flex flex-wrap gap-x-5 gap-y-1.5">
           {navegacao.map((item) => (
             <Link
               key={item.to}
@@ -49,7 +49,7 @@ export function RodaFooter() {
         </a>
       </div>
 
-      <div className="max-w-7xl mx-auto mt-6 pt-4 border-t border-white/10 text-xs text-white/70 flex flex-col sm:flex-row sm:justify-between gap-2">
+      <div className="max-w-7xl mx-auto mt-4 pt-3 border-t border-white/10 text-xs text-white/70 flex flex-col sm:flex-row sm:justify-between gap-1">
         <span>
           Rua Coronel Fernando Prestes, 350, Sala 131 — Santo André/SP
         </span>
