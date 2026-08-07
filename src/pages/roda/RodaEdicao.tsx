@@ -215,7 +215,8 @@ const RodaEdicao = () => {
             className="mt-7 bg-gold text-gold-foreground hover:bg-gold/90"
             onClick={() =>
               abrirFormulario({
-                url: edicao.typeformAvaliacao || rodaConfig.typeforms.avaliacao,
+                tipo: "avaliacao",
+                edicaoSlug: edicao.slug,
                 titulo: `Avaliar: ${edicao.tema}`,
                 evento: "feedback_open",
               })

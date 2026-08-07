@@ -43,7 +43,8 @@ const RodaHub = () => {
 
   const abrirAvaliacao = () =>
     abrirFormulario({
-      url: destaque?.typeformAvaliacao || rodaConfig.typeforms.avaliacao,
+      tipo: "avaliacao",
+      edicaoSlug: destaque?.slug,
       titulo: "Sua opinião constrói os próximos encontros",
       descricao:
         "Conte como foi sua experiência e ajude a SMR a construir os próximos encontros.",
@@ -52,7 +53,7 @@ const RodaHub = () => {
 
   const abrirSugestao = () =>
     abrirFormulario({
-      url: rodaConfig.typeforms.sugestaoTema,
+      tipo: "sugestao",
       titulo: "Sobre o que precisamos conversar agora?",
       descricao:
         "Qual assunto está gerando dúvidas, preocupações ou decisões importantes na sua empresa?",
@@ -61,7 +62,7 @@ const RodaHub = () => {
 
   const abrirDisponibilidade = () =>
     abrirFormulario({
-      url: rodaConfig.typeforms.disponibilidade,
+      tipo: "sugestao",
       titulo: "Qual é o melhor momento para conversarmos?",
       descricao:
         "Dias, horários, formato e frequência ideais para os próximos encontros.",

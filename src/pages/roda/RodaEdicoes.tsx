@@ -70,7 +70,7 @@ const RodaEdicoes = () => {
                 className="mt-6 gap-2 bg-gold text-gold-foreground hover:bg-gold/90"
                 onClick={() =>
                   abrirFormulario({
-                    url: rodaConfig.typeforms.sugestaoTema,
+                    tipo: "sugestao",
                     titulo: "Sobre o que precisamos conversar agora?",
                     evento: "topic_suggestion_open",
                   })

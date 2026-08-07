@@ -10,7 +10,7 @@ export function RodaMobileCTA() {
       <button
         onClick={() =>
           abrirFormulario({
-            url: rodaConfig.typeforms.sugestaoTema,
+            tipo: "sugestao",
             titulo: "Sobre o que precisamos conversar agora?",
             descricao:
               "Conte qual assunto está gerando dúvidas ou impactando a sua empresa.",
