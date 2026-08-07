@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import logoSmr from "@/assets/logo-smr-alta.jpeg";
 import { useFormularioModal } from "@/components/roda/FormularioProvider";
-import { rodaConfig } from "@/data/roda/config";
 
 const links = [
   { label: "Roda de Conversa", to: "/roda-de-conversa" },
@@ -24,7 +23,7 @@ export function RodaHeader() {
   const sugerirTema = () => {
     setAberto(false);
     abrirFormulario({
-      url: rodaConfig.typeforms.sugestaoTema,
+      tipo: "sugestao",
       titulo: "Sobre o que precisamos conversar agora?",
       descricao:
         "Conte qual assunto está gerando dúvidas ou impactando a sua empresa.",

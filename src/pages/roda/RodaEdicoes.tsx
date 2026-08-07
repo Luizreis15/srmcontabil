@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { Lightbulb } from "lucide-react";
 import { edicoesRealizadas, proximasEdicoes } from "@/data/roda/edicoes";
 import { useFormularioModal } from "@/components/roda/FormularioProvider";
-import { rodaConfig } from "@/data/roda/config";
 
 const RodaEdicoes = () => {
   const { abrirFormulario } = useFormularioModal();
@@ -70,7 +69,7 @@ const RodaEdicoes = () => {
                 className="mt-6 gap-2 bg-gold text-gold-foreground hover:bg-gold/90"
                 onClick={() =>
                   abrirFormulario({
-                    url: rodaConfig.typeforms.sugestaoTema,
+                    tipo: "sugestao",
                     titulo: "Sobre o que precisamos conversar agora?",
                     evento: "topic_suggestion_open",
                   })

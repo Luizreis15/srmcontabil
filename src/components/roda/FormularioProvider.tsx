@@ -1,12 +1,16 @@
 import { createContext, useCallback, useContext, useState, type ReactNode } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { MessageCircle, ShieldCheck } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import { rodaConfig, whatsappUrl } from "@/data/roda/config";
 import { trackEvent, type RodaEvent } from "@/lib/rodaAnalytics";
+import { FormAvaliacao } from "@/components/roda/FormAvaliacao";
+import { FormSugestaoTema } from "@/components/roda/FormSugestaoTema";
 
 interface AbrirArgs {
-  url: string;
+  tipo?: "avaliacao" | "sugestao";
+  edicaoSlug?: string;
+  url?: string;
   titulo: string;
   descricao?: string;
   evento?: RodaEvent;
@@ -35,11 +39,13 @@ export function FormularioProvider({ children }: { children: ReactNode }) {
     if (novo.evento) trackEvent(novo.evento, { form: novo.titulo });
   }, []);
 
+  const fechar = () => setAberto(false);
+
   return (
     <FormContext.Provider value={{ abrirFormulario }}>
       {children}
       <Dialog open={aberto} onOpenChange={setAberto}>
-        <DialogContent className="max-w-3xl p-0 gap-0 overflow-hidden">
+        <DialogContent className="max-w-lg p-0 gap-0 overflow-y-auto max-h-[90vh]">
           <DialogHeader className="px-6 pt-6 pb-4 text-left">
             <DialogTitle className="font-display text-xl">
               {args?.titulo ?? "Formulário"}
@@ -49,26 +55,10 @@ export function FormularioProvider({ children }: { children: ReactNode }) {
             ) : null}
           </DialogHeader>
 
-          {args?.url ? (
-            <>
-              <iframe
-                title={args.titulo}
-                src={args.url}
-                className="w-full h-[70vh] border-0"
-                allow="camera; microphone; autoplay; encrypted-media;"
-              />
-              <p className="px-6 py-3 text-xs text-muted-foreground border-t border-border flex items-start gap-2">
-                <ShieldCheck className="w-4 h-4 mt-0.5 shrink-0 text-gold-ink" />
-                <span>
-                  Este formulário é hospedado pelo Typeform, um serviço externo. Ao
-                  enviar, seus dados serão tratados pela SMR conforme a nossa{" "}
-                  <a href="/privacidade" className="underline hover:text-primary">
-                    política de privacidade
-                  </a>
-                  , apenas para as finalidades informadas.
-                </span>
-              </p>
-            </>
+          {args?.tipo === "avaliacao" ? (
+            <FormAvaliacao edicaoSlug={args.edicaoSlug} onFechar={fechar} />
+          ) : args?.tipo === "sugestao" ? (
+            <FormSugestaoTema onFechar={fechar} />
           ) : (
             <div className="px-6 pb-8 pt-2">
               <div className="rounded-2xl border border-dashed border-border bg-secondary/60 p-8 text-center">

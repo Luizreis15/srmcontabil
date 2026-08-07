@@ -1,6 +1,5 @@
 import { Lightbulb } from "lucide-react";
 import { useFormularioModal } from "@/components/roda/FormularioProvider";
-import { rodaConfig } from "@/data/roda/config";
 
 export function RodaMobileCTA() {
   const { abrirFormulario } = useFormularioModal();
@@ -10,7 +9,7 @@ export function RodaMobileCTA() {
       <button
         onClick={() =>
           abrirFormulario({
-            url: rodaConfig.typeforms.sugestaoTema,
+            tipo: "sugestao",
             titulo: "Sobre o que precisamos conversar agora?",
             descricao:
               "Conte qual assunto está gerando dúvidas ou impactando a sua empresa.",
