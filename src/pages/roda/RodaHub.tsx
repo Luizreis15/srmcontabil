@@ -3,27 +3,21 @@ import {
   ArrowRight,
   CalendarDays,
   Lightbulb,
-  Mail,
   MessageCircle,
-  Monitor,
   Star,
   Users,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Seo } from "@/components/roda/Seo";
 import { Reveal } from "@/components/roda/Reveal";
-import { StatCounter } from "@/components/roda/StatCounter";
 import { SectionHeading } from "@/components/roda/SectionHeading";
-import { VideoEdicao } from "@/components/roda/VideoEdicao";
-import { EdicaoCard } from "@/components/roda/EdicaoCard";
 import { EspecialistaCard } from "@/components/roda/EspecialistaCard";
 import { ConteudoCard } from "@/components/roda/ConteudoCard";
 import { useFormularioModal } from "@/components/roda/FormularioProvider";
-import { googleCalendarUrl, baixarIcs } from "@/components/roda/calendario";
+import { googleCalendarUrl } from "@/components/roda/calendario";
 import { rodaConfig, whatsappUrl } from "@/data/roda/config";
 import {
   edicaoMaisRecente,
-  edicoesRealizadas,
   proximasEdicoes,
   formatarData,
   rotuloStatus,
@@ -33,6 +27,23 @@ import { conteudos } from "@/data/roda/conteudos";
 import { trackEvent } from "@/lib/rodaAnalytics";
 import heroSueli from "@/assets/roda-hero-sueli.png";
 
+const pilares = [
+  {
+    icone: Users,
+    titulo: "Empresários juntos",
+    texto: "Encontros abertos para quem decide, com espaço real para perguntar.",
+  },
+  {
+    icone: Star,
+    titulo: "Especialistas convidados",
+    texto: "Quem entende do tema explica o que muda na prática.",
+  },
+  {
+    icone: CalendarDays,
+    titulo: "Pauta feita por você",
+    texto: "Os temas nascem das dúvidas enviadas pelos participantes.",
+  },
+];
 
 const RodaHub = () => {
   const { abrirFormulario } = useFormularioModal();
@@ -45,9 +56,8 @@ const RodaHub = () => {
     abrirFormulario({
       tipo: "avaliacao",
       edicaoSlug: destaque?.slug,
-      titulo: "Sua opinião constrói os próximos encontros",
-      descricao:
-        "Conte como foi sua experiência e ajude a SMR a construir os próximos encontros.",
+      titulo: "Como foi o encontro para você?",
+      descricao: "Dois passos rápidos. Sua resposta orienta a próxima edição.",
       evento: "feedback_open",
     });
 
@@ -55,18 +65,8 @@ const RodaHub = () => {
     abrirFormulario({
       tipo: "sugestao",
       titulo: "Sobre o que precisamos conversar agora?",
-      descricao:
-        "Qual assunto está gerando dúvidas, preocupações ou decisões importantes na sua empresa?",
+      descricao: "Conte o tema e o melhor momento para você participar.",
       evento: "topic_suggestion_open",
-    });
-
-  const abrirDisponibilidade = () =>
-    abrirFormulario({
-      tipo: "sugestao",
-      titulo: "Qual é o melhor momento para conversarmos?",
-      descricao:
-        "Dias, horários, formato e frequência ideais para os próximos encontros.",
-      evento: "availability_form_open",
     });
 
   const jsonLd = {
@@ -85,13 +85,13 @@ const RodaHub = () => {
   return (
     <>
       <Seo
-        titulo="Roda de Conversa SMR | Conhecimento prático para decisões empresariais"
-        descricao="Um espaço de atualização e troca de experiências entre empresários e especialistas. Assista à primeira edição sobre Split Payment e sugira o próximo tema."
+        titulo="Roda de Conversa SMR | Encontros de conhecimento para empresários"
+        descricao="Encontros da SMR Assessoria Contábil com especialistas convidados para traduzir temas complexos em decisões práticas. Sugira o próximo tema."
         path="/roda-de-conversa"
         jsonLd={jsonLd}
       />
 
-      {/* HERO */}
+      {/* 1. HERO */}
       <section className="relative overflow-hidden bg-navy-deep text-white min-h-[calc(100vh-4rem)] flex items-center">
         <div
           className="absolute inset-0 opacity-70"
@@ -102,7 +102,6 @@ const RodaHub = () => {
           aria-hidden
         />
         <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-5 md:px-8 py-8 sm:py-12 md:py-16 grid lg:grid-cols-[1.1fr_0.9fr] gap-5 md:gap-10 items-center">
-          {/* Texto — mobile first, desktop second */}
           <Reveal delay={120} className="order-1 lg:order-2">
             <h1 className="font-display text-3xl sm:text-5xl md:text-5xl lg:text-6xl font-extrabold leading-[1.05]">
               <span className="roda-script text-gold text-[2.25rem] sm:text-6xl md:text-6xl lg:text-7xl block leading-none mb-1">
@@ -115,7 +114,6 @@ const RodaHub = () => {
             </p>
           </Reveal>
 
-          {/* Imagem + CTAs — mobile second, desktop first */}
           <Reveal className="order-2 lg:order-1">
             <figure className="relative rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden border border-white/15 shadow-2xl">
               <img
@@ -146,240 +144,89 @@ const RodaHub = () => {
             <div className="mt-3 md:mt-5 flex flex-col sm:flex-row gap-2 md:gap-3">
               <Button
                 size="lg"
-                asChild
-                className="bg-gold text-gold-foreground hover:bg-gold/90 gap-2"
-              >
-                <a href="#gravacao">
-                  Assistir à primeira edição
-                  <ArrowRight className="w-4 h-4" />
-                </a>
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                onClick={abrirAvaliacao}
-                className="border-white/30 bg-transparent text-white hover:bg-white/10 hover:text-white"
-              >
-                Avaliar o encontro
-              </Button>
-              <Button
-                size="lg"
-                variant="ghost"
                 onClick={abrirSugestao}
-                className="text-white hover:bg-white/10 hover:text-white gap-2"
+                className="bg-gold text-gold-foreground hover:bg-gold/90 gap-2"
               >
                 <Lightbulb className="w-4 h-4" />
                 Sugerir o próximo tema
               </Button>
+              {destaque ? (
+                <Button
+                  size="lg"
+                  variant="outline"
+                  asChild
+                  className="border-white/30 bg-transparent text-white hover:bg-white/10 hover:text-white gap-2"
+                >
+                  <Link to={`/roda-de-conversa/${destaque.slug}`}>
+                    Ver a última edição
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </Button>
+              ) : null}
             </div>
           </Reveal>
         </div>
       </section>
 
-      {/* INDICADORES */}
-      <section className="roda-section bg-sand">
-        <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-          <StatCounter valor={50} rotulo="empresários participantes" />
-          <StatCounter valor={1} rotulo="especialista convidada" />
-          <StatCounter valor={1} rotulo="tema estratégico" />
-          <StatCounter
-            valor={null}
-            textoAlternativo="Muitas"
-            rotulo="perguntas respondidas"
-          />
-        </div>
-      </section>
-
-      {/* INTRODUÇÃO */}
+      {/* 2. O QUE É */}
       <section className="roda-section">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 items-start">
+        <div className="max-w-7xl mx-auto">
           <Reveal>
             <SectionHeading
               etiqueta="O projeto"
-              titulo="Uma conversa que continua"
-              descricao="A primeira edição da Roda de Conversa SMR reuniu aproximadamente 50 empresários em um encontro marcado por perguntas, interação e troca de experiências."
+              titulo="Conversas curtas sobre o que muda no seu negócio"
+              descricao="Um encontro por vez, um tema por vez — sempre com aplicação prática."
+              centralizado
             />
           </Reveal>
-          <Reveal delay={100} className="space-y-4 text-muted-foreground leading-relaxed">
-            <p>
-              Falamos sobre Split Payment com a Dra. Daniela Marinho e mostramos
-              como as mudanças da Reforma Tributária poderão impactar o caixa e a
-              rotina das empresas.
-            </p>
-            <p>
-              Agora, o projeto continua com novos temas, especialistas e conversas
-              construídas a partir das necessidades dos empresários parceiros da
-              SMR.
-            </p>
-          </Reveal>
+          <div className="mt-10 grid sm:grid-cols-3 gap-5">
+            {pilares.map((pilar, i) => (
+              <Reveal key={pilar.titulo} delay={i * 80}>
+                <div className="roda-card roda-motion-card roda-motion-tilt p-6 h-full">
+                  <pilar.icone className="w-5 h-5 text-gold-ink" />
+                  <h3 className="mt-4 font-display text-lg font-bold">
+                    {pilar.titulo}
+                  </h3>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                    {pilar.texto}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* CARD DA EDIÇÃO MAIS RECENTE */}
+      {/* 3. ÚLTIMA EDIÇÃO — discreta */}
       {destaque ? (
         <section className="roda-section pt-0">
           <div className="max-w-7xl mx-auto">
             <Reveal>
-              <div className="roda-card roda-motion-card overflow-hidden grid lg:grid-cols-[0.9fr_1.1fr]">
-                <div className="bg-navy text-white p-6 sm:p-8 md:p-10 flex flex-col justify-center">
-                  <span className="text-xs font-semibold uppercase tracking-widest text-gold">
-                    Edição mais recente
-                  </span>
-                  <h2 className="mt-3 font-display text-2xl sm:text-3xl font-extrabold">
+              <div className="roda-card roda-motion-card p-5 sm:p-6 flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
+                <div className="flex-1">
+                  <span className="roda-badge">Última edição</span>
+                  <h2 className="mt-3 font-display text-lg sm:text-xl font-bold">
                     {destaque.tema}
                   </h2>
-                  <p className="mt-4 text-white/85 leading-relaxed">
-                    {destaque.resumo}
-                  </p>
-                  <p className="mt-6 text-sm text-white/80">
-                    Realização: SMR Assessoria Contábil
+                  <p className="mt-1 text-sm text-muted-foreground">
+                    {formatarData(destaque.dataISO)}
+                    {convidadaDestaque ? ` · ${convidadaDestaque.nome}` : ""}
                   </p>
                 </div>
-                <div className="p-6 sm:p-8 md:p-10">
-                  <ul className="space-y-3 text-sm text-muted-foreground">
-                    <li className="flex items-center gap-3">
-                      <CalendarDays className="w-4 h-4 text-gold" />
-                      Realizado em {formatarData(destaque.dataISO)}
-                    </li>
-                    <li className="flex items-center gap-3">
-                      <Monitor className="w-4 h-4 text-gold" />
-                      Encontro online · {destaque.plataforma}
-                    </li>
-                    <li className="flex items-center gap-3">
-                      <Users className="w-4 h-4 text-gold" />
-                      Aproximadamente {destaque.participantes} empresários
-                    </li>
-                    <li className="flex items-center gap-3">
-                      <Star className="w-4 h-4 text-gold" />
-                      Convidada: {convidadaDestaque?.nome}
-                    </li>
-                  </ul>
-
-                  <div className="mt-8 flex flex-wrap gap-3">
-                    <Button asChild className="gap-2">
-                      <a href="#gravacao">Assistir ao encontro</a>
-                    </Button>
-                    <Button variant="outline" asChild>
-                      <a href="#aprendizados">Ver os principais aprendizados</a>
-                    </Button>
-                    {convidadaDestaque ? (
-                      <Button variant="ghost" asChild className="gap-2">
-                        <Link
-                          to={`/especialistas/${convidadaDestaque.slug}`}
-                          onClick={() =>
-                            trackEvent("guest_profile_view", {
-                              convidado: convidadaDestaque.slug,
-                            })
-                          }
-                        >
-                          Conhecer a convidada
-                          <ArrowRight className="w-4 h-4" />
-                        </Link>
-                      </Button>
-                    ) : null}
-                  </div>
-                </div>
+                <Button asChild className="gap-2 shrink-0">
+                  <Link to={`/roda-de-conversa/${destaque.slug}`}>
+                    Assistir à gravação
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </Button>
               </div>
             </Reveal>
           </div>
         </section>
       ) : null}
 
-      {/* VÍDEO */}
-      {destaque ? (
-        <section id="gravacao" className="roda-section pt-0 scroll-mt-24">
-          <div className="max-w-5xl mx-auto">
-            <Reveal>
-              <SectionHeading
-                etiqueta="Gravação"
-                titulo="Reveja a conversa quando quiser"
-                centralizado
-                className="mb-10"
-              />
-              <VideoEdicao
-                edicao={destaque}
-                convidado={convidadaDestaque?.nome}
-                url={`/roda-de-conversa/${destaque.slug}`}
-              />
-            </Reveal>
-          </div>
-        </section>
-      ) : null}
-
-      {/* APRENDIZADOS */}
-      {destaque ? (
-        <section id="aprendizados" className="roda-section bg-sand scroll-mt-24">
-          <div className="max-w-7xl mx-auto">
-            <Reveal>
-              <SectionHeading
-                etiqueta="Principais aprendizados"
-                titulo="O que ficou desta conversa"
-                centralizado
-              />
-            </Reveal>
-            <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {destaque.aprendizados.map((item, i) => (
-                <Reveal key={item.titulo} delay={i * 80}>
-                  <div className="roda-card roda-motion-card roda-motion-tilt p-5 sm:p-6 h-full">
-                    <h3 className="font-display font-bold text-base">
-                      {item.titulo}
-                    </h3>
-                    <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-                      {item.descricao}
-                    </p>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </section>
-      ) : null}
-
-      {/* ESPECIALISTA */}
-      {convidadaDestaque ? (
-        <section className="roda-section">
-          <div className="max-w-5xl mx-auto">
-            <Reveal>
-              <SectionHeading
-                etiqueta="Especialista convidada"
-                titulo="Quem esteve nesta conversa"
-                className="mb-8"
-              />
-              <EspecialistaCard especialista={convidadaDestaque} />
-            </Reveal>
-          </div>
-        </section>
-      ) : null}
-
-      {/* FEEDBACK */}
-      <section className="roda-section bg-navy text-white">
-        <div className="max-w-3xl mx-auto text-center">
-          <Reveal>
-            <h2 className="font-display text-xl sm:text-2xl md:text-4xl font-extrabold">
-              Sua opinião constrói os próximos encontros
-            </h2>
-            <p className="mt-5 text-white/85 leading-relaxed">
-              Queremos que cada edição seja ainda mais útil, prática e próxima da
-              realidade da sua empresa. Conte como foi sua experiência e ajude a
-              SMR a construir os próximos encontros.
-            </p>
-            <Button
-              size="lg"
-              className="mt-8 bg-gold text-gold-foreground hover:bg-gold/90"
-              onClick={abrirAvaliacao}
-            >
-              Avaliar esta edição
-            </Button>
-            <p className="mt-4 text-xs text-white/80">
-              Coletamos apenas o necessário para melhorar os encontros. Seus dados
-              não são compartilhados sem consentimento.
-            </p>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* PRÓXIMOS ENCONTROS */}
-      <section id="proximos" className="roda-section scroll-mt-24">
+      {/* 4. PRÓXIMOS ENCONTROS */}
+      <section id="proximos" className="roda-section bg-sand scroll-mt-24">
         <div className="max-w-7xl mx-auto">
           <Reveal>
             <SectionHeading
@@ -406,7 +253,6 @@ const RodaHub = () => {
                     <p className="mt-4 text-sm text-muted-foreground">
                       {formatarData(edicao.dataISO, edicao.dataTexto)}
                       {edicao.horario ? ` · ${edicao.horario}` : ""}
-                      {edicao.formato ? ` · ${edicao.formato}` : ""}
                     </p>
                     <div className="mt-5 flex flex-wrap gap-2">
                       <Button
@@ -416,9 +262,7 @@ const RodaHub = () => {
                             edicao: edicao.slug,
                           });
                           abrirFormulario({
-                            url:
-                              edicao.linkInscricao ||
-                              rodaConfig.typeforms.inscricao,
+                            url: edicao.linkInscricao,
                             titulo: `Quero participar — ${edicao.tema}`,
                             evento: "next_event_interest",
                           });
@@ -427,24 +271,15 @@ const RodaHub = () => {
                         Quero participar
                       </Button>
                       {edicao.dataISO ? (
-                        <>
-                          <Button size="sm" variant="outline" asChild>
-                            <a
-                              href={googleCalendarUrl(edicao)}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              Google Agenda
-                            </a>
-                          </Button>
-                          <Button
-                            size="sm"
-                            variant="ghost"
-                            onClick={() => baixarIcs(edicao)}
+                        <Button size="sm" variant="outline" asChild>
+                          <a
+                            href={googleCalendarUrl(edicao)}
+                            target="_blank"
+                            rel="noopener noreferrer"
                           >
                             Adicionar à agenda
-                          </Button>
-                        </>
+                          </a>
+                        </Button>
                       ) : null}
                     </div>
                   </div>
@@ -453,21 +288,28 @@ const RodaHub = () => {
             </div>
           ) : (
             <Reveal delay={80}>
-              <div className="mt-10 rounded-3xl border border-dashed border-border bg-sand p-10 md:p-14 text-center">
-                <h3 className="font-display text-xl md:text-2xl font-bold">
-                  O próximo tema pode começar com uma pergunta sua.
+              <div className="mt-8 rounded-3xl border border-dashed border-border bg-background p-8 md:p-10 text-center">
+                <h3 className="font-display text-lg md:text-xl font-bold">
+                  A próxima data sai em breve.
                 </h3>
-                <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
-                  Conte para a SMR qual assunto está gerando dúvidas ou impactando
-                  sua empresa.
+                <p className="mt-3 text-muted-foreground max-w-lg mx-auto">
+                  Receba o convite assim que a agenda for definida.
                 </p>
                 <Button
-                  size="lg"
-                  className="mt-7 gap-2 bg-gold text-gold-foreground hover:bg-gold/90"
-                  onClick={abrirSugestao}
+                  className="mt-6 gap-2 bg-gold text-gold-foreground hover:bg-gold/90"
+                  asChild
                 >
-                  <Lightbulb className="w-4 h-4" />
-                  Sugerir um tema
+                  <a
+                    href={whatsappUrl(rodaConfig.mensagensWhatsapp.convites)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() =>
+                      trackEvent("whatsapp_click", { origem: "proximos" })
+                    }
+                  >
+                    <MessageCircle className="w-4 h-4" />
+                    Quero receber o convite
+                  </a>
                 </Button>
               </div>
             </Reveal>
@@ -475,140 +317,103 @@ const RodaHub = () => {
         </div>
       </section>
 
-      {/* SUGESTÃO + DISPONIBILIDADE */}
-      <section className="roda-section pt-0">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-6">
+      {/* 5. PARTICIPE — avaliar e sugerir */}
+      <section className="roda-section bg-navy text-white">
+        <div className="max-w-4xl mx-auto text-center">
           <Reveal>
-            <div className="roda-card roda-motion-card roda-motion-tilt p-6 sm:p-8 h-full">
-              <h3 className="font-display text-xl font-bold">
-                Ajude a construir a próxima edição
-              </h3>
-              <p className="mt-3 text-muted-foreground">
-                Qual assunto está gerando dúvidas, preocupações ou decisões
-                importantes dentro da sua empresa? Conte para a SMR. O próximo
-                encontro pode começar com a sua pergunta.
-              </p>
-              <Button className="mt-6" onClick={abrirSugestao}>
-                Enviar minha sugestão
-              </Button>
-            </div>
-          </Reveal>
-          <Reveal delay={100}>
-            <div className="roda-card roda-motion-card roda-motion-tilt p-6 sm:p-8 h-full">
-              <h3 className="font-display text-xl font-bold">
-                Qual é o melhor momento para conversarmos?
-              </h3>
-              <p className="mt-3 text-muted-foreground">
-                Dias da semana, período, faixa de horário, formato e frequência
-                ideais. Assim marcamos os próximos encontros no horário que cabe
-                na sua rotina.
-              </p>
+            <h2 className="font-display text-xl sm:text-2xl md:text-3xl font-extrabold">
+              Você constrói a próxima roda
+            </h2>
+            <p className="mt-4 text-white/85">
+              Dois formulários rápidos, direto aqui no site.
+            </p>
+            <div className="mt-7 flex flex-col sm:flex-row justify-center gap-3">
               <Button
-                variant="outline"
-                className="mt-6"
-                onClick={abrirDisponibilidade}
+                size="lg"
+                className="bg-gold text-gold-foreground hover:bg-gold/90 gap-2"
+                onClick={abrirSugestao}
               >
-                Responder em 1 minuto
+                <Lightbulb className="w-4 h-4" />
+                Sugerir um tema
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-white/30 bg-transparent text-white hover:bg-white/10 hover:text-white"
+                onClick={abrirAvaliacao}
+              >
+                Avaliar o último encontro
               </Button>
             </div>
           </Reveal>
         </div>
       </section>
 
-      {/* EDIÇÕES ANTERIORES */}
-      <section className="roda-section bg-sand">
-        <div className="max-w-7xl mx-auto">
-          <Reveal>
-            <div className="flex flex-wrap items-end justify-between gap-4">
-              <SectionHeading
-                etiqueta="Arquivo"
-                titulo="Edições anteriores"
-                className="mb-0"
-              />
-              <Link
-                to="/roda-de-conversa/edicoes"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-gold-ink transition-colors"
-              >
-                Ver todas as edições
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-          </Reveal>
-          <div className="mt-10 flex gap-4 sm:gap-6 overflow-x-auto snap-x snap-mandatory pb-4 -mx-4 px-4 sm:-mx-5 sm:px-5 md:mx-0 md:px-0">
-            {edicoesRealizadas.map((edicao) => (
-              <div
-                key={edicao.slug}
-                className="min-w-[85%] sm:min-w-[380px] max-w-[420px] snap-start"
-              >
-                <EdicaoCard edicao={edicao} />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ESPECIALISTAS */}
+      {/* 6. ESPECIALISTAS E CONTEÚDOS */}
       <section className="roda-section">
-        <div className="max-w-7xl mx-auto">
-          <Reveal>
-            <SectionHeading
-              etiqueta="Especialistas"
-              titulo="Quem conversa com a SMR"
-              descricao="Profissionais convidados para traduzir temas complexos em decisões práticas."
-            />
-          </Reveal>
-          <div className="mt-10 grid md:grid-cols-2 gap-6">
-            {especialistas.map((esp, i) => (
-              <Reveal key={esp.slug} delay={i * 80}>
-                <EspecialistaCard especialista={esp} />
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CONTEÚDOS */}
-      <section className="roda-section bg-sand">
-        <div className="max-w-7xl mx-auto">
-          <Reveal>
-            <div className="flex flex-wrap items-end justify-between gap-4">
-              <SectionHeading
-                etiqueta="Conteúdos"
-                titulo="Informação que ajuda sua empresa a decidir melhor"
-                className="mb-0"
-              />
-              <Link
-                to="/conteudos"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-gold-ink transition-colors"
-              >
-                Ver todos os conteúdos
-                <ArrowRight className="w-4 h-4" />
-              </Link>
+        <div className="max-w-7xl mx-auto space-y-14">
+          <div>
+            <Reveal>
+              <div className="flex flex-wrap items-end justify-between gap-4">
+                <SectionHeading
+                  etiqueta="Especialistas"
+                  titulo="Quem conversa com a SMR"
+                  className="mb-0"
+                />
+                <Link
+                  to="/especialistas"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-gold-ink transition-colors"
+                >
+                  Ver todos
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </Reveal>
+            <div className="mt-8 grid md:grid-cols-2 gap-6">
+              {especialistas.slice(0, 2).map((esp, i) => (
+                <Reveal key={esp.slug} delay={i * 80}>
+                  <EspecialistaCard especialista={esp} />
+                </Reveal>
+              ))}
             </div>
-          </Reveal>
-          <div className="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {conteudos.slice(0, 3).map((conteudo, i) => (
-              <Reveal key={conteudo.slug} delay={i * 80}>
-                <ConteudoCard conteudo={conteudo} />
-              </Reveal>
-            ))}
+          </div>
+
+          <div>
+            <Reveal>
+              <div className="flex flex-wrap items-end justify-between gap-4">
+                <SectionHeading
+                  etiqueta="Conteúdos"
+                  titulo="Para decidir melhor"
+                  className="mb-0"
+                />
+                <Link
+                  to="/conteudos"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-gold-ink transition-colors"
+                >
+                  Ver todos
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </Reveal>
+            <div className="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {conteudos.slice(0, 3).map((conteudo, i) => (
+                <Reveal key={conteudo.slug} delay={i * 80}>
+                  <ConteudoCard conteudo={conteudo} />
+                </Reveal>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* COMUNICAÇÃO DIRETA */}
+      {/* 7. CONTATO */}
       <section className="roda-section bg-navy-deep text-white">
         <div className="max-w-3xl mx-auto text-center">
           <Reveal>
-            <h2 className="font-display text-xl sm:text-2xl md:text-4xl font-extrabold">
-              Continue perto da SMR
+            <h2 className="font-display text-xl sm:text-2xl md:text-3xl font-extrabold">
+              Receba os próximos convites
             </h2>
-            <p className="mt-5 text-white/85 leading-relaxed">
-              A informação certa pode mudar a próxima decisão da sua empresa.
-              Receba os próximos convites, novos conteúdos e atualizações
-              importantes para o seu negócio.
-            </p>
-            <div className="mt-8 flex flex-col sm:flex-row justify-center gap-3">
+            <div className="mt-7 flex flex-col sm:flex-row justify-center gap-3">
               <Button
                 size="lg"
                 className="bg-gold text-gold-foreground hover:bg-gold/90 gap-2"
@@ -629,7 +434,7 @@ const RodaHub = () => {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-white/30 bg-transparent text-white hover:bg-white/10 hover:text-white gap-2"
+                className="border-white/30 bg-transparent text-white hover:bg-white/10 hover:text-white"
                 asChild
               >
                 <a
@@ -637,33 +442,13 @@ const RodaHub = () => {
                     "Quero receber os convites da Roda de Conversa SMR"
                   )}`}
                 >
-                  <Mail className="w-4 h-4" />
                   Receber por e-mail
                 </a>
               </Button>
-              <Button
-                size="lg"
-                variant="ghost"
-                className="text-white hover:bg-white/10 hover:text-white"
-                asChild
-              >
-                <a
-                  href={whatsappUrl(rodaConfig.mensagensWhatsapp.falarComSmr)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() =>
-                    trackEvent("whatsapp_click", { origem: "falar-com-smr" })
-                  }
-                >
-                  Falar com a SMR
-                </a>
-              </Button>
             </div>
-            <p className="mt-5 text-xs text-white/80 max-w-xl mx-auto">
-              Você não é incluído em nenhuma lista automaticamente. O envio só
-              acontece após a sua solicitação e pode ser interrompido quando você
-              quiser.{" "}
-              <Link to="/privacidade" className="underline hover:text-gold-ink">
+            <p className="mt-5 text-xs text-white/80">
+              Sem listas automáticas.{" "}
+              <Link to="/privacidade" className="underline hover:text-gold">
                 Política de privacidade
               </Link>
               .
