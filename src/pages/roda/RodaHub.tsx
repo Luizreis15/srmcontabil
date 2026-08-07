@@ -92,7 +92,7 @@ const RodaHub = () => {
       />
 
       {/* 1. HERO */}
-      <section className="relative overflow-hidden bg-navy-deep text-white min-h-[calc(100vh-4rem)] flex items-center">
+      <section className="relative overflow-hidden bg-navy-deep text-white lg:min-h-[calc(100vh-5rem)] flex items-center">
         <div
           className="absolute inset-0 opacity-70"
           style={{
@@ -101,7 +101,7 @@ const RodaHub = () => {
           }}
           aria-hidden
         />
-        <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-5 md:px-8 py-8 sm:py-12 md:py-16 grid lg:grid-cols-[1.1fr_0.9fr] gap-5 md:gap-10 items-center">
+        <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-5 md:px-8 pt-4 pb-6 sm:py-10 md:py-14 grid lg:grid-cols-[1.1fr_0.9fr] gap-4 md:gap-10 items-center">
           <Reveal delay={120} className="order-1 lg:order-2">
             <h1 className="font-display text-3xl sm:text-5xl md:text-5xl lg:text-6xl font-extrabold leading-[1.05]">
               <span className="roda-script text-gold text-[2.25rem] sm:text-6xl md:text-6xl lg:text-7xl block leading-none mb-1">
@@ -169,7 +169,8 @@ const RodaHub = () => {
       </section>
 
       {/* 2. O QUE É */}
-      <section className="roda-section">
+      <section className="roda-section pt-8 sm:pt-12 md:pt-16">
+
         <div className="max-w-7xl mx-auto">
           <Reveal>
             <SectionHeading
