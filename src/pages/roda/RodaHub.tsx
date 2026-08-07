@@ -92,7 +92,7 @@ const RodaHub = () => {
       />
 
       {/* 1. HERO */}
-      <section className="relative overflow-hidden bg-navy-deep text-white min-h-[calc(100vh-4rem)] flex items-center">
+      <section className="relative overflow-hidden bg-navy-deep text-white lg:min-h-[calc(100vh-5rem)] flex items-center">
         <div
           className="absolute inset-0 opacity-70"
           style={{
