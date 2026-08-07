@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import logoSmr from "@/assets/logo-smr-alta.jpeg";
 import { useFormularioModal } from "@/components/roda/FormularioProvider";
-import { rodaConfig } from "@/data/roda/config";
 
 const links = [
   { label: "Roda de Conversa", to: "/roda-de-conversa" },

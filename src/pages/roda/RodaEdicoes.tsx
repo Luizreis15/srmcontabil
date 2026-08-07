@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { Lightbulb } from "lucide-react";
 import { edicoesRealizadas, proximasEdicoes } from "@/data/roda/edicoes";
 import { useFormularioModal } from "@/components/roda/FormularioProvider";
-import { rodaConfig } from "@/data/roda/config";
 
 const RodaEdicoes = () => {
   const { abrirFormulario } = useFormularioModal();

@@ -1,6 +1,5 @@
 import { Lightbulb } from "lucide-react";
 import { useFormularioModal } from "@/components/roda/FormularioProvider";
-import { rodaConfig } from "@/data/roda/config";
 
 export function RodaMobileCTA() {
   const { abrirFormulario } = useFormularioModal();
