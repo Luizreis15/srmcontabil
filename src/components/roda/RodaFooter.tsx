@@ -14,7 +14,7 @@ const navegacao = [
 
 export function RodaFooter() {
   return (
-    <footer className="bg-navy-deep text-white py-5 px-5 md:px-8">
+    <footer className="bg-navy-deep text-white pt-5 pb-24 md:pb-5 px-5 md:px-8">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <Link to="/roda-de-conversa" className="shrink-0">
           <img
