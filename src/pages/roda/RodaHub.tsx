@@ -169,7 +169,8 @@ const RodaHub = () => {
       </section>
 
       {/* 2. O QUE É */}
-      <section className="roda-section">
+      <section className="roda-section pt-8 sm:pt-12 md:pt-16">
+
         <div className="max-w-7xl mx-auto">
           <Reveal>
             <SectionHeading
