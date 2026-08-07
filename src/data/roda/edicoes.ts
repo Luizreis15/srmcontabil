@@ -15,13 +15,13 @@ export const edicoes: Edicao[] = [
     horario: "16h",
     formato: "Híbrido",
     plataforma: "Transmissão ao vivo e presencial no escritório SMR",
-    status: "realizado",
+    status: "gravacao-disponivel",
     participantes: 50,
     imagemCapa: undefined,
     thumbnail: undefined,
 
-    youtubeId: "",
-    statusVideo: "em-preparacao",
+    youtubeId: "5FkBCk15g54",
+    statusVideo: "disponivel",
     linkInscricao: "",
     typeformAvaliacao: "",
     aprendizados: [
