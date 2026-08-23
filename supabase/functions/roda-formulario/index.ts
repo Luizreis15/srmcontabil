@@ -26,7 +26,20 @@ const sugestaoSchema = z.object({
   whatsapp: z.string().trim().max(40).optional().nullable(),
 });
 
-const bodySchema = z.discriminatedUnion("tipo", [avaliacaoSchema, sugestaoSchema]);
+const inscricaoSchema = z.object({
+  tipo: z.literal("inscricao"),
+  edicaoSlug: z.string().max(120).optional().nullable(),
+  nome: z.string().trim().min(2).max(120),
+  email: z.string().trim().email().max(255),
+  whatsapp: z.string().trim().min(8).max(40),
+  segmento: z.string().trim().max(120).optional().nullable(),
+});
+
+const bodySchema = z.discriminatedUnion("tipo", [
+  avaliacaoSchema,
+  sugestaoSchema,
+  inscricaoSchema,
+]);
 
 const vazioParaNulo = (v?: string | null) => (v && v.length > 0 ? v : null);
 
@@ -73,7 +86,7 @@ Deno.serve(async (req) => {
         ["E-mail", dados.email],
         ["Empresa", dados.empresa ?? "—"],
       ];
-    } else {
+    } else if (dados.tipo === "sugestao") {
       const { error } = await supabase.from("roda_sugestoes").insert({
         tema: dados.tema,
         motivo: vazioParaNulo(dados.motivo),
@@ -94,6 +107,24 @@ Deno.serve(async (req) => {
         ["Nome", dados.nome],
         ["E-mail", dados.email],
         ["WhatsApp", dados.whatsapp ?? "—"],
+      ];
+    } else {
+      const { error } = await supabase.from("roda_inscricoes").insert({
+        edicao_slug: vazioParaNulo(dados.edicaoSlug),
+        nome: dados.nome,
+        email: dados.email,
+        whatsapp: dados.whatsapp,
+        segmento: vazioParaNulo(dados.segmento),
+      });
+      if (error) throw new Error(error.message);
+
+      assunto = `Nova inscrição na Roda de Conversa: ${dados.nome}`;
+      linhas = [
+        ["Edição", dados.edicaoSlug ?? "—"],
+        ["Nome", dados.nome],
+        ["E-mail", dados.email],
+        ["WhatsApp", dados.whatsapp],
+        ["Segmento", dados.segmento ?? "—"],
       ];
     }
 
