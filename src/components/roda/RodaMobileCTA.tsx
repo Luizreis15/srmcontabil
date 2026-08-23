@@ -1,5 +1,6 @@
-import { Lightbulb } from "lucide-react";
+import { Ticket } from "lucide-react";
 import { useFormularioModal } from "@/components/roda/FormularioProvider";
+import { proximaEdicao } from "@/data/roda/edicoes";
 
 export function RodaMobileCTA() {
   const { abrirFormulario } = useFormularioModal();
@@ -9,17 +10,19 @@ export function RodaMobileCTA() {
       <button
         onClick={() =>
           abrirFormulario({
-            tipo: "sugestao",
-            titulo: "Sobre o que precisamos conversar agora?",
-            descricao:
-              "Conte qual assunto está gerando dúvidas ou impactando a sua empresa.",
-            evento: "topic_suggestion_open",
+            tipo: "inscricao",
+            edicaoSlug: proximaEdicao?.slug,
+            titulo: proximaEdicao
+              ? `Garantir minha vaga — ${proximaEdicao.tema}`
+              : "Quero participar do próximo encontro",
+            descricao: "Participação gratuita e online. Vagas limitadas.",
+            evento: "next_event_interest",
           })
         }
         className="w-full rounded-full bg-gold text-gold-foreground font-semibold py-3.5 flex items-center justify-center gap-2 shadow-card"
       >
-        <Lightbulb className="w-5 h-5" />
-        Sugerir um tema
+        <Ticket className="w-5 h-5" />
+        Garantir minha vaga gratuita
       </button>
     </div>
   );

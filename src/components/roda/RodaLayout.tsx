@@ -2,6 +2,7 @@ import { useEffect, type ReactNode } from "react";
 import { useLocation } from "react-router-dom";
 import { FormularioProvider } from "@/components/roda/FormularioProvider";
 import { RodaHeader } from "@/components/roda/RodaHeader";
+import { BarraAviso } from "@/components/roda/BarraAviso";
 import { RodaFooter } from "@/components/roda/RodaFooter";
 import { RodaMobileCTA } from "@/components/roda/RodaMobileCTA";
 
@@ -63,6 +64,7 @@ export function RodaLayout({ children }: { children: ReactNode }) {
   return (
     <FormularioProvider>
       <div className="roda-theme flex flex-col min-h-screen bg-background text-foreground font-display">
+        <BarraAviso />
         <RodaHeader />
         <main className="flex-1">{children}</main>
         <RodaFooter />
