@@ -6,9 +6,10 @@ import { rodaConfig, whatsappUrl } from "@/data/roda/config";
 import { trackEvent, type RodaEvent } from "@/lib/rodaAnalytics";
 import { FormAvaliacao } from "@/components/roda/FormAvaliacao";
 import { FormSugestaoTema } from "@/components/roda/FormSugestaoTema";
+import { FormInscricao } from "@/components/roda/FormInscricao";
 
 interface AbrirArgs {
-  tipo?: "avaliacao" | "sugestao";
+  tipo?: "avaliacao" | "sugestao" | "inscricao";
   edicaoSlug?: string;
   url?: string;
   titulo: string;
