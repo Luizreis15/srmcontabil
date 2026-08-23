@@ -71,6 +71,109 @@ export const edicoes: Edicao[] = [
       "Assista à conversa da SMR com a Dra. Daniela Marinho sobre os impactos do Split Payment no caixa e na rotina das empresas.",
     publicadoEm: "2026-08-06",
   },
+  {
+    titulo:
+      "Gestão Trabalhista Estratégica e Proteção para Empresas",
+    slug: "gestao-trabalhista",
+    numero: 2,
+    tema: "Gestão Trabalhista Estratégica e Proteção para Empresas",
+    resumo:
+      "Como estruturar rotinas de gestão de pessoas que reduzem passivo trabalhista e sustentam a operação no dia a dia.",
+    descricao:
+      "Segunda edição da Roda de Conversa SMR, com o Dr. Leandro Jesuíno, advogado empresarial trabalhista de atuação patronal. A conversa passou por eSocial, PGR com foco em saúde mental, os limites entre contrato PJ e CLT e o que a fiscalização do trabalho tem cobrado das empresas.",
+    dataISO: "2026-08-19T16:00:00-03:00",
+    horario: "16h",
+    formato: "Online",
+    plataforma: "Transmissão ao vivo",
+    status: "realizado",
+    participantes: null,
+    imagemCapa: null,
+    thumbnail: null,
+    youtubeId: "",
+    statusVideo: "em-preparacao",
+    linkInscricao: "",
+    typeformAvaliacao: "",
+    aprendizados: [
+      {
+        titulo: "eSocial sem sustos",
+        descricao:
+          "Consistência das informações enviadas evita autuações e retrabalho na folha.",
+      },
+      {
+        titulo: "PGR e saúde mental",
+        descricao:
+          "A avaliação de riscos psicossociais passou a ser obrigação prática das empresas.",
+      },
+      {
+        titulo: "Contrato PJ x CLT",
+        descricao:
+          "Onde está a linha entre contratação legítima e reconhecimento de vínculo.",
+      },
+      {
+        titulo: "Fiscalização do trabalho",
+        descricao:
+          "O que os auditores têm priorizado e como se preparar antes da visita.",
+      },
+    ],
+    perguntasFrequentes: [],
+    materiais: [],
+    convidados: ["leandro-jesuino"],
+    categoria: "Trabalhista",
+    seoTitulo:
+      "Gestão trabalhista estratégica | 2ª Roda de Conversa SMR",
+    seoDescricao:
+      "Segunda edição da Roda de Conversa SMR com o Dr. Leandro Jesuíno sobre eSocial, PGR, contrato PJ x CLT e fiscalização do trabalho.",
+    publicadoEm: "2026-08-19",
+  },
+  {
+    titulo:
+      "As mudanças no Simples Nacional na Reforma Tributária",
+    slug: "simples-nacional-reforma",
+    numero: 3,
+    tema: "As mudanças no Simples Nacional na Reforma Tributária",
+    resumo:
+      "O que muda para as empresas do Simples com a Reforma Tributária e como recalcular margens e imposto antes que o caixa sinta.",
+    descricao:
+      "Encontro com a Dra. Daniela Marinho sobre as novas regras que atingem as empresas optantes pelo Simples Nacional: o que muda na apuração, como recalcular margens, o que decidir ainda em 2026 e espaço aberto para perguntas.",
+    dataISO: "2026-09-03T16:00:00-03:00",
+    horario: "16h",
+    formato: "Online",
+    plataforma: "Transmissão ao vivo",
+    status: "inscricoes-abertas",
+    participantes: null,
+    imagemCapa: null,
+    thumbnail: null,
+    youtubeId: "",
+    statusVideo: "sem-gravacao",
+    linkInscricao: "",
+    typeformAvaliacao: "",
+    aprendizados: [
+      {
+        titulo: "As novas regras antes que afetem o caixa",
+        descricao:
+          "Entenda o que muda na tributação das empresas do Simples Nacional.",
+      },
+      {
+        titulo: "Margens e imposto de 2026",
+        descricao:
+          "Como recalcular preços, margens e projeções diante do novo cenário.",
+      },
+      {
+        titulo: "Perguntas ao vivo",
+        descricao:
+          "Espaço interativo para tirar dúvidas diretamente com a especialista.",
+      },
+    ],
+    perguntasFrequentes: [],
+    materiais: [],
+    convidados: ["daniela-marinho"],
+    categoria: "Tributário",
+    seoTitulo:
+      "Simples Nacional na Reforma Tributária | Roda de Conversa SMR",
+    seoDescricao:
+      "Encontro gratuito e online em 3 de setembro com a Dra. Daniela Marinho sobre as mudanças do Simples Nacional na Reforma Tributária.",
+    publicadoEm: null,
+  },
 ];
 
 export const getEdicao = (slug: string) => edicoes.find((e) => e.slug === slug);
