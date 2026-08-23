@@ -7,11 +7,11 @@ import logoSmr from "@/assets/logo-smr-alta.jpeg";
 import { useFormularioModal } from "@/components/roda/FormularioProvider";
 
 const links = [
-  { label: "Roda de Conversa", to: "/roda-de-conversa" },
-  { label: "Edições", to: "/roda-de-conversa/edicoes" },
-  { label: "Próximos encontros", to: "/roda-de-conversa#proximos" },
+  { label: "Próxima edição", to: "/roda-de-conversa#proxima-edicao" },
+  { label: "Como funciona", to: "/roda-de-conversa#como-funciona" },
+  { label: "Edições anteriores", to: "/roda-de-conversa#edicoes" },
+  { label: "Sugerir tema", to: "/roda-de-conversa#sugerir-tema" },
   { label: "Especialistas", to: "/especialistas" },
-  { label: "Conteúdos", to: "/conteudos" },
 ];
 
 export function RodaHeader() {
