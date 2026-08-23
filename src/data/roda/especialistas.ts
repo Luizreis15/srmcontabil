@@ -44,10 +44,42 @@ export const especialistas: Especialista[] = [
     site: "",
     linkedin: "",
     instagram: "",
-    edicoes: ["split-payment"],
+    edicoes: ["split-payment", "simples-nacional-reforma"],
     seoTitulo: "Dra. Daniela Marinho | Especialistas da Roda de Conversa SMR",
     seoDescricao:
       "Advogada tributarista, professora universitária e sócia fundadora do Marinho Advogados Associados, convidada da primeira Roda de Conversa SMR sobre Split Payment.",
+  },
+  {
+    nome: "Dr. Leandro Jesuíno",
+    slug: "leandro-jesuino",
+    foto: null,
+    cargo: "Advogado empresarial trabalhista (atuação patronal)",
+    empresa: "",
+    minicurriculo:
+      "Advogado empresarial com atuação trabalhista patronal, dedicado à prevenção de passivos e à estruturação de rotinas seguras de gestão de pessoas em empresas de pequeno e médio porte.",
+    formacao: [],
+    experiencia: [],
+    areasAtuacao: [
+      "Direito do Trabalho empresarial",
+      "Prevenção de passivo trabalhista",
+      "Compliance de gestão de pessoas",
+    ],
+    temas: [
+      "eSocial",
+      "PGR e saúde mental",
+      "Contrato PJ x CLT",
+      "Fiscalização do trabalho",
+    ],
+    autorizadoPublicarContatos: false,
+    email: "",
+    whatsapp: "",
+    site: "",
+    linkedin: "",
+    instagram: "",
+    edicoes: ["gestao-trabalhista"],
+    seoTitulo: "Dr. Leandro Jesuíno | Especialistas da Roda de Conversa SMR",
+    seoDescricao:
+      "Advogado empresarial trabalhista, convidado da Roda de Conversa SMR sobre gestão trabalhista estratégica e proteção para empresas.",
   },
 ];
 

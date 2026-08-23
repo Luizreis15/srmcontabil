@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { MessageCircle } from "lucide-react";
+import { Instagram, Linkedin, MessageCircle } from "lucide-react";
 import logoSmr from "@/assets/logo-smr-transparent.png";
 import { rodaConfig, whatsappUrl } from "@/data/roda/config";
 import { trackEvent } from "@/lib/rodaAnalytics";
@@ -37,16 +37,36 @@ export function RodaFooter() {
           ))}
         </nav>
 
-        <a
-          href={whatsappUrl(rodaConfig.mensagensWhatsapp.falarComSmr)}
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={() => trackEvent("whatsapp_click", { origem: "footer" })}
-          className="flex items-center gap-2 text-sm font-semibold text-white hover:text-gold transition-colors"
-        >
-          <MessageCircle className="w-4 h-4 text-gold" />
-          (11) 4436-0780
-        </a>
+        <div className="flex items-center gap-4">
+          <a
+            href="https://www.instagram.com/smrassessoriacontabil"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram da SMR Assessoria"
+            className="text-white/85 hover:text-gold transition-colors"
+          >
+            <Instagram className="w-4 h-4" />
+          </a>
+          <a
+            href="https://www.linkedin.com/company/smr-assessoria-contabil"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn da SMR Assessoria"
+            className="text-white/85 hover:text-gold transition-colors"
+          >
+            <Linkedin className="w-4 h-4" />
+          </a>
+          <a
+            href={whatsappUrl(rodaConfig.mensagensWhatsapp.falarComSmr)}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackEvent("whatsapp_click", { origem: "footer" })}
+            className="flex items-center gap-2 text-sm font-semibold text-white hover:text-gold transition-colors"
+          >
+            <MessageCircle className="w-4 h-4 text-gold" />
+            (11) 4436-0780
+          </a>
+        </div>
       </div>
 
       <div className="max-w-7xl mx-auto mt-4 pt-3 border-t border-white/10 text-xs text-white/70 flex flex-col sm:flex-row sm:justify-between gap-1">

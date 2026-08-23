@@ -1,17 +1,18 @@
 import { useState } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
-import { Menu, X, Lightbulb } from "lucide-react";
+import { Menu, X, Ticket } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import logoSmr from "@/assets/logo-smr-alta.jpeg";
 import { useFormularioModal } from "@/components/roda/FormularioProvider";
+import { proximaEdicao } from "@/data/roda/edicoes";
 
 const links = [
-  { label: "Roda de Conversa", to: "/roda-de-conversa" },
-  { label: "Edições", to: "/roda-de-conversa/edicoes" },
-  { label: "Próximos encontros", to: "/roda-de-conversa#proximos" },
+  { label: "Próxima edição", to: "/roda-de-conversa#proxima-edicao" },
+  { label: "Como funciona", to: "/roda-de-conversa#como-funciona" },
+  { label: "Edições anteriores", to: "/roda-de-conversa#edicoes" },
+  { label: "Sugerir tema", to: "/roda-de-conversa#sugerir-tema" },
   { label: "Especialistas", to: "/especialistas" },
-  { label: "Conteúdos", to: "/conteudos" },
 ];
 
 export function RodaHeader() {
@@ -20,14 +21,16 @@ export function RodaHeader() {
   const { pathname, hash } = useLocation();
   const navigate = useNavigate();
 
-  const sugerirTema = () => {
+  const inscrever = () => {
     setAberto(false);
     abrirFormulario({
-      tipo: "sugestao",
-      titulo: "Sobre o que precisamos conversar agora?",
-      descricao:
-        "Conte qual assunto está gerando dúvidas ou impactando a sua empresa.",
-      evento: "topic_suggestion_open",
+      tipo: "inscricao",
+      edicaoSlug: proximaEdicao?.slug,
+      titulo: proximaEdicao
+        ? `Garantir minha vaga — ${proximaEdicao.tema}`
+        : "Quero participar do próximo encontro",
+      descricao: "Participação gratuita e online. Vagas limitadas.",
+      evento: "next_event_interest",
     });
   };
 
@@ -79,11 +82,11 @@ export function RodaHeader() {
 
           <div className="hidden md:flex">
             <Button
-              onClick={sugerirTema}
+              onClick={inscrever}
               className="gap-2 bg-gold text-gold-foreground hover:bg-gold/90"
             >
-              <Lightbulb className="w-4 h-4" />
-              Sugerir um tema
+              <Ticket className="w-4 h-4" />
+              Inscrever-se grátis
             </Button>
           </div>
 
@@ -111,11 +114,11 @@ export function RodaHeader() {
               </button>
             ))}
             <Button
-              onClick={sugerirTema}
+              onClick={inscrever}
               className="mt-3 gap-2 bg-gold text-gold-foreground hover:bg-gold/90"
             >
-              <Lightbulb className="w-4 h-4" />
-              Sugerir um tema
+              <Ticket className="w-4 h-4" />
+              Inscrever-se grátis
             </Button>
           </nav>
         </div>

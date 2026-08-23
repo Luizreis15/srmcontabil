@@ -6,9 +6,10 @@ import { rodaConfig, whatsappUrl } from "@/data/roda/config";
 import { trackEvent, type RodaEvent } from "@/lib/rodaAnalytics";
 import { FormAvaliacao } from "@/components/roda/FormAvaliacao";
 import { FormSugestaoTema } from "@/components/roda/FormSugestaoTema";
+import { FormInscricao } from "@/components/roda/FormInscricao";
 
 interface AbrirArgs {
-  tipo?: "avaliacao" | "sugestao";
+  tipo?: "avaliacao" | "sugestao" | "inscricao";
   edicaoSlug?: string;
   url?: string;
   titulo: string;
@@ -59,6 +60,8 @@ export function FormularioProvider({ children }: { children: ReactNode }) {
             <FormAvaliacao edicaoSlug={args.edicaoSlug} onFechar={fechar} />
           ) : args?.tipo === "sugestao" ? (
             <FormSugestaoTema onFechar={fechar} />
+          ) : args?.tipo === "inscricao" ? (
+            <FormInscricao edicaoSlug={args.edicaoSlug} onFechar={fechar} />
           ) : (
             <div className="px-6 pb-8 pt-2">
               <div className="rounded-2xl border border-dashed border-border bg-secondary/60 p-8 text-center">

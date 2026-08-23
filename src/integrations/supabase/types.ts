@@ -50,6 +50,36 @@ export type Database = {
         }
         Relationships: []
       }
+      roda_inscricoes: {
+        Row: {
+          created_at: string
+          edicao_slug: string | null
+          email: string
+          id: string
+          nome: string
+          segmento: string | null
+          whatsapp: string | null
+        }
+        Insert: {
+          created_at?: string
+          edicao_slug?: string | null
+          email: string
+          id?: string
+          nome: string
+          segmento?: string | null
+          whatsapp?: string | null
+        }
+        Update: {
+          created_at?: string
+          edicao_slug?: string | null
+          email?: string
+          id?: string
+          nome?: string
+          segmento?: string | null
+          whatsapp?: string | null
+        }
+        Relationships: []
+      }
       roda_sugestoes: {
         Row: {
           created_at: string
