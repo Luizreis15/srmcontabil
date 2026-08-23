@@ -60,6 +60,8 @@ export function FormularioProvider({ children }: { children: ReactNode }) {
             <FormAvaliacao edicaoSlug={args.edicaoSlug} onFechar={fechar} />
           ) : args?.tipo === "sugestao" ? (
             <FormSugestaoTema onFechar={fechar} />
+          ) : args?.tipo === "inscricao" ? (
+            <FormInscricao edicaoSlug={args.edicaoSlug} onFechar={fechar} />
           ) : (
             <div className="px-6 pb-8 pt-2">
               <div className="rounded-2xl border border-dashed border-border bg-secondary/60 p-8 text-center">
