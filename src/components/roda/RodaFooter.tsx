@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { MessageCircle } from "lucide-react";
+import { Instagram, Linkedin, MessageCircle } from "lucide-react";
 import logoSmr from "@/assets/logo-smr-transparent.png";
 import { rodaConfig, whatsappUrl } from "@/data/roda/config";
 import { trackEvent } from "@/lib/rodaAnalytics";
