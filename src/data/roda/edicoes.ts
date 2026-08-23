@@ -183,15 +183,26 @@ const statusRealizados: Edicao["status"][] = [
   "gravacao-disponivel",
 ];
 
-export const edicoesRealizadas = edicoes.filter((e) =>
-  statusRealizados.includes(e.status)
-);
+const maisRecentePrimeiro = (a: Edicao, b: Edicao) =>
+  new Date(b.dataISO ?? 0).getTime() - new Date(a.dataISO ?? 0).getTime();
 
-export const proximasEdicoes = edicoes.filter(
-  (e) => !statusRealizados.includes(e.status)
-);
+export const edicoesRealizadas = edicoes
+  .filter((e) => statusRealizados.includes(e.status))
+  .sort(maisRecentePrimeiro);
+
+export const proximasEdicoes = edicoes
+  .filter((e) => !statusRealizados.includes(e.status))
+  .sort((a, b) => -maisRecentePrimeiro(a, b));
 
 export const edicaoMaisRecente = edicoesRealizadas[0] ?? null;
+
+/** Próxima edição em destaque (a mais próxima ainda por acontecer). */
+export const proximaEdicao = proximasEdicoes[0] ?? null;
+
+/** Categorias presentes no acervo, para os filtros. */
+export const categoriasEdicoes = Array.from(
+  new Set(edicoesRealizadas.map((e) => e.categoria).filter(Boolean))
+);
 
 export const rotuloStatus: Record<Edicao["status"], string> = {
   "inscricoes-abertas": "Inscrições abertas",
