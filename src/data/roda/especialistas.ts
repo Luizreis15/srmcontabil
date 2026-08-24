@@ -53,7 +53,7 @@ export const especialistas: Especialista[] = [
   {
     nome: "Dr. Leandro Jesuíno",
     slug: "leandro-jesuino",
-    foto: null,
+    foto: leandroFoto.url,
     cargo: "Advogado empresarial trabalhista (atuação patronal)",
     empresa: "",
     minicurriculo:
