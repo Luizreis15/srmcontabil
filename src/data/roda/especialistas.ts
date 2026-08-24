@@ -1,5 +1,6 @@
 import type { Especialista } from "./types";
 import danielaFoto from "@/assets/daniela-marinho.webp";
+import leandroFoto from "@/assets/drleandro.jpg.asset.json";
 
 export const especialistas: Especialista[] = [
   {
