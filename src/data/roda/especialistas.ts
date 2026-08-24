@@ -1,5 +1,6 @@
 import type { Especialista } from "./types";
 import danielaFoto from "@/assets/daniela-marinho.webp";
+import leandroFoto from "@/assets/drleandro.jpg.asset.json";
 
 export const especialistas: Especialista[] = [
   {
@@ -52,7 +53,7 @@ export const especialistas: Especialista[] = [
   {
     nome: "Dr. Leandro Jesuíno",
     slug: "leandro-jesuino",
-    foto: null,
+    foto: leandroFoto.url,
     cargo: "Advogado empresarial trabalhista (atuação patronal)",
     empresa: "",
     minicurriculo:
