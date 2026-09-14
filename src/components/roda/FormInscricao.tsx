@@ -27,7 +27,11 @@ const schema = z.object({
     .trim()
     .min(8, { message: "Informe um WhatsApp com DDD" })
     .max(40, { message: "Máximo de 40 caracteres" }),
-  segmento: z.string().trim().max(120, { message: "Máximo de 120 caracteres" }),
+  empresa: z
+    .string()
+    .trim()
+    .min(2, { message: "Informe o nome da empresa" })
+    .max(120, { message: "Máximo de 120 caracteres" }),
 });
 
 type Campos = z.infer<typeof schema>;
@@ -49,7 +53,7 @@ export function FormInscricao({
     nome: "",
     email: "",
     whatsapp: "",
-    segmento: "",
+    empresa: "",
   });
 
   const set = <K extends keyof Campos>(campo: K, valor: Campos[K]) => {
@@ -66,14 +70,21 @@ export function FormInscricao({
         nome: f.nome?.[0],
         email: f.email?.[0],
         whatsapp: f.whatsapp?.[0],
-        segmento: f.segmento?.[0],
+        empresa: f.empresa?.[0],
       });
       return;
     }
 
     setEnviando(true);
     const { error } = await supabase.functions.invoke("roda-formulario", {
-      body: { tipo: "inscricao", edicaoSlug, ...r.data },
+      body: {
+        tipo: "inscricao",
+        edicaoSlug,
+        nome: r.data.nome,
+        email: r.data.email,
+        whatsapp: r.data.whatsapp,
+        segmento: r.data.empresa,
+      },
     });
     setEnviando(false);
 
@@ -94,8 +105,8 @@ export function FormInscricao({
   if (enviado) {
     return (
       <RodaFormSucesso
-        titulo="Vaga garantida"
-        mensagem="Enviaremos o link do encontro para o seu e-mail e WhatsApp antes da transmissão."
+        titulo="Inscrição confirmada!"
+        mensagem="Enviamos o link de acesso e os detalhes para o seu e-mail."
         onFechar={onFechar}
       />
     );
@@ -104,9 +115,13 @@ export function FormInscricao({
   return (
     <form
       onSubmit={enviar}
-      className={compacto ? "space-y-5" : "px-6 pb-6 pt-1 space-y-5"}
+      className={
+        compacto
+          ? "grid grid-cols-1 gap-5 md:grid-cols-2"
+          : "px-6 pb-6 pt-1 space-y-5"
+      }
     >
-      <RodaFormCampo label="Nome" htmlFor="insc-nome" erro={erros.nome}>
+      <RodaFormCampo label="Nome completo" htmlFor="insc-nome" erro={erros.nome}>
         <Input
           id="insc-nome"
           maxLength={120}
@@ -115,7 +130,7 @@ export function FormInscricao({
         />
       </RodaFormCampo>
 
-      <RodaFormCampo label="E-mail" htmlFor="insc-email" erro={erros.email}>
+      <RodaFormCampo label="E-mail corporativo" htmlFor="insc-email" erro={erros.email}>
         <Input
           id="insc-email"
           type="email"
@@ -139,26 +154,24 @@ export function FormInscricao({
         />
       </RodaFormCampo>
 
-      <RodaFormCampo
-        label="Segmento da empresa"
-        htmlFor="insc-segmento"
-        erro={erros.segmento}
-        opcional
-      >
+      <RodaFormCampo label="Nome da empresa" htmlFor="insc-empresa" erro={erros.empresa}>
         <Input
-          id="insc-segmento"
+          id="insc-empresa"
           maxLength={120}
-          placeholder="Ex.: comércio varejista, serviços, indústria"
-          value={valores.segmento}
-          onChange={(e) => set("segmento", e.target.value)}
+          value={valores.empresa}
+          onChange={(e) => set("empresa", e.target.value)}
         />
       </RodaFormCampo>
 
-      <RodaFormPrivacidade />
+      <div className={compacto ? "md:col-span-2" : undefined}>
+        <RodaFormPrivacidade />
+      </div>
 
-      <Button type="submit" className="w-full" disabled={enviando}>
-        {enviando ? "Enviando..." : "Garantir minha vaga gratuita"}
-      </Button>
+      <div className={compacto ? "md:col-span-2" : undefined}>
+        <Button type="submit" className="w-full" disabled={enviando}>
+          {enviando ? "Enviando..." : "Quero me inscrever e garantir minha vaga"}
+        </Button>
+      </div>
     </form>
   );
 }

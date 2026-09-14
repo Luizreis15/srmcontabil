@@ -1,336 +1,193 @@
 import { Link } from "react-router-dom";
-import {
-  ArrowRight,
-  CalendarDays,
-  MessageCircle,
-  MessageSquare,
-  Users,
-} from "lucide-react";
+import { ArrowRight, CheckCircle2, ExternalLink, ListChecks } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Seo } from "@/components/roda/Seo";
 import { Reveal } from "@/components/roda/Reveal";
 import { SectionHeading } from "@/components/roda/SectionHeading";
-import { ProximaEdicaoDestaque } from "@/components/roda/ProximaEdicaoDestaque";
+import { FormInscricao } from "@/components/roda/FormInscricao";
 import { AcervoEdicoes } from "@/components/roda/AcervoEdicoes";
 import { FormSugestaoTema } from "@/components/roda/FormSugestaoTema";
-import { useFormularioModal } from "@/components/roda/FormularioProvider";
-import { rodaConfig, whatsappUrl } from "@/data/roda/config";
-import { proximaEdicao, formatarData } from "@/data/roda/edicoes";
-import { getEspecialista } from "@/data/roda/especialistas";
-import { trackEvent } from "@/lib/rodaAnalytics";
-import heroSueli from "@/assets/roda-hero-sueli.png";
+import { rodaConfig } from "@/data/roda/config";
+import { proximaEdicao } from "@/data/roda/edicoes";
 
-const comoFunciona = [
+const videoId = "IVex-RRcP0E";
+const youtubeUrl = `https://youtu.be/${videoId}?feature=shared`;
+
+const destaques = [
   {
-    icone: CalendarDays,
-    titulo: "Encontros de 15 em 15 dias",
+    titulo: "Proteção Constitucional",
     texto:
-      "Temas atualizados conforme as mudanças do governo e do mercado chegam ao dia a dia da empresa.",
+      "O tratamento jurídico diferenciado para micro e pequenas empresas (artigos 170 e 179) precisa ser defendido durante a transição.",
   },
   {
-    icone: Users,
-    titulo: "Aberto ao público",
+    titulo: "Simples Tradicional vs. Híbrido",
     texto:
-      "Não precisa ser cliente da SMR para participar. Queremos fortalecer o ecossistema empresarial da região.",
+      "No tradicional, o imposto vai na guia DAS, com crédito limitado. No híbrido, IBS e CBS são recolhidos por fora, com crédito integral para o cliente B2B.",
   },
   {
-    icone: MessageSquare,
-    titulo: "Prática e co-criação",
+    titulo: "O Dilema do Preço",
     texto:
-      "Você traz a dúvida operacional e nós trazemos o especialista da área para responder ao vivo.",
+      "Optar pelo modelo híbrido gera aumento imediato na carga tributária da empresa e exige revisão urgente de precificação.",
+  },
+  {
+    titulo: "Setor de Serviços",
+    texto:
+      "É um dos mais impactados, pois a folha de pagamento não gera créditos tributários para abater no IBS e na CBS.",
+  },
+  {
+    titulo: "Prazos Críticos",
+    texto:
+      "A opção pelo regime híbrido ocorre de 1º a 30 de setembro, com cancelamento possível até 30 de novembro.",
   },
 ];
 
 const RodaHub = () => {
-  const { abrirFormulario } = useFormularioModal();
   const proxima = proximaEdicao;
-  const convidadaProxima = proxima
-    ? getEspecialista(proxima.convidados[0])
-    : undefined;
-
-  const abrirInscricao = () => {
-    trackEvent("next_event_interest", { edicao: proxima?.slug });
-    abrirFormulario({
-      tipo: "inscricao",
-      edicaoSlug: proxima?.slug,
-      titulo: proxima
-        ? `Garantir minha vaga — ${proxima.tema}`
-        : "Quero participar do próximo encontro",
-      descricao: "Participação gratuita e online. Vagas limitadas.",
-    });
-  };
-
-  const jsonLd = [
-    {
-      "@context": "https://schema.org",
-      "@type": "EventSeries",
-      name: rodaConfig.nomeProjeto,
-      description: rodaConfig.assinatura,
-      url: `${rodaConfig.siteUrl}/roda-de-conversa`,
-      organizer: {
-        "@type": "Organization",
-        name: "SMR Assessoria Contábil",
-        url: rodaConfig.siteUrl,
-      },
-    },
-    ...(proxima && proxima.dataISO
-      ? [
-          {
-            "@context": "https://schema.org",
-            "@type": "Event",
-            name: proxima.tema,
-            startDate: proxima.dataISO,
-            eventAttendanceMode:
-              "https://schema.org/OnlineEventAttendanceMode",
-            eventStatus: "https://schema.org/EventScheduled",
-            description: proxima.resumo,
-            url: `${rodaConfig.siteUrl}/roda-de-conversa/${proxima.slug}`,
-            organizer: {
-              "@type": "Organization",
-              name: "SMR Assessoria Contábil",
-              url: rodaConfig.siteUrl,
-            },
-            offers: {
-              "@type": "Offer",
-              price: "0",
-              priceCurrency: "BRL",
-              availability: "https://schema.org/InStock",
-              url: `${rodaConfig.siteUrl}/roda-de-conversa`,
-            },
-          },
-        ]
-      : []),
-  ];
 
   return (
     <>
       <Seo
-        titulo="Roda de Conversa SMR | Encontros quinzenais gratuitos para empresários"
-        descricao="Encontros quinzenais, gratuitos e abertos ao público, da SMR Assessoria com especialistas convidados. Próxima edição: Simples Nacional na Reforma Tributária."
+        titulo="Simples Nacional e Reforma Tributária | Roda SMR"
+        descricao="Assista à Roda de Conversa SMR sobre Simples Nacional e Reforma Tributária e inscreva-se no próximo encontro."
         path="/roda-de-conversa"
-        jsonLd={jsonLd}
       />
 
-      {/* 1. HERO */}
-      <section className="relative overflow-hidden bg-navy-deep text-white flex items-center">
-        <div
-          className="absolute inset-0 opacity-70"
-          style={{
-            background:
-              "radial-gradient(120% 90% at 15% 0%, hsl(209 89% 24%) 0%, hsl(210 90% 12%) 55%, hsl(210 90% 10%) 100%)",
-          }}
-          aria-hidden
-        />
-        <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-5 md:px-8 pt-5 pb-8 sm:py-12 md:py-16 grid lg:grid-cols-[0.95fr_1.05fr] gap-6 md:gap-10 items-center">
-          <Reveal className="order-2 lg:order-1">
-            <figure className="relative rounded-xl md:rounded-2xl overflow-hidden border border-white/15 shadow-2xl">
-              <img
-                src={heroSueli}
-                alt="Sueli Rocha, da SMR Assessoria, anfitriã da Roda de Conversa SMR"
-                className="w-full h-auto object-cover"
-                loading="eager"
-                decoding="async"
-              />
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                  background:
-                    "linear-gradient(to top, hsl(210 90% 10% / 0.85) 0%, transparent 40%)",
-                }}
-                aria-hidden
-              />
-              <figcaption className="absolute bottom-2.5 left-3 right-3 md:bottom-5 md:left-6 md:right-6">
-                <span className="block text-[10px] md:text-xs font-semibold uppercase tracking-widest text-gold">
-                  Anfitriã
-                </span>
-                <span className="block font-display text-sm md:text-lg font-bold text-white">
-                  Sueli Rocha · SMR Assessoria
-                </span>
-              </figcaption>
-            </figure>
-          </Reveal>
-
-          <Reveal delay={100} className="order-1 lg:order-2">
-            <span className="inline-flex items-center gap-2 rounded-full bg-gold/15 border border-gold/30 px-3 py-1 text-xs font-semibold text-gold">
-              Encontros quinzenais gratuitos
+      <section className="bg-navy-deep text-white px-4 py-12 sm:px-5 sm:py-16 md:px-8 md:py-20">
+        <div className="mx-auto max-w-4xl text-center">
+          <Reveal>
+            <span className="inline-flex rounded-full border border-gold/30 bg-gold/15 px-3 py-1 text-xs font-semibold text-gold">
+              Gravação disponível
             </span>
-
-            <h1 className="mt-4 font-display text-[1.75rem] sm:text-4xl lg:text-5xl font-extrabold leading-[1.1]">
-              <span className="roda-script text-gold text-4xl sm:text-5xl lg:text-6xl block leading-none mb-1">
-                Roda de
-              </span>
-              Conversa SMR
+            <h1 className="mt-5 font-display text-3xl font-extrabold leading-tight sm:text-4xl md:text-5xl">
+              Roda de Conversa: Simples Nacional e a Reforma Tributária
             </h1>
-
-            <p className="mt-4 text-base sm:text-lg font-semibold text-white">
-              O ponto de encontro dos empresários que querem proteger e blindar
-              seus negócios de forma estratégica.
+            <p className="mx-auto mt-5 max-w-3xl text-base leading-relaxed text-white/85 sm:text-lg">
+              Perdeu o evento ao vivo? Assista à gravação completa, confira os principais destaques discutidos pelos nossos especialistas e garanta sua vaga para a próxima edição.
             </p>
-            <p className="mt-3 text-sm sm:text-base text-white/80 leading-relaxed">
-              Agora quinzenal e aberta a qualquer empresário, gestor ou parceiro.
-              Um tema por encontro, com quem entende do assunto e espaço real
-              para perguntar.
-            </p>
+          </Reveal>
+        </div>
+      </section>
 
-            <div className="mt-6 flex flex-col sm:flex-row gap-3">
-              <Button
-                size="lg"
-                onClick={abrirInscricao}
-                className="bg-gold text-gold-foreground hover:bg-gold/90 shadow-[0_0_28px_-6px_hsl(var(--gold)/0.7)] transition-all duration-150"
-              >
-                Garantir minha vaga no próximo encontro
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                asChild
-                className="border-white/30 bg-transparent text-white hover:bg-white/10 hover:text-white gap-2"
-              >
-                <a href="#edicoes">
-                  Ver gravações anteriores
-                  <ArrowRight className="w-4 h-4" />
+      <section className="roda-section bg-background">
+        <div className="mx-auto max-w-4xl">
+          <Reveal>
+            <div className="aspect-video w-full overflow-hidden rounded-xl bg-accent shadow-card-hover">
+              <iframe
+                className="h-full w-full"
+                src={`https://www.youtube-nocookie.com/embed/${videoId}?rel=0`}
+                title="Roda de Conversas: Simples Nacional e a Reforma Tributária"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                loading="lazy"
+              />
+            </div>
+            <div className="mt-5 text-center">
+              <Button variant="outline" asChild className="gap-2">
+                <a href={youtubeUrl} target="_blank" rel="noopener noreferrer">
+                  <ExternalLink className="h-4 w-4" />
+                  Assistir diretamente no YouTube
                 </a>
               </Button>
             </div>
+          </Reveal>
+        </div>
+      </section>
 
-            <p className="mt-5 text-xs sm:text-sm text-white/75">
-              Temas sugeridos pela nossa comunidade de clientes e parceiros.
+      <section className="roda-section bg-sand">
+        <div className="mx-auto max-w-4xl">
+          <Reveal>
+            <Tabs defaultValue="destaques" className="w-full">
+              <TabsList className="grid h-auto w-full grid-cols-2 gap-1 p-1">
+                <TabsTrigger value="destaques" className="min-h-11 gap-2 whitespace-normal px-2">
+                  <CheckCircle2 className="h-4 w-4 shrink-0" />
+                  Destaques rápidos
+                </TabsTrigger>
+                <TabsTrigger value="resumo" className="min-h-11 gap-2 whitespace-normal px-2">
+                  <ListChecks className="h-4 w-4 shrink-0" />
+                  Resumo estruturado
+                </TabsTrigger>
+              </TabsList>
+
+              <TabsContent value="destaques" className="mt-6">
+                <ul className="grid gap-4 md:grid-cols-2">
+                  {destaques.map((item) => (
+                    <li key={item.titulo} className="roda-card p-5">
+                      <div className="flex gap-3">
+                        <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-gold-ink" />
+                        <p className="text-sm leading-relaxed text-muted-foreground">
+                          <strong className="text-foreground">{item.titulo}:</strong>{" "}
+                          {item.texto}
+                        </p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </TabsContent>
+
+              <TabsContent value="resumo" className="mt-6 space-y-4">
+                <article className="roda-card p-5 sm:p-6">
+                  <h2 className="font-display text-lg font-bold">Contexto geral</h2>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    A Reforma Tributária implementa o <strong className="text-foreground">IVA Dual</strong>, composto por <strong className="text-foreground">IBS</strong> e <strong className="text-foreground">CBS</strong>. Essa mudança impacta diretamente as empresas do Simples Nacional que estão no meio da cadeia produtiva.
+                  </p>
+                </article>
+                <article className="roda-card p-5 sm:p-6">
+                  <h2 className="font-display text-lg font-bold">Tomada de decisão</h2>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    Para vendas ao consumidor final (B2C), o cenário mapeado favorece o <strong className="text-foreground">Simples Tradicional</strong>. Para fornecedores de empresas no Lucro Real (B2B), haverá pressão para migrar ao <strong className="text-foreground">Simples Híbrido</strong> e permitir créditos integrais.
+                  </p>
+                </article>
+                <article className="roda-card p-5 sm:p-6">
+                  <h2 className="font-display text-lg font-bold">Checklist de sobrevivência</h2>
+                  <ol className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
+                    <li><strong className="text-foreground">1. Mapeamento:</strong> faça um diagnóstico minucioso dos clientes e fornecedores junto ao seu contador.</li>
+                    <li><strong className="text-foreground">2. Simulação:</strong> calcule o impacto financeiro com base nas alíquotas previstas.</li>
+                    <li><strong className="text-foreground">3. Gestão e ERP:</strong> organize o fluxo de caixa corporativo e separe totalmente contas físicas e jurídicas, antecipando o futuro Split Payment.</li>
+                  </ol>
+                </article>
+              </TabsContent>
+            </Tabs>
+          </Reveal>
+        </div>
+      </section>
+
+      <section id="proxima-edicao" className="roda-section bg-navy-deep text-white scroll-mt-24">
+        <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+          <Reveal>
+            <span className="text-xs font-semibold uppercase text-gold">Próximo encontro</span>
+            <h2 className="mt-3 font-display text-2xl font-extrabold leading-tight sm:text-3xl">
+              Impactos da Reforma na Área Trabalhista
+            </h2>
+            <p className="mt-3 font-semibold text-gold">Palestrante convidado: Dr. Juliano</p>
+            <p className="mt-4 text-sm leading-relaxed text-white/85 sm:text-base">
+              Entenda os desdobramentos práticos da transição tributária nas relações entre empregadores e colaboradores, e saiba como blindar juridicamente o seu negócio.
             </p>
           </Reveal>
-        </div>
-      </section>
-
-      {/* 2. PRÓXIMA EDIÇÃO */}
-      <ProximaEdicaoDestaque />
-
-      {/* 3. COMO FUNCIONA */}
-      <section id="como-funciona" className="roda-section bg-sand scroll-mt-24">
-        <div className="max-w-7xl mx-auto">
-          <Reveal>
-            <SectionHeading
-              etiqueta="Como funciona"
-              titulo="Uma nova edição a cada 15 dias"
-              descricao="Um ecossistema de conhecimento dinâmico, construído a partir de dores reais das empresas."
-              centralizado
-            />
-          </Reveal>
-          <div className="mt-10 grid sm:grid-cols-3 gap-5">
-            {comoFunciona.map((item, i) => (
-              <Reveal key={item.titulo} delay={i * 80}>
-                <div className="roda-card roda-motion-card roda-motion-tilt p-6 h-full transition-all duration-150">
-                  <item.icone className="w-5 h-5 text-gold-ink" />
-                  <h3 className="mt-4 font-display text-lg font-bold">
-                    {item.titulo}
-                  </h3>
-                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                    {item.texto}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 4. ACERVO */}
-      <section id="edicoes" className="roda-section scroll-mt-24">
-        <div className="max-w-7xl mx-auto">
-          <Reveal>
-            <SectionHeading
-              etiqueta="Acervo"
-              titulo="O que já debatemos por aqui"
-              descricao="Acesse gratuitamente os ensinamentos dos encontros anteriores."
-              centralizado
-            />
-          </Reveal>
           <Reveal delay={80}>
-            <AcervoEdicoes />
+            <div className="rounded-xl border border-white/15 bg-background p-5 text-foreground shadow-card sm:p-7">
+              <FormInscricao edicaoSlug={proxima?.slug} onFechar={() => undefined} compacto />
+            </div>
           </Reveal>
+        </div>
+      </section>
+
+      <section id="edicoes" className="roda-section scroll-mt-24">
+        <div className="mx-auto max-w-7xl">
+          <SectionHeading etiqueta="Acervo" titulo="Outras conversas para assistir" centralizado />
+          <div className="mt-8"><AcervoEdicoes /></div>
           <div className="mt-8 text-center">
-            <Link
-              to="/roda-de-conversa/edicoes"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-gold-ink transition-colors"
-            >
-              Ver todas as edições
-              <ArrowRight className="w-4 h-4" />
+            <Link to="/roda-de-conversa/edicoes" className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-gold-ink">
+              Ver todas as edições <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* 5. CO-CREATION HUB */}
       <section id="sugerir-tema" className="roda-section bg-sand scroll-mt-24">
-        <div className="max-w-2xl mx-auto">
-          <Reveal>
-            <SectionHeading
-              etiqueta="Co-criação"
-              titulo="Sua opinião define o próximo tema"
-              descricao="Qual é a maior dor contábil, tributária ou trabalhista da sua empresa hoje? Sugira e nós trazemos o especialista."
-              centralizado
-            />
-          </Reveal>
-          <Reveal delay={80}>
-            <div className="roda-card p-5 sm:p-7">
-              <FormSugestaoTema onFechar={() => undefined} />
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* 6. CONTATO */}
-      <section className="roda-section bg-navy-deep text-white">
-        <div className="max-w-3xl mx-auto text-center">
-          <Reveal>
-            <h2 className="font-display text-xl sm:text-2xl md:text-3xl font-extrabold">
-              Receba os convites das próximas edições
-            </h2>
-            {proxima ? (
-              <p className="mt-3 text-white/85">
-                A próxima é {formatarData(proxima.dataISO, proxima.dataTexto)}
-                {convidadaProxima ? `, com ${convidadaProxima.nome}` : ""}.
-              </p>
-            ) : null}
-            <div className="mt-7 flex flex-col sm:flex-row justify-center gap-3">
-              <Button
-                size="lg"
-                className="bg-gold text-gold-foreground hover:bg-gold/90 gap-2"
-                asChild
-              >
-                <a
-                  href={whatsappUrl(rodaConfig.mensagensWhatsapp.convites)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() =>
-                    trackEvent("whatsapp_click", { origem: "comunicacao" })
-                  }
-                >
-                  <MessageCircle className="w-4 h-4" />
-                  Receber pelo WhatsApp
-                </a>
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-white/30 bg-transparent text-white hover:bg-white/10 hover:text-white"
-                asChild
-              >
-                <a
-                  href={`mailto:${rodaConfig.email}?subject=${encodeURIComponent(
-                    "Quero receber os convites da Roda de Conversa SMR"
-                  )}`}
-                >
-                  Receber por e-mail
-                </a>
-              </Button>
-            </div>
-            <p className="mt-5 text-xs text-white/80">
-              Sem listas automáticas.{" "}
-              <Link to="/privacidade" className="underline hover:text-gold">
-                Política de privacidade
-              </Link>
-              .
-            </p>
-          </Reveal>
+        <div className="mx-auto max-w-2xl">
+          <SectionHeading etiqueta="Co-criação" titulo="Sugira o próximo tema" centralizado />
+          <div className="roda-card mt-8 p-5 sm:p-7"><FormSugestaoTema onFechar={() => undefined} /></div>
         </div>
       </section>
     </>
