@@ -13,16 +13,16 @@ export function RodaMobileCTA() {
             tipo: "inscricao",
             edicaoSlug: proximaEdicao?.slug,
             titulo: proximaEdicao
-              ? `Garantir minha vaga — ${proximaEdicao.tema}`
+              ? `Próximo Encontro — ${proximaEdicao.tema}`
               : "Quero participar do próximo encontro",
-            descricao: "Participação gratuita e online. Vagas limitadas.",
+            descricao: "Com Dr. Juliano. Participação gratuita e online.",
             evento: "next_event_interest",
           })
         }
         className="w-full rounded-full bg-gold text-gold-foreground font-semibold py-3.5 flex items-center justify-center gap-2 shadow-card"
       >
         <Ticket className="w-5 h-5" />
-        Garantir minha vaga gratuita
+        Quero me inscrever e garantir minha vaga
       </button>
     </div>
   );
