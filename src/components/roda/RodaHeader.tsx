@@ -9,7 +9,6 @@ import { proximaEdicao } from "@/data/roda/edicoes";
 
 const links = [
   { label: "Próxima edição", to: "/roda-de-conversa#proxima-edicao" },
-  { label: "Como funciona", to: "/roda-de-conversa#como-funciona" },
   { label: "Edições anteriores", to: "/roda-de-conversa#edicoes" },
   { label: "Sugerir tema", to: "/roda-de-conversa#sugerir-tema" },
   { label: "Especialistas", to: "/especialistas" },
@@ -27,9 +26,9 @@ export function RodaHeader() {
       tipo: "inscricao",
       edicaoSlug: proximaEdicao?.slug,
       titulo: proximaEdicao
-        ? `Garantir minha vaga — ${proximaEdicao.tema}`
+        ? `Próximo Encontro — ${proximaEdicao.tema}`
         : "Quero participar do próximo encontro",
-      descricao: "Participação gratuita e online. Vagas limitadas.",
+      descricao: "Com Dr. Juliano. Participação gratuita e online.",
       evento: "next_event_interest",
     });
   };

@@ -105,7 +105,7 @@ export function FormInscricao({
   if (enviado) {
     return (
       <RodaFormSucesso
-        titulo="Inscrição confirmada!"
+        titulo="🎉 Inscrição confirmada!"
         mensagem="Enviamos o link de acesso e os detalhes para o seu e-mail."
         onFechar={onFechar}
       />
