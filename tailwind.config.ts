@@ -69,7 +69,10 @@ export default {
         navy: {
           DEFAULT: "hsl(var(--navy))",
           deep: "hsl(var(--navy-deep))",
+          soft: "hsl(var(--navy-soft))",
         },
+        cream: "hsl(var(--cream))",
+        line: "hsl(var(--line))",
 
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
@@ -90,6 +93,7 @@ export default {
       boxShadow: {
         'card': 'var(--card-shadow)',
         'card-hover': 'var(--card-shadow-hover)',
+        'event-card': 'var(--event-card-shadow)',
       },
       keyframes: {
         "accordion-down": {

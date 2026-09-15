@@ -242,6 +242,9 @@
     --sand-foreground: 218 42% 14%;
     --navy: 209 89% 18%;
     --navy-deep: 212 92% 9%;
+    --navy-soft: 210 58% 22%;
+    --cream: 32 48% 94%;
+    --line: 37 25% 87%;
   }
 
   .roda-theme {
@@ -274,6 +277,7 @@
 
     --card-shadow: 0 2px 16px -6px hsl(209 89% 18% / 0.12);
     --card-shadow-hover: 0 18px 40px -14px hsl(209 89% 18% / 0.28);
+    --event-card-shadow: 0 24px 60px hsl(212 68% 15% / 0.18);
 
     font-family: 'Manrope', 'Inter', system-ui, sans-serif;
   }
@@ -287,6 +291,12 @@
     font-family: 'Manrope', 'Inter', system-ui, sans-serif;
     letter-spacing: -0.02em;
     color: inherit;
+  }
+}
+
+@layer utilities {
+  .roda-event-glow {
+    background: radial-gradient(circle at 92% 8%, hsl(var(--navy-soft) / 0.85), transparent 42%);
   }
 }
 
