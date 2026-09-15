@@ -3,7 +3,7 @@ import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X, Ticket } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import logoSmr from "@/assets/logo-smr.png";
+import logoSmr from "@/assets/logo-smr-header.png.asset.json";
 import { useFormularioModal } from "@/components/roda/FormularioProvider";
 import { useRodaEventState } from "@/hooks/useRodaEventState";
 
@@ -57,7 +57,7 @@ export function RodaHeader() {
         <div className="flex h-14 items-center justify-between gap-4 md:h-20">
           <Link to="/" className="flex items-center shrink-0" aria-label="SMR Assessoria — página inicial">
             <img
-              src={logoSmr}
+              src={logoSmr.url}
               alt="SMR Assessoria"
               className="h-8 w-auto object-contain md:h-12"
             />
