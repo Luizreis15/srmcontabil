@@ -175,40 +175,60 @@ export const edicoes: Edicao[] = [
     publicadoEm: "2026-09-03",
   },
   {
-    titulo: "Impactos da Reforma na Área Trabalhista",
-    slug: "impactos-reforma-area-trabalhista",
+    titulo: "Escala 6x1: quem se preparar antes paga menos",
+    slug: "escala-6x1-reducao-jornada",
     numero: 4,
-    tema: "Impactos da Reforma na Área Trabalhista",
+    tema: "Escala 6x1 e redução da jornada",
     resumo:
-      "Entenda os desdobramentos práticos da transição tributária nas relações entre empregadores e colaboradores, e saiba como blindar juridicamente o seu negócio.",
+      "O que muda na escala, na folha e no domingo da sua empresa — e o que dá para resolver antes da promulgação.",
     descricao:
-      "Próximo encontro da Roda de Conversa SMR, com Dr. Juliano, sobre os impactos da Reforma na área trabalhista.",
-    dataISO: null,
-    dataTexto: "Data a confirmar",
-    horario: null,
+      "A PEC que acaba com a escala 6x1 já passou pela Câmara e pela CCJ do Senado. Falta uma votação. Nesta conversa, o que muda na sua escala, na sua folha e no seu domingo — e o que dá para resolver antes da promulgação.",
+    dataISO: "2026-09-17T16:00:00-03:00",
+    horario: "16h",
     formato: "Online",
     plataforma: "Transmissão ao vivo",
-    status: "convidado-confirmado",
+    status: "inscricoes-abertas",
     participantes: null,
     imagemCapa: null,
     thumbnail: null,
     youtubeId: "",
-    statusVideo: "sem-gravacao",
+    statusVideo: "em-preparacao",
     linkInscricao: "",
     typeformAvaliacao: "",
-    aprendizados: [],
+    aprendizados: [
+      { titulo: "Em que etapa a proposta está", descricao: "O que já foi aprovado, o que falta e o prazo real de adaptação." },
+      { titulo: "O impacto na folha", descricao: "Efeito sobre o valor da hora, sobre a hora extra e sobre a necessidade de recompor equipe." },
+      { titulo: "A segunda folga e o domingo", descricao: "O que significa “preferencialmente aos domingos” e como fica a cobertura do fim de semana." },
+      { titulo: "Alternativas de jornada", descricao: "12x36, meio período e intermitente: o que continua valendo." },
+      { titulo: "O risco da pejotização", descricao: "Por que trocar CLT por CNPJ é especialmente arriscado neste momento." },
+      { titulo: "Passivo e prazos", descricao: "Quanto custa errar a escala e o que fazer nos próximos 30 dias." },
+    ],
     perguntasFrequentes: [],
     materiais: [],
-    convidados: [],
+    convidados: ["leandro-jesuino"],
     categoria: "Trabalhista",
-    seoTitulo: "Impactos da Reforma na Área Trabalhista | Roda SMR",
+    tags: ["Escala 6x1", "Redução de jornada", "Contrato PJ x CLT", "Escalas e banco de horas"],
+    seoTitulo: "Escala 6x1: quem se preparar antes paga menos | SMR",
     seoDescricao:
-      "Inscreva-se no próximo encontro da Roda de Conversa SMR com Dr. Juliano sobre os impactos da Reforma na área trabalhista.",
+      "17 de setembro, 16h. Com Dr. Leandro Jesuíno: o que muda na escala, na folha e no domingo da sua empresa. Inscrição gratuita.",
     publicadoEm: null,
   },
 ];
 
 export const getEdicao = (slug: string) => edicoes.find((e) => e.slug === slug);
+
+export const RODA_EVENTO_FIM_ISO = "2026-09-17T17:30:00-03:00";
+const edicaoQuatroSlug = "escala-6x1-reducao-jornada";
+
+export const rodaEventoEncerrado = (agora = Date.now()) =>
+  agora >= new Date(RODA_EVENTO_FIM_ISO).getTime();
+
+const edicoesNoMomento = (agora = Date.now()) =>
+  edicoes.map((edicao) =>
+    edicao.slug === edicaoQuatroSlug && rodaEventoEncerrado(agora)
+      ? { ...edicao, status: "realizado" as const }
+      : edicao
+  );
 
 const statusRealizados: Edicao["status"][] = [
   "realizado",
@@ -218,18 +238,23 @@ const statusRealizados: Edicao["status"][] = [
 const maisRecentePrimeiro = (a: Edicao, b: Edicao) =>
   new Date(b.dataISO ?? 0).getTime() - new Date(a.dataISO ?? 0).getTime();
 
-export const edicoesRealizadas = edicoes
+export const getEdicoesRealizadas = (agora = Date.now()) => edicoesNoMomento(agora)
   .filter((e) => statusRealizados.includes(e.status))
   .sort(maisRecentePrimeiro);
 
-export const proximasEdicoes = edicoes
+export const getProximasEdicoes = (agora = Date.now()) => edicoesNoMomento(agora)
   .filter((e) => !statusRealizados.includes(e.status))
   .sort((a, b) => -maisRecentePrimeiro(a, b));
+
+export const edicoesRealizadas = getEdicoesRealizadas();
+export const proximasEdicoes = getProximasEdicoes();
 
 export const edicaoMaisRecente = edicoesRealizadas[0] ?? null;
 
 /** Próxima edição em destaque (a mais próxima ainda por acontecer). */
 export const proximaEdicao = proximasEdicoes[0] ?? null;
+export const getProximaEdicao = (agora = Date.now()) =>
+  getProximasEdicoes(agora)[0] ?? null;
 
 /** Categorias presentes no acervo, para os filtros. */
 export const categoriasEdicoes = Array.from(

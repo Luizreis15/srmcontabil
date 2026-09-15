@@ -58,6 +58,7 @@ export interface Edicao {
   materiais: Material[];
   convidados: string[]; // slugs de especialistas
   categoria: string;
+  tags?: string[];
   seoTitulo: string;
   seoDescricao: string;
   publicadoEm: string | null;

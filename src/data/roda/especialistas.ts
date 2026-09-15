@@ -77,7 +77,7 @@ export const especialistas: Especialista[] = [
     site: "",
     linkedin: "",
     instagram: "",
-    edicoes: ["gestao-trabalhista"],
+    edicoes: ["gestao-trabalhista", "escala-6x1-reducao-jornada"],
     seoTitulo: "Dr. Leandro Jesuíno | Especialistas da Roda de Conversa SMR",
     seoDescricao:
       "Advogado empresarial trabalhista, convidado da Roda de Conversa SMR sobre gestão trabalhista estratégica e proteção para empresas.",
