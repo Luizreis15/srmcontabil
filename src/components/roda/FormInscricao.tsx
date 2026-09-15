@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { z } from "zod";
-import { CalendarPlus, Loader2, MessageCircle } from "lucide-react";
+import { CalendarPlus, CheckCircle2, Loader2, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { supabase } from "@/integrations/supabase/client";
@@ -134,7 +134,7 @@ export function FormInscricao({
     return (
       <div className="flex min-h-72 flex-col items-center justify-center px-4 text-center" role="status">
         <div className="flex h-14 w-14 items-center justify-center rounded-full bg-gold/15 text-gold-ink">
-          <CalendarPlus className="h-7 w-7" />
+          <CheckCircle2 className="h-7 w-7" />
         </div>
         <h3 className="mt-5 text-2xl font-extrabold">Inscrição confirmada</h3>
         <p className="mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">

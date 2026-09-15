@@ -215,8 +215,6 @@ export const edicoes: Edicao[] = [
   },
 ];
 
-export const getEdicao = (slug: string) => edicoes.find((e) => e.slug === slug);
-
 export const RODA_EVENTO_FIM_ISO = "2026-09-17T17:30:00-03:00";
 const edicaoQuatroSlug = "escala-6x1-reducao-jornada";
 
@@ -229,6 +227,9 @@ const edicoesNoMomento = (agora = Date.now()) =>
       ? { ...edicao, status: "realizado" as const }
       : edicao
   );
+
+export const getEdicao = (slug: string, agora = Date.now()) =>
+  edicoesNoMomento(agora).find((e) => e.slug === slug);
 
 const statusRealizados: Edicao["status"][] = [
   "realizado",
