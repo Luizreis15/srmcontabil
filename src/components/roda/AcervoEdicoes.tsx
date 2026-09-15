@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import {
   categoriasEdicoes,
-  edicoesRealizadas,
   formatarData,
 } from "@/data/roda/edicoes";
 import { getEspecialista } from "@/data/roda/especialistas";

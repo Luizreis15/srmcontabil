@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import logoSmr from "@/assets/logo-smr-alta.jpeg";
 import { useFormularioModal } from "@/components/roda/FormularioProvider";
-import { proximaEdicao } from "@/data/roda/edicoes";
+import { useRodaEventState } from "@/hooks/useRodaEventState";
 
 const links = [
   { label: "Próxima edição", to: "/roda-de-conversa#proxima-edicao" },
@@ -19,6 +19,7 @@ export function RodaHeader() {
   const { abrirFormulario } = useFormularioModal();
   const { pathname, hash } = useLocation();
   const navigate = useNavigate();
+  const { proximaEdicao } = useRodaEventState();
 
   const inscrever = () => {
     setAberto(false);
@@ -28,7 +29,7 @@ export function RodaHeader() {
       titulo: proximaEdicao
         ? `Próximo Encontro — ${proximaEdicao.tema}`
         : "Quero participar do próximo encontro",
-      descricao: "Com Dr. Juliano. Participação gratuita e online.",
+      descricao: "Com Dr. Leandro Jesuíno. Participação gratuita e online.",
       evento: "next_event_interest",
     });
   };
@@ -80,6 +81,7 @@ export function RodaHeader() {
           </nav>
 
           <div className="hidden md:flex">
+            {proximaEdicao ? (
             <Button
               onClick={inscrever}
               className="gap-2 bg-gold text-gold-foreground hover:bg-gold/90"
@@ -87,6 +89,7 @@ export function RodaHeader() {
               <Ticket className="w-4 h-4" />
               Inscrever-se grátis
             </Button>
+            ) : null}
           </div>
 
           <button
@@ -112,13 +115,13 @@ export function RodaHeader() {
                 {link.label}
               </button>
             ))}
-            <Button
+            {proximaEdicao ? <Button
               onClick={inscrever}
               className="mt-3 gap-2 bg-gold text-gold-foreground hover:bg-gold/90"
             >
               <Ticket className="w-4 h-4" />
               Inscrever-se grátis
-            </Button>
+            </Button> : null}
           </nav>
         </div>
       )}
