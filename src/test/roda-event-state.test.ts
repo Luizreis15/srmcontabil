@@ -19,7 +19,7 @@ describe("estado temporal da 4ª Roda de Conversa", () => {
 
   it("move a edição ao acervo às 17h30 sem inventar vídeo", () => {
     expect(rodaEventoEncerrado(depoisDoFim)).toBe(true);
-    expect(getProximaEdicao(depoisDoFim)).toBeUndefined();
+    expect(getProximaEdicao(depoisDoFim)).toBeNull();
 
     const edicaoEncerrada = getEdicao(slug, depoisDoFim);
     expect(edicaoEncerrada?.status).toBe("realizado");
