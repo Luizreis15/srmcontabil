@@ -30,9 +30,12 @@ export function Seo({
       <meta property="og:url" content={url} />
       <meta property="og:locale" content="pt_BR" />
       {imagem ? <meta property="og:image" content={imagem} /> : null}
+      {imagem ? <meta property="og:image:width" content="1200" /> : null}
+      {imagem ? <meta property="og:image:height" content="630" /> : null}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={titulo} />
       <meta name="twitter:description" content={descricao} />
+      {imagem ? <meta name="twitter:image" content={imagem} /> : null}
       {jsonLd ? (
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
       ) : null}
