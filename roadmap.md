@@ -10,3 +10,4 @@
 - [x] Implementar inscrição, contador e pauta do encontro.
 - [x] Implementar transição automática para gravação em preparação.
 - [x] Atualizar SEO, arte social e validar em celular e desktop.
+- [x] Replicar o banner aprovado do Dr. Leandro na hero do celular.
