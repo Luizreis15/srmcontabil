@@ -12,6 +12,7 @@ import { rodaConfig } from "@/data/roda/config";
 import { getEdicao } from "@/data/roda/edicoes";
 import { useRodaEventState } from "@/hooks/useRodaEventState";
 import ogImage from "@/assets/roda-escala-6x1-og-v2.png.asset.json";
+import bannerImage from "@/assets/roda-escala-6x1-banner.png";
 
 const EVENTO_SLUG = "escala-6x1-reducao-jornada";
 
@@ -69,7 +70,7 @@ const RodaHub = () => {
         <div className="absolute inset-0 roda-event-glow" aria-hidden />
         <div className="relative md:hidden">
           <img
-            src={ogImage.url}
+            src={bannerImage}
             alt="Roda de Conversa SMR: Escala 6x1 com Dr. Leandro Jesuíno, dia 17 de setembro às 16h"
             className="block h-auto w-full"
             fetchPriority="high"
