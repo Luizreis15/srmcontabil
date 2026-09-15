@@ -11,7 +11,7 @@ import { VideoEdicao } from "@/components/roda/VideoEdicao";
 import { rodaConfig } from "@/data/roda/config";
 import { getEdicao } from "@/data/roda/edicoes";
 import { useRodaEventState } from "@/hooks/useRodaEventState";
-import ogImage from "@/assets/roda-escala-6x1-og.png.asset.json";
+import ogImage from "@/assets/roda-escala-6x1-og-v2.png.asset.json";
 
 const EVENTO_SLUG = "escala-6x1-reducao-jornada";
 
@@ -39,7 +39,9 @@ const RodaHub = () => {
     startDate: edicao.dataISO,
     endDate: "2026-09-17T17:30:00-03:00",
     eventAttendanceMode: "https://schema.org/OnlineEventAttendanceMode",
-    eventStatus: "https://schema.org/EventScheduled",
+    eventStatus: encerrado
+      ? "https://schema.org/EventCompleted"
+      : "https://schema.org/EventScheduled",
     location: { "@type": "VirtualLocation", url: `${rodaConfig.siteUrl}${path}` },
     organizer: { "@type": "Organization", name: "SMR Assessoria", url: rodaConfig.siteUrl },
     performer: { "@type": "Person", name: "Dr. Leandro Jesuíno" },
