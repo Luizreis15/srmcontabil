@@ -67,7 +67,20 @@ const RodaHub = () => {
 
       <section id="proxima-edicao" className="relative scroll-mt-24 bg-navy-deep text-accent-foreground">
         <div className="absolute inset-0 roda-event-glow" aria-hidden />
-        <div className="relative mx-auto max-w-7xl px-4 pb-16 pt-8 sm:px-5 sm:pt-10 md:px-8 md:pb-40 md:pt-20">
+        <div className="relative md:hidden">
+          <img
+            src={ogImage.url}
+            alt="Roda de Conversa SMR: Escala 6x1 com Dr. Leandro Jesuíno, dia 17 de setembro às 16h"
+            className="block h-auto w-full"
+            fetchPriority="high"
+          />
+          {!encerrado && edicao.dataISO ? (
+            <div className="px-4 pb-10 pt-5">
+              <Countdown dataISO={edicao.dataISO} />
+            </div>
+          ) : null}
+        </div>
+        <div className="relative mx-auto hidden max-w-7xl px-4 pb-16 pt-8 sm:px-5 sm:pt-10 md:block md:px-8 md:pb-40 md:pt-20">
           <Reveal>
             <div className="max-w-4xl">
               <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
