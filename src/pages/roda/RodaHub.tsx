@@ -67,31 +67,32 @@ const RodaHub = () => {
 
       <section id="proxima-edicao" className="relative scroll-mt-24 bg-navy-deep text-accent-foreground">
         <div className="absolute inset-0 roda-event-glow" aria-hidden />
-        <div className="relative mx-auto max-w-7xl px-4 pb-32 pt-14 sm:px-5 sm:pt-16 md:px-8 md:pb-40 md:pt-20">
+        <div className="relative mx-auto max-w-7xl px-4 pb-16 pt-8 sm:px-5 sm:pt-10 md:px-8 md:pb-40 md:pt-20">
           <Reveal>
             <div className="max-w-4xl">
-              <span className="text-xs font-extrabold uppercase text-gold">4ª edição · Trabalhista</span>
-              <div className="mt-5 inline-flex rounded-full border border-gold px-4 py-2 text-sm font-semibold text-gold">
-                17 de setembro · quinta-feira · 16h
+              <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+                <span className="text-[11px] font-extrabold uppercase text-gold sm:text-xs">4ª edição · Trabalhista</span>
+                <span className="text-sm text-accent-foreground/50" aria-hidden>•</span>
+                <span className="text-xs font-semibold text-gold sm:text-sm">17 de setembro · 16h</span>
               </div>
-              <h1 className="mt-6 max-w-4xl font-display text-4xl font-extrabold leading-[1.12] sm:text-5xl lg:text-6xl">
+              <h1 className="mt-4 max-w-4xl font-display text-4xl font-extrabold leading-[1.08] sm:mt-6 sm:text-5xl lg:text-6xl">
                 Escala 6x1: quem se preparar<br className="hidden md:block" />{" "}
                 <span className="text-gold">antes paga menos.</span>
               </h1>
-              <p className="mt-5 font-semibold text-gold">
+              <p className="mt-4 text-sm font-semibold text-gold sm:mt-5 sm:text-base">
                 Palestrante convidado: Dr. Leandro Jesuíno
               </p>
-              <p className="mt-5 max-w-3xl text-base leading-relaxed text-accent-foreground/85 sm:text-lg">
+              <p className="mt-5 hidden max-w-3xl text-base leading-relaxed text-accent-foreground/85 sm:block sm:text-lg">
                 A PEC que acaba com a escala 6x1 já passou pela Câmara e pela CCJ do Senado. Falta uma votação. Nesta conversa, o que muda na sua escala, na sua folha e no seu domingo — e o que dá para resolver antes da promulgação.
               </p>
-              {!encerrado && edicao.dataISO ? <Countdown dataISO={edicao.dataISO} className="mt-8" /> : null}
+              {!encerrado && edicao.dataISO ? <Countdown dataISO={edicao.dataISO} className="mt-5 sm:mt-8" /> : null}
             </div>
           </Reveal>
         </div>
       </section>
 
       <section className="relative bg-cream px-4 pb-16 sm:px-5 md:px-8 md:pb-24">
-        <div className="mx-auto max-w-6xl -translate-y-20 md:-translate-y-24">
+        <div className="mx-auto max-w-6xl -translate-y-6 md:-translate-y-24">
           <Reveal>
             <div className="rounded-2xl border border-line bg-card p-5 text-card-foreground shadow-event-card sm:p-7 md:p-9">
               {encerrado ? (
@@ -115,7 +116,7 @@ const RodaHub = () => {
           </Reveal>
         </div>
 
-        <div className="mx-auto -mt-8 max-w-7xl md:-mt-10">
+        <div className="mx-auto mt-2 max-w-7xl md:-mt-10">
           <SectionHeading
             etiqueta="Pauta do encontro"
             titulo="Seis frentes que vão ser abertas"
