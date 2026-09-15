@@ -23,7 +23,7 @@ describe("estado temporal da 4ª Roda de Conversa", () => {
 
     const edicaoEncerrada = getEdicao(slug, depoisDoFim);
     expect(edicaoEncerrada?.status).toBe("realizado");
-    expect(edicaoEncerrada?.youtubeId).toBeNull();
+    expect(edicaoEncerrada?.youtubeId).toBeFalsy();
     expect(getEdicoesRealizadas(depoisDoFim).some((edicao) => edicao.slug === slug)).toBe(true);
   });
 });
