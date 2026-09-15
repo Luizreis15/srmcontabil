@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { z } from "zod";
+import { CalendarPlus, Loader2, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { supabase } from "@/integrations/supabase/client";
@@ -10,6 +11,9 @@ import {
   RodaFormSucesso,
 } from "@/components/roda/RodaFormShell";
 import { trackEvent } from "@/lib/rodaAnalytics";
+import { baixarIcs } from "@/components/roda/calendario";
+import { getEdicao } from "@/data/roda/edicoes";
+import { rodaConfig } from "@/data/roda/config";
 
 const schema = z.object({
   nome: z
@@ -25,8 +29,9 @@ const schema = z.object({
   whatsapp: z
     .string()
     .trim()
-    .min(8, { message: "Informe um WhatsApp com DDD" })
-    .max(40, { message: "Máximo de 40 caracteres" }),
+    .refine((valor) => valor.replace(/\D/g, "").length === 11, {
+      message: "Informe um WhatsApp com DDD",
+    }),
   empresa: z
     .string()
     .trim()
@@ -36,6 +41,13 @@ const schema = z.object({
 
 type Campos = z.infer<typeof schema>;
 type Erros = Partial<Record<keyof Campos, string>>;
+
+const mascararTelefone = (valor: string) => {
+  const numeros = valor.replace(/\D/g, "").slice(0, 11);
+  if (numeros.length <= 2) return numeros.replace(/^(\d{0,2})/, "($1");
+  if (numeros.length <= 7) return numeros.replace(/^(\d{2})(\d+)/, "($1) $2");
+  return numeros.replace(/^(\d{2})(\d{5})(\d{0,4}).*/, "($1) $2-$3");
+};
 
 export function FormInscricao({
   edicaoSlug,
@@ -49,6 +61,7 @@ export function FormInscricao({
   const [enviando, setEnviando] = useState(false);
   const [enviado, setEnviado] = useState(false);
   const [erros, setErros] = useState<Erros>({});
+  const [erroEnvio, setErroEnvio] = useState("");
   const [valores, setValores] = useState<Campos>({
     nome: "",
     email: "",
@@ -59,6 +72,15 @@ export function FormInscricao({
   const set = <K extends keyof Campos>(campo: K, valor: Campos[K]) => {
     setValores((v) => ({ ...v, [campo]: valor }));
     setErros((e) => ({ ...e, [campo]: undefined }));
+  };
+
+  const validarCampo = (campo: keyof Campos) => {
+    if (campo !== "email" && campo !== "whatsapp") return;
+    const resultado = schema.shape[campo].safeParse(valores[campo]);
+    setErros((atuais) => ({
+      ...atuais,
+      [campo]: resultado.success ? undefined : resultado.error.issues[0]?.message,
+    }));
   };
 
   const enviar = async (evento: React.FormEvent) => {
@@ -75,6 +97,7 @@ export function FormInscricao({
       return;
     }
 
+    setErroEnvio("");
     setEnviando(true);
     const { error } = await supabase.functions.invoke("roda-formulario", {
       body: {
@@ -89,6 +112,7 @@ export function FormInscricao({
     setEnviando(false);
 
     if (error) {
+      setErroEnvio("Não conseguimos concluir agora. Revise os dados e tente novamente.");
       toast({
         title: "Não conseguimos concluir sua inscrição",
         description:
@@ -103,12 +127,25 @@ export function FormInscricao({
   };
 
   if (enviado) {
+    const edicao = edicaoSlug ? getEdicao(edicaoSlug) : undefined;
+    const compartilhar = () => {
+      const texto = `Vou participar da Roda de Conversa SMR sobre Escala 6x1, dia 17/09 às 16h. ${rodaConfig.siteUrl}/roda-de-conversa`;
+      window.open(`https://wa.me/?text=${encodeURIComponent(texto)}`, "_blank", "noopener");
+    };
     return (
-      <RodaFormSucesso
-        titulo="🎉 Inscrição confirmada!"
-        mensagem="Enviamos o link de acesso e os detalhes para o seu e-mail."
-        onFechar={onFechar}
-      />
+      <div className="flex min-h-72 flex-col items-center justify-center px-4 text-center" role="status">
+        <div className="flex h-14 w-14 items-center justify-center rounded-full bg-gold/15 text-gold-ink">
+          <CalendarPlus className="h-7 w-7" />
+        </div>
+        <h3 className="mt-5 text-2xl font-extrabold">Inscrição confirmada</h3>
+        <p className="mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">
+          Você vai receber o link de acesso no e-mail e no WhatsApp cadastrados. Até dia 17, às 16h.
+        </p>
+        <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+          {edicao ? <Button type="button" variant="outline" onClick={() => baixarIcs(edicao)}><CalendarPlus />Adicionar à agenda</Button> : null}
+          <Button type="button" variant="outline" onClick={compartilhar}><MessageCircle />Compartilhar no WhatsApp</Button>
+        </div>
+      </div>
     );
   }
 
@@ -137,6 +174,8 @@ export function FormInscricao({
           maxLength={255}
           value={valores.email}
           onChange={(e) => set("email", e.target.value)}
+          onBlur={() => validarCampo("email")}
+          aria-invalid={Boolean(erros.email)}
         />
       </RodaFormCampo>
 
@@ -147,10 +186,13 @@ export function FormInscricao({
       >
         <Input
           id="insc-whatsapp"
-          maxLength={40}
+          maxLength={15}
+          inputMode="tel"
           placeholder="(11) 90000-0000"
           value={valores.whatsapp}
-          onChange={(e) => set("whatsapp", e.target.value)}
+          onChange={(e) => set("whatsapp", mascararTelefone(e.target.value))}
+          onBlur={() => validarCampo("whatsapp")}
+          aria-invalid={Boolean(erros.whatsapp)}
         />
       </RodaFormCampo>
 
@@ -168,8 +210,9 @@ export function FormInscricao({
       </div>
 
       <div className={compacto ? "md:col-span-2" : undefined}>
+        {erroEnvio ? <p className="mb-3 text-sm font-medium text-destructive" role="alert">{erroEnvio}</p> : null}
         <Button type="submit" className="w-full" disabled={enviando}>
-          {enviando ? "Enviando..." : "Quero me inscrever e garantir minha vaga"}
+          {enviando ? <><Loader2 className="animate-spin" />Enviando inscrição...</> : "Garantir minha vaga em 17/09"}
         </Button>
       </div>
     </form>

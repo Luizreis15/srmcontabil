@@ -9,17 +9,19 @@ import {
   formatarData,
 } from "@/data/roda/edicoes";
 import { getEspecialista } from "@/data/roda/especialistas";
+import { useRodaEventState } from "@/hooks/useRodaEventState";
 
 const TODOS = "Todos";
 
 export function AcervoEdicoes() {
+  const { edicoesRealizadas: edicoesAtuais } = useRodaEventState();
   const [filtro, setFiltro] = useState(TODOS);
   const abas = [TODOS, ...categoriasEdicoes];
 
   const lista =
     filtro === TODOS
-      ? edicoesRealizadas
-      : edicoesRealizadas.filter((e) => e.categoria === filtro);
+      ? edicoesAtuais
+      : edicoesAtuais.filter((e) => e.categoria === filtro);
 
   return (
     <div>
@@ -51,7 +53,7 @@ export function AcervoEdicoes() {
           const convidados = edicao.convidados
             .map((slug) => getEspecialista(slug))
             .filter(Boolean);
-          const temas = convidados[0]?.temas.slice(0, 4) ?? [];
+          const temas = edicao.tags ?? convidados[0]?.temas.slice(0, 4) ?? [];
 
           return (
             <article
