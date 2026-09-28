@@ -82,6 +82,27 @@ export const especialistas: Especialista[] = [
     seoDescricao:
       "Advogado empresarial trabalhista, convidado da Roda de Conversa SMR sobre gestão trabalhista estratégica e proteção para empresas.",
   },
+  {
+    nome: "Dra. Maria Fiorini",
+    slug: "maria-fiorini",
+    foto: null,
+    cargo: "Advogada · convidada especial",
+    empresa: "",
+    minicurriculo: "Advogada convidada da Roda de Conversa SMR sobre proteção patrimonial e sucessão familiar.",
+    formacao: [],
+    experiencia: [],
+    areasAtuacao: ["Proteção patrimonial", "Sucessão familiar"],
+    temas: ["Patrimônio", "Sucessão familiar"],
+    autorizadoPublicarContatos: false,
+    email: "",
+    whatsapp: "",
+    site: "",
+    linkedin: "",
+    instagram: "",
+    edicoes: ["da-empresa-ao-legado"],
+    seoTitulo: "Dra. Maria Fiorini | Roda de Conversa SMR",
+    seoDescricao: "Dra. Maria Fiorini, advogada convidada da Roda de Conversa SMR sobre patrimônio e sucessão familiar.",
+  },
 ];
 
 export const getEspecialista = (slug: string) =>

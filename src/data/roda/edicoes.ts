@@ -187,12 +187,12 @@ export const edicoes: Edicao[] = [
     horario: "16h",
     formato: "Online",
     plataforma: "Transmissão ao vivo",
-    status: "inscricoes-abertas",
+    status: "gravacao-disponivel",
     participantes: null,
     imagemCapa: null,
     thumbnail: null,
-    youtubeId: "",
-    statusVideo: "em-preparacao",
+    youtubeId: "oa141COxmD0",
+    statusVideo: "disponivel",
     linkInscricao: "",
     typeformAvaliacao: "",
     aprendizados: [
@@ -211,19 +211,52 @@ export const edicoes: Edicao[] = [
     seoTitulo: "Escala 6x1: quem se preparar antes paga menos | SMR",
     seoDescricao:
       "17 de setembro, 16h. Com Dr. Leandro Jesuíno: o que muda na escala, na folha e no domingo da sua empresa. Inscrição gratuita.",
+    publicadoEm: "2026-09-17",
+  },
+  {
+    titulo: "Da Empresa ao Legado: como proteger o patrimônio e preparar a sucessão familiar",
+    slug: "da-empresa-ao-legado",
+    numero: 5,
+    tema: "Da Empresa ao Legado",
+    resumo: "Como proteger o patrimônio e preparar a sucessão familiar. Planejamento hoje para dar segurança ao patrimônio e continuidade para o futuro.",
+    descricao: "Roda de Conversa SMR com a advogada convidada Dra. Maria Fiorini e Sueli Rocha. Uma conversa sobre proteção patrimonial e preparação da sucessão familiar.",
+    dataISO: "2026-10-01T16:00:00-03:00",
+    horario: "16h",
+    formato: "Online",
+    plataforma: "Transmissão online",
+    status: "inscricoes-abertas",
+    participantes: null,
+    imagemCapa: null,
+    thumbnail: null,
+    youtubeId: "",
+    statusVideo: "em-preparacao",
+    linkInscricao: "",
+    typeformAvaliacao: "",
+    aprendizados: [
+      { titulo: "Proteger o patrimônio", descricao: "Planejamento para a segurança do patrimônio." },
+      { titulo: "Preparar a sucessão familiar", descricao: "Como pensar a continuidade da empresa e da família." },
+      { titulo: "Planejar hoje", descricao: "Conversar agora sobre decisões que impactam o futuro." },
+    ],
+    perguntasFrequentes: [],
+    materiais: [],
+    convidados: ["maria-fiorini"],
+    categoria: "Patrimônio e sucessão",
+    tags: ["Proteção patrimonial", "Sucessão familiar"],
+    seoTitulo: "Da Empresa ao Legado | 5ª Roda de Conversa SMR",
+    seoDescricao: "1º de outubro, às 16h, online: converse com a Dra. Maria Fiorini e Sueli Rocha sobre proteção patrimonial e sucessão familiar.",
     publicadoEm: null,
   },
 ];
 
-export const RODA_EVENTO_FIM_ISO = "2026-09-17T17:30:00-03:00";
-const edicaoQuatroSlug = "escala-6x1-reducao-jornada";
+export const RODA_EVENTO_FIM_ISO = "2026-10-01T17:30:00-03:00";
+const edicaoAtualSlug = "da-empresa-ao-legado";
 
 export const rodaEventoEncerrado = (agora = Date.now()) =>
   agora >= new Date(RODA_EVENTO_FIM_ISO).getTime();
 
 const edicoesNoMomento = (agora = Date.now()) =>
   edicoes.map((edicao) =>
-    edicao.slug === edicaoQuatroSlug && rodaEventoEncerrado(agora)
+    edicao.slug === edicaoAtualSlug && rodaEventoEncerrado(agora)
       ? { ...edicao, status: "realizado" as const }
       : edicao
   );
