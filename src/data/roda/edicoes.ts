@@ -295,7 +295,7 @@ export const getProximaEdicao = (agora = Date.now()) =>
 
 /** Categorias presentes no acervo, para os filtros. */
 export const categoriasEdicoes = Array.from(
-  new Set(edicoesRealizadas.map((e) => e.categoria).filter(Boolean))
+  new Set(edicoes.map((e) => e.categoria).filter(Boolean))
 );
 
 export const rotuloStatus: Record<Edicao["status"], string> = {

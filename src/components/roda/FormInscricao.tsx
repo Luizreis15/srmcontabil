@@ -140,7 +140,7 @@ export function FormInscricao({
         </div>
         <h3 className="mt-5 text-2xl font-extrabold">Inscrição confirmada</h3>
         <p className="mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">
-          Você vai receber o link de acesso no e-mail e no WhatsApp cadastrados.{edicao ? ` Até ${formatarData(edicao.dataISO)}, às ${edicao.horario}.` : ""}
+          Sua inscrição foi registrada.{edicao ? ` O encontro será em ${formatarData(edicao.dataISO)}, às ${edicao.horario}.` : ""}
         </p>
         <div className="mt-6 flex flex-col gap-3 sm:flex-row">
           {edicao ? <Button type="button" variant="outline" onClick={() => baixarIcs(edicao)}><CalendarPlus />Adicionar à agenda</Button> : null}
