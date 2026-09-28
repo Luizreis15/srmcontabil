@@ -11,6 +11,7 @@ import { Seo } from "@/components/roda/Seo";
 import { Reveal } from "@/components/roda/Reveal";
 import { SectionHeading } from "@/components/roda/SectionHeading";
 import { VideoEdicao } from "@/components/roda/VideoEdicao";
+import { FormInscricao } from "@/components/roda/FormInscricao";
 import { EspecialistaCard } from "@/components/roda/EspecialistaCard";
 import { ConteudoCard } from "@/components/roda/ConteudoCard";
 import { ShareButtons } from "@/components/roda/ShareButtons";
@@ -106,13 +107,20 @@ const RodaEdicao = () => {
         </div>
       </section>
 
-      <section className="roda-section">
+    <section className="roda-section">
         <div className="max-w-4xl mx-auto">
-          <VideoEdicao
-            edicao={edicao}
-            convidado={convidados[0]?.nome}
-            url={path}
-          />
+          {edicao.status === "inscricoes-abertas" ? (
+            <>
+              <SectionHeading etiqueta="Participe" titulo="Inscreva-se para esta conversa" />
+              <div className="mt-8"><FormInscricao edicaoSlug={edicao.slug} onFechar={() => undefined} compacto /></div>
+            </>
+          ) : (
+            <VideoEdicao
+              edicao={edicao}
+              convidado={convidados[0]?.nome}
+              url={path}
+            />
+          )}
         </div>
       </section>
 
