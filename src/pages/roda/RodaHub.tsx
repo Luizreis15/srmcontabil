@@ -43,7 +43,6 @@ const RodaHub = () => {
         titulo="Da Empresa ao Legado | Roda de Conversa SMR"
         descricao="1º de outubro, às 16h, online. Dra. Maria Fiorini e Sueli Rocha conversam sobre proteção patrimonial e sucessão familiar."
         path={path}
-        imagem={imagem}
         jsonLd={jsonLd}
       />
 

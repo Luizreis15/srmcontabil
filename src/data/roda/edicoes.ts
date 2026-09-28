@@ -1,4 +1,5 @@
 import type { Edicao } from "./types";
+import convite from "@/assets/roda-empresa-legado-convite.jpg.asset.json";
 
 
 export const edicoes: Edicao[] = [
@@ -210,7 +211,7 @@ export const edicoes: Edicao[] = [
     tags: ["Escala 6x1", "Redução de jornada", "Contrato PJ x CLT", "Escalas e banco de horas"],
     seoTitulo: "Escala 6x1: quem se preparar antes paga menos | SMR",
     seoDescricao:
-      "17 de setembro, 16h. Com Dr. Leandro Jesuíno: o que muda na escala, na folha e no domingo da sua empresa. Inscrição gratuita.",
+      "Assista à Roda de Conversa SMR sobre escala 6x1 com Dr. Leandro Jesuíno: impactos na escala, na folha e na rotina das empresas.",
     publicadoEm: "2026-09-17",
   },
   {
@@ -226,7 +227,7 @@ export const edicoes: Edicao[] = [
     plataforma: "Transmissão online",
     status: "inscricoes-abertas",
     participantes: null,
-    imagemCapa: null,
+    imagemCapa: convite.url,
     thumbnail: null,
     youtubeId: "",
     statusVideo: "em-preparacao",

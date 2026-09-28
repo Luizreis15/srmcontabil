@@ -20,7 +20,7 @@ export function EdicaoCard({ edicao }: { edicao: Edicao }) {
             alt={`Capa da edição ${edicao.tema}`}
             loading="lazy"
             decoding="async"
-            className="roda-zoom w-full h-full object-cover"
+            className={`roda-zoom w-full h-full ${edicao.slug === "da-empresa-ao-legado" ? "object-contain" : "object-cover"}`}
           />
         ) : (
           <div className="w-full h-full flex flex-col items-center justify-center text-white/80 px-6 text-center">
@@ -63,7 +63,9 @@ export function EdicaoCard({ edicao }: { edicao: Edicao }) {
             <Video className="w-4 h-4 text-gold-ink shrink-0" />
             {edicao.youtubeId
               ? "Gravação disponível"
-              : "Gravação em preparação"}
+              : edicao.status === "realizado"
+                ? "Gravação em preparação"
+                : "Encontro online"}
           </li>
         </ul>
 
