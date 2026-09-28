@@ -10,50 +10,40 @@ export function LegadoHero({ encerrado, dataISO, id }: { encerrado: boolean; dat
       <Helmet>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet" />
       </Helmet>
-      <div className="mx-auto grid max-w-7xl lg:min-h-[620px] lg:grid-cols-[1fr_1fr]">
-        <div className="flex flex-col justify-center px-5 pb-6 pt-7 sm:px-8 md:px-12 lg:py-16 xl:px-16">
-          <div className="flex items-center gap-3 text-xs font-bold uppercase text-accent-foreground/75">
-            <span className="h-0.5 w-8 bg-accent-foreground" aria-hidden="true" />
-            5ª Roda de Conversa SMR
-          </div>
-          <h1 className="mt-4 text-[clamp(3.75rem,11vw,5.5rem)] leading-[0.82] text-accent-foreground lg:text-[clamp(5rem,7vw,7.25rem)]">
-            Da Empresa<br /><span className="text-accent-foreground">ao Legado</span>
-          </h1>
-          <p className="mt-4 max-w-lg text-base font-medium leading-snug text-accent-foreground/85 sm:text-lg lg:text-xl">
-            Como proteger o patrimônio e preparar a sucessão familiar.
-          </p>
+      <div className="legado-hero-stage">
+        <div className="legado-hero-copy">
+          <p className="legado-edition"><span aria-hidden="true" className="legado-edition-line" />5ª RODA DE CONVERSA SMR</p>
+          <h1 className="legado-headline">Da Empresa <span>ao Legado<span className="legado-headline-dot">.</span></span></h1>
+          <p className="legado-subheadline">Como proteger o patrimônio e preparar a sucessão familiar.</p>
+        </div>
 
-          <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 border-t border-accent-foreground/25 pt-3 text-sm font-semibold sm:text-base lg:mt-8 lg:pt-6">
-            <span className="inline-flex items-center gap-2"><CalendarDays className="h-4 w-4 text-accent-foreground" aria-hidden="true" />01 de outubro · 16h</span>
-            <span className="inline-flex items-center gap-2"><MonitorPlay className="h-4 w-4 text-accent-foreground" aria-hidden="true" />Online</span>
-          </div>
+        <div className="legado-portrait">
+          <div className="legado-portrait-shard" aria-hidden="true" />
+          <img src={maria} alt="Retrato da Dra. Maria Fiorini" fetchPriority="high" />
+          <span className="legado-portrait-edge" aria-hidden="true" />
+        </div>
 
-          <p className="mt-5 text-lg font-bold text-accent-foreground sm:text-xl">Dra. Maria Fiorini <span className="block text-sm font-medium text-accent-foreground/75">Advogada convidada</span></p>
-
+        <div className="legado-action">
           {!encerrado ? (
-            <Button asChild size="lg" className="mt-5 w-fit gap-2 rounded-sm bg-primary px-7 font-bold text-primary-foreground hover:bg-primary/90 lg:mt-7">
-              <a href="#inscricao">Garantir minha vaga <ArrowDown className="h-4 w-4" aria-hidden="true" /></a>
+            <Button asChild size="lg" className="legado-hero-button group h-12 w-full justify-between rounded-sm px-6 text-sm font-bold text-primary-foreground sm:w-fit sm:min-w-[265px]">
+              <a href="#inscricao">Garantir minha vaga <ArrowDown className="transition-transform group-hover:translate-y-1" aria-hidden="true" /></a>
             </Button>
           ) : (
-            <p className="mt-6 text-sm font-semibold text-accent-foreground">Encontro realizado · Gravação em preparação</p>
+            <p className="legado-finished">Encontro realizado · Gravação em preparação</p>
           )}
         </div>
 
-        <div className="relative h-[280px] overflow-hidden bg-secondary sm:h-[420px] lg:h-auto lg:min-h-[620px]">
-          <img src={maria} alt="Retrato da Dra. Maria Fiorini" className="h-full w-full object-cover object-top lg:absolute lg:inset-0" fetchPriority="high" />
-          <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-28 bg-gradient-to-r from-navy-deep to-transparent lg:block" aria-hidden="true" />
+        <div className="legado-event-details">
+          <div className="legado-speaker"><span>COM A CONVIDADA</span><strong>Dra. Maria Fiorini</strong><small>Advogada</small></div>
+          <div className="legado-event-meta">
+            <span><CalendarDays className="h-4 w-4" aria-hidden="true" />01 de outubro · 16h</span>
+            <span><MonitorPlay className="h-4 w-4" aria-hidden="true" />Online</span>
+          </div>
+          {!encerrado ? <Countdown dataISO={dataISO} className="legado-countdown" /> : null}
         </div>
       </div>
-      {!encerrado ? (
-        <div className="border-t border-border bg-background px-5 py-2 sm:px-8 lg:px-12">
-          <div className="mx-auto max-w-7xl lg:flex lg:items-center lg:justify-between">
-            <p className="hidden text-sm font-semibold text-foreground lg:block">Planejamento hoje. Continuidade para o futuro.</p>
-            <Countdown dataISO={dataISO} className="legado-countdown" />
-          </div>
-        </div>
-      ) : null}
     </section>
   );
 }
