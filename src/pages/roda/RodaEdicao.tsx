@@ -36,7 +36,7 @@ const RodaEdicao = () => {
     .map((s) => getEspecialista(s))
     .filter(Boolean);
   const relacionados = conteudos.filter((c) => c.edicaoRelacionada === slug);
-  const proxima = proximasEdicoes[0];
+   const proxima = proximasEdicoes.find((e) => e.slug !== edicao.slug);
   const path = `/roda-de-conversa/${edicao.slug}`;
 
   const jsonLd = {
@@ -46,7 +46,9 @@ const RodaEdicao = () => {
     description: edicao.resumo,
     startDate: edicao.dataISO ?? undefined,
     eventAttendanceMode: "https://schema.org/OnlineEventAttendanceMode",
-    eventStatus: "https://schema.org/EventScheduled",
+    eventStatus: edicao.status === "realizado" || edicao.status === "gravacao-disponivel"
+      ? "https://schema.org/EventCompleted"
+      : "https://schema.org/EventScheduled",
     location: {
       "@type": "VirtualLocation",
       name: edicao.plataforma ?? "Online",

@@ -19,14 +19,14 @@ export function RodaMobileCTA() {
             titulo: proximaEdicao
               ? `Próximo Encontro — ${proximaEdicao.tema}`
               : "Quero participar do próximo encontro",
-            descricao: "Com Dr. Leandro Jesuíno. Participação gratuita e online.",
+            descricao: "Participação online com a Dra. Maria Fiorini.",
             evento: "next_event_interest",
           })
         }
         className="h-12 w-full rounded-full bg-gold font-semibold text-gold-foreground shadow-card hover:bg-gold/90"
       >
         <Ticket className="w-5 h-5" />
-        Garantir minha vaga em 17/09
+        Garantir minha vaga em 01/10
       </Button>
     </div>
   );

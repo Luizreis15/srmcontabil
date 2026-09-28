@@ -11,7 +11,7 @@ import {
 } from "@/components/roda/RodaFormShell";
 import { trackEvent } from "@/lib/rodaAnalytics";
 import { baixarIcs } from "@/components/roda/calendario";
-import { getEdicao } from "@/data/roda/edicoes";
+import { formatarData, getEdicao } from "@/data/roda/edicoes";
 import { rodaConfig } from "@/data/roda/config";
 
 const schema = z.object({
@@ -128,7 +128,9 @@ export function FormInscricao({
   if (enviado) {
     const edicao = edicaoSlug ? getEdicao(edicaoSlug) : undefined;
     const compartilhar = () => {
-      const texto = `Vou participar da Roda de Conversa SMR sobre Escala 6x1, dia 17/09 às 16h. ${rodaConfig.siteUrl}/roda-de-conversa`;
+      const texto = edicao
+        ? `Vou participar da Roda de Conversa SMR sobre ${edicao.tema}, dia ${formatarData(edicao.dataISO)} às ${edicao.horario}. ${rodaConfig.siteUrl}/roda-de-conversa/${edicao.slug}`
+        : `Vou participar da Roda de Conversa SMR. ${rodaConfig.siteUrl}/roda-de-conversa`;
       window.open(`https://wa.me/?text=${encodeURIComponent(texto)}`, "_blank", "noopener");
     };
     return (
@@ -138,7 +140,7 @@ export function FormInscricao({
         </div>
         <h3 className="mt-5 text-2xl font-extrabold">Inscrição confirmada</h3>
         <p className="mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">
-          Você vai receber o link de acesso no e-mail e no WhatsApp cadastrados. Até dia 17, às 16h.
+          Você vai receber o link de acesso no e-mail e no WhatsApp cadastrados.{edicao ? ` Até ${formatarData(edicao.dataISO)}, às ${edicao.horario}.` : ""}
         </p>
         <div className="mt-6 flex flex-col gap-3 sm:flex-row">
           {edicao ? <Button type="button" variant="outline" onClick={() => baixarIcs(edicao)}><CalendarPlus />Adicionar à agenda</Button> : null}
@@ -211,7 +213,7 @@ export function FormInscricao({
       <div className={compacto ? "md:col-span-2" : undefined}>
         {erroEnvio ? <p className="mb-3 text-sm font-medium text-destructive" role="alert">{erroEnvio}</p> : null}
         <Button type="submit" className="w-full" disabled={enviando}>
-          {enviando ? <><Loader2 className="animate-spin" />Enviando inscrição...</> : "Garantir minha vaga em 17/09"}
+          {enviando ? <><Loader2 className="animate-spin" />Enviando inscrição...</> : "Garantir minha vaga"}
         </Button>
       </div>
     </form>

@@ -29,7 +29,7 @@ export function RodaHeader() {
       titulo: proximaEdicao
         ? `Próximo Encontro — ${proximaEdicao.tema}`
         : "Quero participar do próximo encontro",
-      descricao: "Com Dr. Leandro Jesuíno. Participação gratuita e online.",
+      descricao: "Participação online com a Dra. Maria Fiorini.",
       evento: "next_event_interest",
     });
   };
