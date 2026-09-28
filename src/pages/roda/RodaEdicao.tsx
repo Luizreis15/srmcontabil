@@ -60,7 +60,7 @@ const RodaEdicao = () => {
       name: "SMR Assessoria Contábil",
       url: rodaConfig.siteUrl,
     },
-    performer: convidados.map((c) => ({ "@type": "Person", name: c!.nome })),
+    performer: convidados.map((c) => ({ "@type": "Person", name: c?.nome })),
   };
 
   return (
