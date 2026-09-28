@@ -249,7 +249,8 @@ export const edicoes: Edicao[] = [
   },
 ];
 
-export const RODA_EVENTO_FIM_ISO = "2026-10-01T17:30:00-03:00";
+// Sem horário de término divulgado: o encontro passa ao acervo no dia seguinte.
+export const RODA_EVENTO_FIM_ISO = "2026-10-02T00:00:00-03:00";
 const edicaoAtualSlug = "da-empresa-ao-legado";
 
 export const rodaEventoEncerrado = (agora = Date.now()) =>

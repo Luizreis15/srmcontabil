@@ -8,8 +8,8 @@ import {
 
 const slug = "da-empresa-ao-legado";
 const anterior = "escala-6x1-reducao-jornada";
-const antesDoFim = new Date("2026-10-01T17:29:59-03:00").getTime();
-const depoisDoFim = new Date("2026-10-01T17:30:00-03:00").getTime();
+const antesDoFim = new Date("2026-10-01T23:59:59-03:00").getTime();
+const depoisDoFim = new Date("2026-10-02T00:00:00-03:00").getTime();
 
 describe("estado temporal da 5ª Roda de Conversa", () => {
   it("mantém a 5ª edição em destaque antes da transição", () => {

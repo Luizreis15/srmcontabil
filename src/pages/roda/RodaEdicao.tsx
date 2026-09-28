@@ -20,7 +20,7 @@ import {
   getEdicao,
   formatarData,
   rotuloStatus,
-  proximasEdicoes,
+  getProximaEdicao,
 } from "@/data/roda/edicoes";
 import { getEspecialista } from "@/data/roda/especialistas";
 import { conteudos } from "@/data/roda/conteudos";
@@ -37,7 +37,8 @@ const RodaEdicao = () => {
     .map((s) => getEspecialista(s))
     .filter(Boolean);
   const relacionados = conteudos.filter((c) => c.edicaoRelacionada === slug);
-   const proxima = proximasEdicoes.find((e) => e.slug !== edicao.slug);
+  const proximaEdicao = getProximaEdicao();
+  const proxima = proximaEdicao?.slug === edicao.slug ? null : proximaEdicao;
   const path = `/roda-de-conversa/${edicao.slug}`;
 
   const jsonLd = {
@@ -128,8 +129,8 @@ const RodaEdicao = () => {
         <section className="roda-section bg-sand pt-0 md:pt-0">
           <div className="max-w-5xl mx-auto pt-16">
             <SectionHeading
-              etiqueta="Principais aprendizados"
-              titulo="O que ficou desta conversa"
+              etiqueta={edicao.status === "inscricoes-abertas" ? "Na conversa" : "Principais aprendizados"}
+              titulo={edicao.status === "inscricoes-abertas" ? "O que vamos abordar" : "O que ficou desta conversa"}
               centralizado
             />
             <div className="mt-10 grid sm:grid-cols-2 gap-5">
@@ -176,7 +177,7 @@ const RodaEdicao = () => {
           <div className="max-w-4xl mx-auto">
             <SectionHeading
               etiqueta="Convidado"
-              titulo="Quem participou desta edição"
+              titulo={edicao.status === "inscricoes-abertas" ? "Quem participa desta edição" : "Quem participou desta edição"}
               className="mb-8"
             />
             <div className="grid gap-6">
@@ -211,7 +212,7 @@ const RodaEdicao = () => {
         </section>
       ) : null}
 
-      <section className="roda-section bg-navy text-white">
+      {edicao.status !== "inscricoes-abertas" ? <section className="roda-section bg-navy text-white">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-display text-2xl md:text-3xl font-extrabold">
             Sua opinião constrói os próximos encontros
@@ -235,7 +236,7 @@ const RodaEdicao = () => {
             Avaliar esta edição
           </Button>
         </div>
-      </section>
+      </section> : null}
 
       {relacionados.length > 0 ? (
         <section className="roda-section">
@@ -268,7 +269,7 @@ const RodaEdicao = () => {
             </p>
           </div>
           <Button asChild className="shrink-0">
-            <Link to="/roda-de-conversa#proximos">
+            <Link to={proxima ? "/roda-de-conversa#proxima-edicao" : "/roda-de-conversa#sugerir-tema"}>
               Ver próximos encontros
               <ArrowRight className="w-4 h-4 ml-2" />
             </Link>
