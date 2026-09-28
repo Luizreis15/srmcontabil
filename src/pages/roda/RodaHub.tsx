@@ -49,7 +49,7 @@ const RodaHub = () => {
         <h1 className="sr-only">Roda de Conversa SMR: Da Empresa ao Legado</h1>
         <div className="mx-auto flex max-w-7xl flex-col items-center px-0 md:px-8 md:pt-5">
           <img
-            src={convite.url}
+            src={imagem}
             alt="Convite da Roda de Conversa SMR: Da Empresa ao Legado, como proteger o patrimônio e preparar a sucessão familiar. Dra. Maria Fiorini e Sueli Rocha. 1º de outubro, às 16h, online."
             className="block h-auto w-full object-contain md:max-h-[min(72vh,700px)] md:w-auto"
             fetchPriority="high"
