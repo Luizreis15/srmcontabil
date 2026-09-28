@@ -23,7 +23,7 @@ export function RodaMobileCTA() {
             evento: "next_event_interest",
           })
         }
-        className="h-12 w-full rounded-full bg-gold font-semibold text-gold-foreground shadow-card hover:bg-gold/90"
+        className={`h-12 w-full font-semibold shadow-card ${proximaEdicao.slug === "da-empresa-ao-legado" ? "rounded-sm bg-primary text-primary-foreground hover:bg-primary/90" : "rounded-full bg-gold text-gold-foreground hover:bg-gold/90"}`}
       >
         <Ticket className="w-5 h-5" />
         Garantir minha vaga em 01/10
