@@ -12,11 +12,11 @@
 - [x] Atualizar SEO, arte social e validar em celular e desktop.
 - [x] Replicar o banner aprovado do Dr. Leandro na hero do celular.
 
-- [x] Destacar a 5ª Roda de Conversa “Da Empresa ao Legado” em 01/10/2026 com o convite original e inscrição.
+- [x] Destacar a 5ª Roda de Conversa “Da Empresa ao Legado” em 01/10/2026 com inscrição.
 - [x] Adicionar a Dra. Maria Fiorini à edição, atualizar as chamadas e preparar a transição para “Gravação em preparação”.
 - [x] Associar a gravação `oa141COxmD0` à 4ª edição e oferecer “Assistir gravação” no acervo.
-- [x] Validar o convite em celular e computador, inscrição e reprodução da gravação anterior.
+- [x] Validar a edição em celular e computador, inscrição e reprodução da gravação anterior.
 
 - [x] Substituir o convite colado na abertura por composição web original com dois retratos reais.
 - [x] Aplicar identidade azul e branco, Bebas Neue/Barlow e abordagem mobile-first na edição de 01/10.
-- [ ] Conferir visualmente celular e computador, inscrição e acesso à gravação anterior.
+- [x] Conferir visualmente celular e computador, inscrição e acesso à gravação anterior.

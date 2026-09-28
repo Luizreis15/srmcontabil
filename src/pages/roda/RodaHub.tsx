@@ -45,7 +45,7 @@ const RodaHub = () => {
 
       {edicao.dataISO ? <LegadoHero id="proxima-edicao" encerrado={encerrado} dataISO={edicao.dataISO} /> : null}
 
-      <section id="inscricao" className="scroll-mt-24 border-t border-border bg-background px-4 py-12 sm:px-5 md:px-8 md:py-16">
+      <section id="inscricao" className="scroll-mt-24 border-t border-border bg-background px-4 py-7 sm:px-5 md:px-8 md:py-16">
         <div className="mx-auto max-w-7xl grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
           <div>
             <span className="text-xs font-bold uppercase text-primary">5ª edição · 01 de outubro · online</span>
