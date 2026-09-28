@@ -42,7 +42,7 @@ export function LegadoHero({ encerrado, dataISO, id }: { encerrado: boolean; dat
         </div>
 
         <div className="relative h-[280px] overflow-hidden bg-secondary sm:h-[420px] lg:h-auto lg:min-h-[620px]">
-          <img src={maria} alt="Retrato da Dra. Maria Fiorini" className="h-full w-full object-cover object-[center_20%] lg:absolute lg:inset-0 lg:object-center" fetchPriority="high" />
+          <img src={maria} alt="Retrato da Dra. Maria Fiorini" className="h-full w-full object-cover object-top lg:absolute lg:inset-0" fetchPriority="high" />
           <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-28 bg-gradient-to-r from-navy-deep to-transparent lg:block" aria-hidden="true" />
         </div>
       </div>
