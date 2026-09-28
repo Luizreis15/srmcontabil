@@ -74,6 +74,7 @@ const RodaHub = () => {
               <div className="mt-6"><FormInscricao edicaoSlug={edicao.slug} onFechar={() => undefined} compacto /></div>
             </>
           )}
+          </div>
         </div>
       </section>
 
