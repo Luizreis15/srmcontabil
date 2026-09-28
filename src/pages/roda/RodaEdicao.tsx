@@ -69,7 +69,7 @@ const RodaEdicao = () => {
   };
 
   return (
-    <>
+    <div className={edicaoLegado ? "roda-legado-page" : undefined}>
       <Seo
         titulo={edicao.seoTitulo}
         descricao={edicao.seoDescricao}
@@ -288,7 +288,7 @@ const RodaEdicao = () => {
           />
         </div>
       </section>
-    </>
+    </div>
   );
 };
 

@@ -2,13 +2,12 @@ import { ArrowDown, CalendarDays, MonitorPlay } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Helmet } from "react-helmet-async";
 import { Countdown } from "@/components/roda/Countdown";
-import { rodaConfig } from "@/data/roda/config";
-import maria from "@/assets/roda-maria.jpg.asset.json";
-import sueli from "@/assets/roda-sueli.jpg.asset.json";
+import maria from "@/assets/roda-maria-limpa.png";
+import sueli from "@/assets/roda-sueli-limpa.png";
 
 const participantes = [
-  { nome: "Dra. Maria Fiorini", papel: "Advogada convidada", foto: maria.url },
-  { nome: "Sueli Rocha", papel: "Anfitriã · SMR Assessoria", foto: sueli.url },
+  { nome: "Dra. Maria Fiorini", papel: "Advogada convidada", foto: maria },
+  { nome: "Sueli Rocha", papel: "Anfitriã · SMR Assessoria", foto: sueli },
 ];
 
 export function LegadoHero({ encerrado, dataISO, id }: { encerrado: boolean; dataISO: string; id?: string }) {
@@ -56,7 +55,7 @@ export function LegadoHero({ encerrado, dataISO, id }: { encerrado: boolean; dat
               <figure key={pessoa.nome} className="min-w-0">
                 <div className="aspect-[0.84] overflow-hidden bg-secondary sm:aspect-[0.86] lg:aspect-[0.78]">
                   <img
-                    src={`${rodaConfig.siteUrl}${pessoa.foto}`}
+                    src={pessoa.foto}
                     alt={`Retrato de ${pessoa.nome}`}
                     className="h-full w-full object-cover object-center"
                     fetchPriority="high"
