@@ -1,5 +1,6 @@
 import { ArrowDown, CalendarDays, MonitorPlay } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Helmet } from "react-helmet-async";
 import { Countdown } from "@/components/roda/Countdown";
 import { rodaConfig } from "@/data/roda/config";
 import maria from "@/assets/roda-maria.jpg.asset.json";
@@ -13,6 +14,11 @@ const participantes = [
 export function LegadoHero({ encerrado, dataISO, id }: { encerrado: boolean; dataISO: string; id?: string }) {
   return (
     <section id={id} className="roda-legado scroll-mt-24 overflow-hidden bg-secondary text-foreground">
+      <Helmet>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet" />
+      </Helmet>
       <div className="mx-auto grid max-w-7xl lg:min-h-[620px] lg:grid-cols-[1fr_1fr]">
         <div className="flex flex-col justify-center px-5 pb-6 pt-8 sm:px-8 md:px-12 lg:py-16 xl:px-16">
           <div className="flex items-center gap-3 text-xs font-bold uppercase text-primary">
