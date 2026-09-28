@@ -19,7 +19,7 @@ export function VideoEdicao({ edicao, convidado, url }: VideoEdicaoProps) {
     return (
       <div className="rounded-3xl border border-dashed border-border bg-secondary/60 p-6 md:p-10">
         <div className="grid md:grid-cols-[minmax(0,320px)_1fr] gap-8 items-center">
-          {edicao.imagemCapa ? (
+          {edicao.imagemCapa && edicao.slug !== "da-empresa-ao-legado" ? (
             <img
               src={edicao.imagemCapa}
               alt={`Convite do encontro: ${edicao.tema}`}
@@ -28,10 +28,10 @@ export function VideoEdicao({ edicao, convidado, url }: VideoEdicaoProps) {
               className="w-full rounded-2xl shadow-card"
             />
           ) : null}
-          <div className={edicao.imagemCapa ? "text-left" : "text-center"}>
+          <div className={edicao.imagemCapa && edicao.slug !== "da-empresa-ao-legado" ? "text-left" : "text-center"}>
             <div
               className={`w-14 h-14 rounded-full bg-gold/15 flex items-center justify-center ${
-                edicao.imagemCapa ? "" : "mx-auto"
+                  edicao.imagemCapa && edicao.slug !== "da-empresa-ao-legado" ? "" : "mx-auto"
               }`}
             >
               <Play className="w-6 h-6 text-gold-ink" />

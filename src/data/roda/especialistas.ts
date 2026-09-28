@@ -1,6 +1,7 @@
 import type { Especialista } from "./types";
 import danielaFoto from "@/assets/daniela-marinho.webp";
 import leandroFoto from "@/assets/drleandro.jpg.asset.json";
+import mariaFoto from "@/assets/roda-maria-limpa.png";
 
 export const especialistas: Especialista[] = [
   {
@@ -85,7 +86,7 @@ export const especialistas: Especialista[] = [
   {
     nome: "Dra. Maria Fiorini",
     slug: "maria-fiorini",
-    foto: null,
+    foto: mariaFoto,
     cargo: "Advogada · convidada especial",
     empresa: "",
     minicurriculo: "Advogada convidada da Roda de Conversa SMR sobre proteção patrimonial e sucessão familiar.",

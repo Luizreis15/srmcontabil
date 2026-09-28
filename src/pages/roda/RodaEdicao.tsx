@@ -26,6 +26,7 @@ import { getEspecialista } from "@/data/roda/especialistas";
 import { conteudos } from "@/data/roda/conteudos";
 import { rodaConfig } from "@/data/roda/config";
 import { useRodaEventState } from "@/hooks/useRodaEventState";
+import { LegadoHero } from "@/components/roda/LegadoHero";
 
 const RodaEdicao = () => {
   const { slug = "" } = useParams();
@@ -42,6 +43,8 @@ const RodaEdicao = () => {
   const proximaEdicao = getProximaEdicao(agora);
   const proxima = proximaEdicao?.slug === edicao.slug ? null : proximaEdicao;
   const path = `/roda-de-conversa/${edicao.slug}`;
+  const edicaoLegado = edicao.slug === "da-empresa-ao-legado";
+  const eventoEncerrado = edicao.status === "realizado" || edicao.status === "gravacao-disponivel";
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -66,7 +69,7 @@ const RodaEdicao = () => {
   };
 
   return (
-    <>
+    <div className={edicaoLegado ? "roda-legado-page" : undefined}>
       <Seo
         titulo={edicao.seoTitulo}
         descricao={edicao.seoDescricao}
@@ -75,7 +78,7 @@ const RodaEdicao = () => {
         jsonLd={jsonLd}
       />
 
-      <section className="bg-navy-deep text-white px-5 md:px-8 py-14 md:py-20">
+      {edicaoLegado && edicao.dataISO ? <LegadoHero encerrado={eventoEncerrado} dataISO={edicao.dataISO} /> : <section className="bg-navy-deep text-white px-5 md:px-8 py-14 md:py-20">
         <div className="max-w-4xl mx-auto">
           <span className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-3 py-1 text-xs font-semibold text-gold">
             Roda de Conversa #
@@ -108,9 +111,9 @@ const RodaEdicao = () => {
             ) : null}
           </ul>
         </div>
-      </section>
+      </section>}
 
-    <section className="roda-section">
+    <section id={edicaoLegado ? "inscricao" : undefined} className={`roda-section scroll-mt-24 ${edicaoLegado ? "roda-legado-page bg-background" : ""}`}>
         <div className="max-w-4xl mx-auto">
           {edicao.status === "inscricoes-abertas" ? (
             <>
@@ -184,7 +187,7 @@ const RodaEdicao = () => {
             />
             <div className="grid gap-6">
               {convidados.map((c) => (
-                <EspecialistaCard key={c!.slug} especialista={c!} />
+                c ? <EspecialistaCard key={c.slug} especialista={c} /> : null
               ))}
             </div>
           </div>
@@ -285,7 +288,7 @@ const RodaEdicao = () => {
           />
         </div>
       </section>
-    </>
+    </div>
   );
 };
 

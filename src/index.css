@@ -292,6 +292,81 @@
     letter-spacing: -0.02em;
     color: inherit;
   }
+
+  /* Identidade editorial exclusiva da edição Da Empresa ao Legado. */
+  .roda-legado-page,
+  .roda-legado {
+    --primary: 207 92% 38%;
+    --primary-foreground: 0 0% 100%;
+    --foreground: 215 78% 13%;
+    --secondary: 210 60% 97%;
+    --secondary-foreground: 215 78% 13%;
+    --muted-foreground: 214 25% 32%;
+    --border: 210 36% 84%;
+    --navy-deep: 215 78% 13%;
+    --navy: 215 78% 13%;
+    --gold: 207 92% 38%;
+    --gold-ink: 207 92% 38%;
+    --gold-foreground: 0 0% 100%;
+    --sand: 210 60% 97%;
+    --cream: 210 60% 97%;
+    font-family: 'Barlow', sans-serif;
+  }
+
+  .roda-legado h1,
+  .roda-legado-page h2,
+  .roda-legado-page h3 {
+    font-family: 'Bebas Neue', Impact, sans-serif;
+    font-weight: 400;
+    letter-spacing: 0;
+  }
+
+  .roda-legado-page h3 {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700;
+  }
+
+  .roda-legado .legado-countdown {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .roda-legado .legado-countdown > p {
+    margin: 0;
+    color: hsl(var(--primary));
+  }
+
+  .roda-legado .legado-countdown > div {
+    gap: 0.5rem;
+  }
+
+  .roda-legado .legado-countdown > div > div {
+    min-width: 0;
+    padding: 0.35rem 0.75rem;
+    border-radius: 0;
+    border-color: hsl(var(--border));
+    background: hsl(var(--secondary));
+  }
+
+  .roda-legado .legado-countdown span {
+    color: hsl(var(--foreground));
+  }
+
+  @media (max-width: 639px) {
+    .roda-legado .legado-countdown {
+      gap: 0.5rem;
+    }
+
+    .roda-legado .legado-countdown > div {
+      flex: 1;
+      max-width: none;
+    }
+
+    .roda-legado .legado-countdown > div > div {
+      padding-inline: 0.25rem;
+    }
+  }
 }
 
 @layer utilities {
