@@ -19,15 +19,15 @@ export function LegadoHero({ encerrado, dataISO, id }: { encerrado: boolean; dat
             5ª Roda de Conversa SMR
           </div>
           <h1 className="mt-4 text-[clamp(3.75rem,11vw,5.5rem)] leading-[0.82] text-accent-foreground lg:text-[clamp(5rem,7vw,7.25rem)]">
-            Da Empresa<br /><span className="text-legado-highlight">ao Legado</span>
+            Da Empresa<br /><span className="text-accent-foreground">ao Legado</span>
           </h1>
           <p className="mt-4 max-w-lg text-base font-medium leading-snug text-accent-foreground/85 sm:text-lg lg:text-xl">
             Como proteger o patrimônio e preparar a sucessão familiar.
           </p>
 
           <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 border-t border-accent-foreground/25 pt-3 text-sm font-semibold sm:text-base lg:mt-8 lg:pt-6">
-            <span className="inline-flex items-center gap-2"><CalendarDays className="h-4 w-4 text-legado-highlight" aria-hidden="true" />01 de outubro · 16h</span>
-            <span className="inline-flex items-center gap-2"><MonitorPlay className="h-4 w-4 text-legado-highlight" aria-hidden="true" />Online</span>
+            <span className="inline-flex items-center gap-2"><CalendarDays className="h-4 w-4 text-accent-foreground" aria-hidden="true" />01 de outubro · 16h</span>
+            <span className="inline-flex items-center gap-2"><MonitorPlay className="h-4 w-4 text-accent-foreground" aria-hidden="true" />Online</span>
           </div>
 
           <p className="mt-5 text-lg font-bold text-accent-foreground sm:text-xl">Dra. Maria Fiorini <span className="block text-sm font-medium text-accent-foreground/75">Advogada convidada</span></p>

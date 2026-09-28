@@ -17,6 +17,7 @@
 - [x] Associar a gravação `oa141COxmD0` à 4ª edição e oferecer “Assistir gravação” no acervo.
 - [x] Validar a edição em celular e computador, inscrição e reprodução da gravação anterior.
 
-- [x] Substituir o convite colado na abertura por composição web original com dois retratos reais.
+- [x] Substituir o convite colado na abertura por composição web original com o retrato da Dra. Maria.
 - [x] Aplicar identidade azul e branco, Bebas Neue/Barlow e abordagem mobile-first na edição de 01/10.
 - [x] Conferir visualmente celular e computador, inscrição e acesso à gravação anterior.
+- [ ] Destacar somente a Dra. Maria na abertura compartilhada, seguindo a composição da 4ª edição, e conferir a inscrição no celular e computador.
