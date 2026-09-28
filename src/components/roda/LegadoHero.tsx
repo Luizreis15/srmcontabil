@@ -57,7 +57,7 @@ export function LegadoHero({ encerrado, dataISO, id }: { encerrado: boolean; dat
                   <img
                     src={pessoa.foto}
                     alt={`Retrato de ${pessoa.nome}`}
-                    className="h-full w-full object-cover object-center"
+                    className="h-full w-full object-cover object-top"
                     fetchPriority="high"
                   />
                 </div>

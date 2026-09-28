@@ -1,6 +1,5 @@
 import type { Edicao } from "./types";
-import convite from "@/assets/roda-empresa-legado-convite.jpg.asset.json";
-import { rodaConfig } from "./config";
+import retratos from "@/assets/roda-legado-retratos-limpos.png";
 
 
 export const edicoes: Edicao[] = [
@@ -228,7 +227,7 @@ export const edicoes: Edicao[] = [
     plataforma: "Transmissão online",
     status: "inscricoes-abertas",
     participantes: null,
-    imagemCapa: `${rodaConfig.siteUrl}${convite.url}`,
+    imagemCapa: retratos,
     thumbnail: null,
     youtubeId: "",
     statusVideo: "em-preparacao",
