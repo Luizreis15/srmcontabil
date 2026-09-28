@@ -63,7 +63,7 @@ export function RodaLayout({ children }: { children: ReactNode }) {
 
   return (
     <FormularioProvider>
-      <div className="roda-theme flex flex-col min-h-screen bg-background text-foreground font-display">
+      <div className={`roda-theme flex flex-col min-h-screen bg-background text-foreground font-display ${pathname === "/roda-de-conversa" || pathname === "/roda-de-conversa/da-empresa-ao-legado" ? "roda-legado-page" : ""}`}>
         <BarraAviso />
         <RodaHeader />
         <main className="flex-1">{children}</main>
