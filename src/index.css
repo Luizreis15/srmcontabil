@@ -490,20 +490,20 @@
 
   @media (min-width: 768px) {
     .roda-legado .legado-hero-stage {
-      min-height: 570px;
+      height: 620px;
       grid-template-columns: 51% 49%;
       grid-template-rows: 1fr auto auto;
     }
     .roda-legado .legado-hero-copy {
       grid-column: 1;
       grid-row: 1;
-      align-self: end;
-      padding: 54px 5vw 16px max(32px, calc((100vw - 1210px) / 2));
+      align-self: center;
+      padding: 28px 5vw 16px max(32px, calc((100vw - 1210px) / 2));
     }
     .roda-legado .legado-edition { margin-bottom: 30px; }
     .roda-legado .legado-headline { font-size: clamp(3rem, 3.9vw, 4.75rem); }
     .roda-legado .legado-subheadline { margin-top: 24px; font-size: 18px; }
-    .roda-legado .legado-portrait { grid-column: 2; grid-row: 1 / 4; height: 100%; min-height: 570px; }
+    .roda-legado .legado-portrait { grid-column: 2; grid-row: 1 / 4; height: 620px; }
     .roda-legado .legado-portrait img { object-position: center top; }
     .roda-legado .legado-portrait::after { background: linear-gradient(90deg, hsl(var(--navy-deep) / .8), transparent 25%), linear-gradient(0deg, hsl(var(--navy-deep) / .22), transparent 30%); }
     .roda-legado .legado-portrait-shard { clip-path: polygon(0 0, 15% 0, 0 55%); }
