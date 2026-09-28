@@ -34,7 +34,6 @@ const RodaHub = () => {
     location: { "@type": "VirtualLocation", url: `${rodaConfig.siteUrl}${path}` },
     organizer: { "@type": "Organization", name: "SMR Assessoria", url: rodaConfig.siteUrl },
     performer: { "@type": "Person", name: "Dra. Maria Fiorini" },
-    image: [imagem],
   };
 
   return (
