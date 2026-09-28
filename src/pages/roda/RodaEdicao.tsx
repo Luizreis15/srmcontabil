@@ -25,10 +25,12 @@ import {
 import { getEspecialista } from "@/data/roda/especialistas";
 import { conteudos } from "@/data/roda/conteudos";
 import { rodaConfig } from "@/data/roda/config";
+import { useRodaEventState } from "@/hooks/useRodaEventState";
 
 const RodaEdicao = () => {
   const { slug = "" } = useParams();
-  const edicao = getEdicao(slug);
+  const { agora } = useRodaEventState();
+  const edicao = getEdicao(slug, agora);
   const { abrirFormulario } = useFormularioModal();
 
   if (!edicao) return <Navigate to="/roda-de-conversa/edicoes" replace />;
@@ -37,7 +39,7 @@ const RodaEdicao = () => {
     .map((s) => getEspecialista(s))
     .filter(Boolean);
   const relacionados = conteudos.filter((c) => c.edicaoRelacionada === slug);
-  const proximaEdicao = getProximaEdicao();
+  const proximaEdicao = getProximaEdicao(agora);
   const proxima = proximaEdicao?.slug === edicao.slug ? null : proximaEdicao;
   const path = `/roda-de-conversa/${edicao.slug}`;
 

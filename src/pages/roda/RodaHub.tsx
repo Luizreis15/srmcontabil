@@ -51,7 +51,7 @@ const RodaHub = () => {
           <img
             src={imagem}
             alt="Convite da Roda de Conversa SMR: Da Empresa ao Legado, como proteger o patrimônio e preparar a sucessão familiar. Dra. Maria Fiorini e Sueli Rocha. 1º de outubro, às 16h, online."
-            className="block h-auto w-full object-contain md:max-h-[min(72vh,700px)] md:w-auto"
+            className="block h-auto w-full object-contain md:max-h-[min(85vh,850px)] md:w-auto"
             fetchPriority="high"
           />
           {!encerrado && edicao.dataISO ? (
