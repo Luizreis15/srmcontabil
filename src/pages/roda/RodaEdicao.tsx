@@ -11,6 +11,7 @@ import { Seo } from "@/components/roda/Seo";
 import { Reveal } from "@/components/roda/Reveal";
 import { SectionHeading } from "@/components/roda/SectionHeading";
 import { VideoEdicao } from "@/components/roda/VideoEdicao";
+import { FormInscricao } from "@/components/roda/FormInscricao";
 import { EspecialistaCard } from "@/components/roda/EspecialistaCard";
 import { ConteudoCard } from "@/components/roda/ConteudoCard";
 import { ShareButtons } from "@/components/roda/ShareButtons";
@@ -19,15 +20,17 @@ import {
   getEdicao,
   formatarData,
   rotuloStatus,
-  proximasEdicoes,
+  getProximaEdicao,
 } from "@/data/roda/edicoes";
 import { getEspecialista } from "@/data/roda/especialistas";
 import { conteudos } from "@/data/roda/conteudos";
 import { rodaConfig } from "@/data/roda/config";
+import { useRodaEventState } from "@/hooks/useRodaEventState";
 
 const RodaEdicao = () => {
   const { slug = "" } = useParams();
-  const edicao = getEdicao(slug);
+  const { agora } = useRodaEventState();
+  const edicao = getEdicao(slug, agora);
   const { abrirFormulario } = useFormularioModal();
 
   if (!edicao) return <Navigate to="/roda-de-conversa/edicoes" replace />;
@@ -36,7 +39,8 @@ const RodaEdicao = () => {
     .map((s) => getEspecialista(s))
     .filter(Boolean);
   const relacionados = conteudos.filter((c) => c.edicaoRelacionada === slug);
-  const proxima = proximasEdicoes[0];
+  const proximaEdicao = getProximaEdicao(agora);
+  const proxima = proximaEdicao?.slug === edicao.slug ? null : proximaEdicao;
   const path = `/roda-de-conversa/${edicao.slug}`;
 
   const jsonLd = {
@@ -46,7 +50,9 @@ const RodaEdicao = () => {
     description: edicao.resumo,
     startDate: edicao.dataISO ?? undefined,
     eventAttendanceMode: "https://schema.org/OnlineEventAttendanceMode",
-    eventStatus: "https://schema.org/EventScheduled",
+    eventStatus: edicao.status === "realizado" || edicao.status === "gravacao-disponivel"
+      ? "https://schema.org/EventCompleted"
+      : "https://schema.org/EventScheduled",
     location: {
       "@type": "VirtualLocation",
       name: edicao.plataforma ?? "Online",
@@ -56,7 +62,7 @@ const RodaEdicao = () => {
       name: "SMR Assessoria Contábil",
       url: rodaConfig.siteUrl,
     },
-    performer: convidados.map((c) => ({ "@type": "Person", name: c!.nome })),
+    performer: convidados.map((c) => ({ "@type": "Person", name: c?.nome })),
   };
 
   return (
@@ -104,13 +110,20 @@ const RodaEdicao = () => {
         </div>
       </section>
 
-      <section className="roda-section">
+    <section className="roda-section">
         <div className="max-w-4xl mx-auto">
-          <VideoEdicao
-            edicao={edicao}
-            convidado={convidados[0]?.nome}
-            url={path}
-          />
+          {edicao.status === "inscricoes-abertas" ? (
+            <>
+              <SectionHeading etiqueta="Participe" titulo="Inscreva-se para esta conversa" />
+              <div className="mt-8"><FormInscricao edicaoSlug={edicao.slug} onFechar={() => undefined} compacto /></div>
+            </>
+          ) : (
+            <VideoEdicao
+              edicao={edicao}
+              convidado={convidados[0]?.nome}
+              url={path}
+            />
+          )}
         </div>
       </section>
 
@@ -118,8 +131,8 @@ const RodaEdicao = () => {
         <section className="roda-section bg-sand pt-0 md:pt-0">
           <div className="max-w-5xl mx-auto pt-16">
             <SectionHeading
-              etiqueta="Principais aprendizados"
-              titulo="O que ficou desta conversa"
+              etiqueta={edicao.status === "inscricoes-abertas" ? "Na conversa" : "Principais aprendizados"}
+              titulo={edicao.status === "inscricoes-abertas" ? "O que vamos abordar" : "O que ficou desta conversa"}
               centralizado
             />
             <div className="mt-10 grid sm:grid-cols-2 gap-5">
@@ -166,7 +179,7 @@ const RodaEdicao = () => {
           <div className="max-w-4xl mx-auto">
             <SectionHeading
               etiqueta="Convidado"
-              titulo="Quem participou desta edição"
+              titulo={edicao.status === "inscricoes-abertas" ? "Quem participa desta edição" : "Quem participou desta edição"}
               className="mb-8"
             />
             <div className="grid gap-6">
@@ -201,7 +214,7 @@ const RodaEdicao = () => {
         </section>
       ) : null}
 
-      <section className="roda-section bg-navy text-white">
+      {edicao.status !== "inscricoes-abertas" ? <section className="roda-section bg-navy text-white">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-display text-2xl md:text-3xl font-extrabold">
             Sua opinião constrói os próximos encontros
@@ -225,7 +238,7 @@ const RodaEdicao = () => {
             Avaliar esta edição
           </Button>
         </div>
-      </section>
+      </section> : null}
 
       {relacionados.length > 0 ? (
         <section className="roda-section">
@@ -258,7 +271,7 @@ const RodaEdicao = () => {
             </p>
           </div>
           <Button asChild className="shrink-0">
-            <Link to="/roda-de-conversa#proximos">
+            <Link to={proxima ? "/roda-de-conversa#proxima-edicao" : "/roda-de-conversa#sugerir-tema"}>
               Ver próximos encontros
               <ArrowRight className="w-4 h-4 ml-2" />
             </Link>

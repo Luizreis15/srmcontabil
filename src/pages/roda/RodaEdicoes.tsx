@@ -4,11 +4,13 @@ import { SectionHeading } from "@/components/roda/SectionHeading";
 import { EdicaoCard } from "@/components/roda/EdicaoCard";
 import { Button } from "@/components/ui/button";
 import { Lightbulb } from "lucide-react";
-import { edicoesRealizadas, proximasEdicoes } from "@/data/roda/edicoes";
+import { useRodaEventState } from "@/hooks/useRodaEventState";
 import { useFormularioModal } from "@/components/roda/FormularioProvider";
 
 const RodaEdicoes = () => {
   const { abrirFormulario } = useFormularioModal();
+  const { edicoesRealizadas, proximaEdicao } = useRodaEventState();
+  const proximasEdicoes = proximaEdicao ? [proximaEdicao] : [];
 
   return (
     <>

@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Megaphone, X } from "lucide-react";
 import { useFormularioModal } from "@/components/roda/FormularioProvider";
 import { useRodaEventState } from "@/hooks/useRodaEventState";
+import { formatarData } from "@/data/roda/edicoes";
+import { getEspecialista } from "@/data/roda/especialistas";
 
 export function BarraAviso() {
   const [visivel, setVisivel] = useState(true);
@@ -28,7 +30,7 @@ export function BarraAviso() {
         <Megaphone className="w-4 h-4 text-gold shrink-0" aria-hidden />
         <p className="flex flex-1 items-center justify-between gap-3 leading-snug">
           <span>
-            <span>Próxima edição: 17 de setembro, 16h · Dr. Leandro Jesuíno — Escala 6x1: quem se preparar antes paga menos.</span>
+            <span>Próxima edição: {formatarData(edicao.dataISO)}, {edicao.horario} · {getEspecialista(edicao.convidados[0])?.nome} — {edicao.tema}.</span>
           </span>
           <button
             onClick={() =>
@@ -36,7 +38,7 @@ export function BarraAviso() {
                 tipo: "inscricao",
                 edicaoSlug: edicao.slug,
                 titulo: `Próximo Encontro — ${edicao.tema}`,
-                descricao: "Com Dr. Leandro Jesuíno. Participação gratuita e online.",
+                descricao: "Participação online com a Dra. Maria Fiorini.",
                 evento: "next_event_interest",
               })
             }

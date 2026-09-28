@@ -28,7 +28,7 @@ export function EspecialistaCard({ especialista }: { especialista: Especialista 
           {especialista.nome}
         </h3>
         <p className="text-sm text-gold-ink font-semibold">
-          {especialista.cargo} · {especialista.empresa}
+          {especialista.cargo}{especialista.empresa ? ` · ${especialista.empresa}` : ""}
         </p>
         <p className="mt-3 text-sm text-muted-foreground line-clamp-4">
           {especialista.minicurriculo}
@@ -40,7 +40,7 @@ export function EspecialistaCard({ especialista }: { especialista: Especialista 
           }
           className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-gold-ink transition-colors"
         >
-          Conhecer a especialista
+          Conhecer {especialista.nome.startsWith("Dr.") && !especialista.nome.startsWith("Dra.") ? "o especialista" : "a especialista"}
           <ArrowRight className="roda-arrow w-4 h-4" />
         </Link>
       </div>
