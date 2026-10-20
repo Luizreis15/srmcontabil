@@ -35,7 +35,7 @@ const RodaHub = () => {
 
   return (
     <div className="roda-legado-page">
-      <Seo titulo={edicao.seoTitulo} descricao={edicao.seoDescricao} path={path} jsonLd={jsonLd} />
+      <Seo titulo={edicao.seoTitulo} descricao={edicao.seoDescricao} path={path} jsonLd={jsonLd} imagem={edicao.slug === "fim-escala-6x1-na-pratica" ? `${rodaConfig.siteUrl}/og/roda-fim-escala-6x1.jpg` : undefined} />
 
       {edicao.dataISO ? <EscalaPraticaHero id="proxima-edicao" encerrado={encerrado} dataISO={edicao.dataISO} /> : null}
 

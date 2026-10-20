@@ -74,7 +74,7 @@ const RodaEdicao = () => {
   if (edicaoEscala) {
     return (
       <div className="roda-legado-page">
-        <Seo titulo={edicao.seoTitulo} descricao={edicao.seoDescricao} path={path} tipo="article" jsonLd={jsonLd} />
+        <Seo titulo={edicao.seoTitulo} descricao={edicao.seoDescricao} path={path} tipo="article" jsonLd={jsonLd} imagem={edicao.slug === "fim-escala-6x1-na-pratica" ? `${rodaConfig.siteUrl}/og/roda-fim-escala-6x1.jpg` : undefined} />
         {edicao.dataISO ? <EscalaPraticaHero encerrado={eventoEncerrado} dataISO={edicao.dataISO} /> : null}
         <EscalaPraticaConteudo encerrado={eventoEncerrado} />
         <section className="roda-section pt-0">
