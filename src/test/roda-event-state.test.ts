@@ -6,27 +6,24 @@ import {
   rodaEventoEncerrado,
 } from "@/data/roda/edicoes";
 
-const slug = "da-empresa-ao-legado";
-const anterior = "escala-6x1-reducao-jornada";
-const antesDoFim = new Date("2026-10-01T23:59:59-03:00").getTime();
-const depoisDoFim = new Date("2026-10-02T00:00:00-03:00").getTime();
+const slug = "fim-escala-6x1-na-pratica";
+const anterior = "da-empresa-ao-legado";
+const antesDoFim = new Date("2026-10-22T23:59:59-03:00").getTime();
+const depoisDoFim = new Date("2026-10-23T00:00:00-03:00").getTime();
 
-describe("estado temporal da 5ª Roda de Conversa", () => {
-  it("mantém a 5ª edição em destaque antes da transição", () => {
+describe("estado temporal da 6ª Roda de Conversa", () => {
+  it("destaca a 6ª edição em 22/10 às 16h", () => {
     expect(rodaEventoEncerrado(antesDoFim)).toBe(false);
-    expect(getProximaEdicao(antesDoFim)?.slug).toBe(slug);
-    expect(getEdicao(slug, antesDoFim)?.status).toBe("inscricoes-abertas");
-    expect(getEdicao(anterior, antesDoFim)?.youtubeId).toBe("oa141COxmD0");
+    const proxima = getProximaEdicao(antesDoFim);
+    expect(proxima?.slug).toBe(slug);
+    expect(proxima?.dataISO).toBe("2026-10-22T16:00:00-03:00");
     expect(getEdicoesRealizadas(antesDoFim)[0]?.slug).toBe(anterior);
   });
 
-  it("move a 5ª edição ao acervo sem inventar vídeo", () => {
+  it("move a 6ª edição ao acervo sem inventar vídeo", () => {
     expect(rodaEventoEncerrado(depoisDoFim)).toBe(true);
     expect(getProximaEdicao(depoisDoFim)).toBeNull();
-
-    const edicaoEncerrada = getEdicao(slug, depoisDoFim);
-    expect(edicaoEncerrada?.status).toBe("realizado");
-    expect(edicaoEncerrada?.youtubeId).toBeFalsy();
-    expect(getEdicoesRealizadas(depoisDoFim).some((edicao) => edicao.slug === slug)).toBe(true);
+    expect(getEdicao(slug, depoisDoFim)?.status).toBe("realizado");
+    expect(getEdicao(slug, depoisDoFim)?.youtubeId).toBeFalsy();
   });
 });

@@ -20,7 +20,7 @@ export function EdicaoCard({ edicao }: { edicao: Edicao }) {
             alt={`Capa da edição ${edicao.tema}`}
             loading="lazy"
             decoding="async"
-            className={`roda-zoom w-full h-full ${edicao.slug === "da-empresa-ao-legado" ? "object-contain" : "object-cover"}`}
+            className={`roda-zoom w-full h-full ${["da-empresa-ao-legado", "fim-escala-6x1-na-pratica"].includes(edicao.slug) ? "object-contain" : "object-cover"}`}
           />
         ) : (
           <div className="w-full h-full flex flex-col items-center justify-center text-white/80 px-6 text-center">

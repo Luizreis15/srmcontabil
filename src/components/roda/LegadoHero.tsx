@@ -25,7 +25,7 @@ export function LegadoHero({ encerrado, dataISO, id }: { encerrado: boolean; dat
           <span className="legado-portrait-edge" aria-hidden="true" />
         </div>
 
-        <div className="legado-action">
+        <div className="legado-action" data-hero-action>
           {!encerrado ? (
             <Button asChild size="lg" className="legado-hero-button group h-12 w-full justify-between rounded-sm px-6 text-sm font-bold text-primary-foreground sm:w-fit sm:min-w-[265px]">
               <a href="#inscricao">Garantir minha vaga <ArrowDown className="transition-transform group-hover:translate-y-1" aria-hidden="true" /></a>
