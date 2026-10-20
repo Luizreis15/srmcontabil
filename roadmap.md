@@ -24,3 +24,5 @@
 
 - [x] Recriar a abertura da 5ª edição com transparências azuis, Syne/Plus Jakarta Sans e ordem mobile: título, tema, retrato, inscrição e detalhes.
 - [x] Conferir a nova abertura e a inscrição em celular pequeno, celular padrão e computador.
+- [x] 6ª Roda (22/10, 16h, Dr. Giuliano Di Ramo): abertura premium, conteúdo, formulário, FAQ; 5ª edição no acervo.
+- [ ] Link do YouTube da 5ª edição "Da Empresa ao Legado" — aguardando o cliente.
