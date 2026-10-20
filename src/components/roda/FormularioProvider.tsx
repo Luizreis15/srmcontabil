@@ -46,7 +46,7 @@ export function FormularioProvider({ children }: { children: ReactNode }) {
     <FormContext.Provider value={{ abrirFormulario }}>
       {children}
       <Dialog open={aberto} onOpenChange={setAberto}>
-        <DialogContent className={`max-w-lg p-0 gap-0 overflow-y-auto max-h-[90vh] ${args?.edicaoSlug === "da-empresa-ao-legado" ? "roda-legado-page" : ""}`}>
+        <DialogContent className={`max-w-lg p-0 gap-0 overflow-y-auto max-h-[90vh] ${["da-empresa-ao-legado", "fim-escala-6x1-na-pratica"].includes(args?.edicaoSlug ?? "") ? "roda-legado-page" : ""}`}>
           <DialogHeader className="px-6 pt-6 pb-4 text-left">
             <DialogTitle className="font-display text-xl">
               {args?.titulo ?? "Formulário"}

@@ -2,6 +2,7 @@ import type { Especialista } from "./types";
 import danielaFoto from "@/assets/daniela-marinho.webp";
 import leandroFoto from "@/assets/drleandro.jpg.asset.json";
 import mariaFoto from "@/assets/roda-maria-limpa.png";
+import giulianoFoto from "@/assets/roda-giuliano.png";
 
 export const especialistas: Especialista[] = [
   {
@@ -103,6 +104,36 @@ export const especialistas: Especialista[] = [
     edicoes: ["da-empresa-ao-legado"],
     seoTitulo: "Dra. Maria Fiorini | Roda de Conversa SMR",
     seoDescricao: "Dra. Maria Fiorini, advogada convidada da Roda de Conversa SMR sobre patrimônio e sucessão familiar.",
+  },
+  {
+    nome: "Dr. Giuliano Tovo Di Ramo",
+    slug: "giuliano-di-ramo",
+    foto: giulianoFoto,
+    cargo: "Advogado · OAB/SP nº 444.024",
+    empresa: "Marinho Advogados Associados",
+    minicurriculo: "Advogado e sócio do escritório Marinho Advogados Associados, onde é Controller Jurídico e responsável pela área de Direito do Trabalho e Previdenciário. Atua em Direito do Trabalho Empresarial nos âmbitos consultivo, administrativo e judicial. Professor universitário e coautor do livro “Descomplicando o Direito para Empreendedores”.",
+    formacao: [
+      "Graduado em Direito pelo UNIVEM — Centro Universitário Eurípides de Marília",
+      "Pós-graduado em Direito e Processo do Trabalho (Complexo Damásio Educacional)",
+      "Pós-graduado em Acidente do Trabalho e Doenças Profissionais (Faculdade Legale)",
+      "Pós-graduando em Advocacia Consultiva (Faculdade Legale)",
+      "Mestrando em Direito pela UNIMAR — Universidade de Marília",
+    ],
+    experiencia: [
+      "Sócio e Controller Jurídico da Marinho Advogados Associados",
+      "Professor universitário de Direito Processual do Trabalho e Direito do Trabalho e Previdenciário",
+    ],
+    areasAtuacao: ["Direito do Trabalho Empresarial", "Direito Previdenciário"],
+    temas: ["Escala 6x1", "Jornada de trabalho"],
+    autorizadoPublicarContatos: false,
+    email: "",
+    whatsapp: "",
+    site: "",
+    linkedin: "",
+    instagram: "",
+    edicoes: ["fim-escala-6x1-na-pratica"],
+    seoTitulo: "Dr. Giuliano Tovo Di Ramo | Roda de Conversa SMR",
+    seoDescricao: "Dr. Giuliano Tovo Di Ramo, advogado trabalhista empresarial, convidado da Roda de Conversa SMR sobre o fim da escala 6x1.",
   },
 ];
 

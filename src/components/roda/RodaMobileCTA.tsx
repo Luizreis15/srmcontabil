@@ -10,7 +10,7 @@ export function RodaMobileCTA() {
   const [heroActionVisible, setHeroActionVisible] = useState(false);
 
   useEffect(() => {
-    const action = document.querySelector(".roda-legado .legado-action");
+    const action = document.querySelector("[data-hero-action]");
     if (!action) {
       setHeroActionVisible(false);
       return;
@@ -34,14 +34,14 @@ export function RodaMobileCTA() {
             titulo: proximaEdicao
               ? `Próximo Encontro — ${proximaEdicao.tema}`
               : "Quero participar do próximo encontro",
-            descricao: "Participação online com a Dra. Maria Fiorini.",
+            descricao: "Participação gratuita e online.",
             evento: "next_event_interest",
           })
         }
-        className={`h-12 w-full font-semibold shadow-card ${proximaEdicao.slug === "da-empresa-ao-legado" ? "rounded-sm bg-primary text-primary-foreground hover:bg-primary/90" : "rounded-full bg-gold text-gold-foreground hover:bg-gold/90"}`}
+        className={`h-12 w-full font-semibold shadow-card ${["da-empresa-ao-legado", "fim-escala-6x1-na-pratica"].includes(proximaEdicao.slug) ? "rounded-sm bg-primary text-primary-foreground hover:bg-primary/90" : "rounded-full bg-gold text-gold-foreground hover:bg-gold/90"}`}
       >
         <Ticket className="w-5 h-5" />
-        Garantir minha vaga em 01/10
+        Garantir minha vaga
       </Button>
     </div>
   );

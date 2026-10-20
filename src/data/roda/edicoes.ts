@@ -1,5 +1,6 @@
 import type { Edicao } from "./types";
 import retratos from "@/assets/roda-legado-retratos-limpos.png";
+import giuliano from "@/assets/roda-giuliano.png";
 
 
 export const edicoes: Edicao[] = [
@@ -225,7 +226,7 @@ export const edicoes: Edicao[] = [
     horario: "16h",
     formato: "Online",
     plataforma: "Transmissão online",
-    status: "inscricoes-abertas",
+    status: "realizado",
     participantes: null,
     imagemCapa: retratos,
     thumbnail: null,
@@ -244,14 +245,53 @@ export const edicoes: Edicao[] = [
     categoria: "Patrimônio e sucessão",
     tags: ["Proteção patrimonial", "Sucessão familiar"],
     seoTitulo: "Da Empresa ao Legado | 5ª Roda de Conversa SMR",
-    seoDescricao: "1º de outubro, às 16h, online: converse com a Dra. Maria Fiorini e Sueli Rocha sobre proteção patrimonial e sucessão familiar.",
+    seoDescricao: "Roda de Conversa SMR com a Dra. Maria Fiorini e Sueli Rocha sobre proteção patrimonial e sucessão familiar.",
+    publicadoEm: "2026-10-01",
+  },
+  {
+    titulo: "O Fim da Escala 6x1 na Prática: o que muda, quais impactos e como se preparar?",
+    slug: "fim-escala-6x1-na-pratica",
+    numero: 6,
+    tema: "O Fim da Escala 6x1 na Prática",
+    resumo: "O que muda na rotina, quais impactos chegam à folha e à operação e como preparar a sua empresa com antecedência.",
+    descricao: "Roda de Conversa SMR com o Dr. Giuliano Tovo Di Ramo, advogado da área de Direito do Trabalho Empresarial. Uma conversa prática sobre o fim da escala 6x1: o que muda, quais impactos e como se preparar.",
+    dataISO: "2026-10-22T16:00:00-03:00",
+    horario: "16h",
+    formato: "Online",
+    plataforma: "Transmissão online",
+    status: "inscricoes-abertas",
+    participantes: null,
+    imagemCapa: giuliano,
+    thumbnail: null,
+    youtubeId: "",
+    statusVideo: "em-preparacao",
+    linkInscricao: "",
+    typeformAvaliacao: "",
+    aprendizados: [
+      { titulo: "O que muda", descricao: "Jornada, folgas e escalas: o que a mudança representa na rotina da empresa." },
+      { titulo: "Quais impactos", descricao: "Efeitos sobre folha, custos, contratos e cobertura da operação." },
+      { titulo: "Como se preparar", descricao: "Os passos para revisar escalas e decidir com antecedência." },
+    ],
+    perguntasFrequentes: [
+      { pergunta: "A participação é gratuita?", resposta: "Sim. A Roda de Conversa SMR é gratuita; basta fazer a inscrição." },
+      { pergunta: "Onde acontece o encontro?", resposta: "É 100% online. Após a inscrição, você recebe as informações de acesso." },
+      { pergunta: "Para quem é esta conversa?", resposta: "Para empresários, gestores e responsáveis por RH e departamento pessoal que precisam entender o impacto do fim da escala 6x1 na empresa." },
+      { pergunta: "Posso fazer perguntas ao convidado?", resposta: "Sim. A Roda de Conversa tem espaço para dúvidas durante o encontro." },
+      { pergunta: "Haverá gravação?", resposta: "Quando a gravação for publicada, ela ficará disponível no acervo da Roda de Conversa." },
+    ],
+    materiais: [],
+    convidados: ["giuliano-di-ramo"],
+    categoria: "Trabalhista",
+    tags: ["Escala 6x1", "Jornada de trabalho", "Direito do Trabalho"],
+    seoTitulo: "O Fim da Escala 6x1 na Prática | 6ª Roda de Conversa SMR",
+    seoDescricao: "22 de outubro, às 16h, online e gratuito: Dr. Giuliano Di Ramo explica o que muda, os impactos e como sua empresa pode se preparar para o fim da escala 6x1.",
     publicadoEm: null,
   },
 ];
 
 // Sem horário de término divulgado: o encontro passa ao acervo no dia seguinte.
-export const RODA_EVENTO_FIM_ISO = "2026-10-02T00:00:00-03:00";
-const edicaoAtualSlug = "da-empresa-ao-legado";
+export const RODA_EVENTO_FIM_ISO = "2026-10-23T00:00:00-03:00";
+const edicaoAtualSlug = "fim-escala-6x1-na-pratica";
 
 export const rodaEventoEncerrado = (agora = Date.now()) =>
   agora >= new Date(RODA_EVENTO_FIM_ISO).getTime();
