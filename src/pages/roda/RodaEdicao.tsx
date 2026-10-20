@@ -74,7 +74,7 @@ const RodaEdicao = () => {
   if (edicaoEscala) {
     return (
       <div className="roda-legado-page">
-        <Seo titulo={edicao.seoTitulo} descricao={edicao.seoDescricao} path={path} tipo="article" jsonLd={jsonLd} />
+        <Seo titulo={edicao.seoTitulo} descricao={edicao.seoDescricao} path={path} tipo="article" jsonLd={jsonLd} imagem={edicao.slug === "fim-escala-6x1-na-pratica" ? `${rodaConfig.siteUrl}/og/roda-fim-escala-6x1.jpg` : undefined} />
         {edicao.dataISO ? <EscalaPraticaHero encerrado={eventoEncerrado} dataISO={edicao.dataISO} /> : null}
         <EscalaPraticaConteudo encerrado={eventoEncerrado} />
         <section className="roda-section pt-0">
@@ -94,6 +94,7 @@ const RodaEdicao = () => {
         path={path}
         tipo="article"
         jsonLd={jsonLd}
+        imagem={edicao.slug === "fim-escala-6x1-na-pratica" ? `${rodaConfig.siteUrl}/og/roda-fim-escala-6x1.jpg` : undefined}
       />
 
       {edicaoLegado && edicao.dataISO ? <LegadoHero encerrado={eventoEncerrado} dataISO={edicao.dataISO} /> : <section className="bg-navy-deep text-white px-5 md:px-8 py-14 md:py-20">

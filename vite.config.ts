@@ -17,4 +17,14 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    rollupOptions: {
+      // Extra HTML entries carry route-specific share tags for crawlers that don't run JS (WhatsApp, LinkedIn).
+      input: {
+        main: path.resolve(__dirname, "index.html"),
+        roda: path.resolve(__dirname, "roda-de-conversa/index.html"),
+        rodaEscala: path.resolve(__dirname, "roda-de-conversa/fim-escala-6x1-na-pratica/index.html"),
+      },
+    },
+  },
 });
