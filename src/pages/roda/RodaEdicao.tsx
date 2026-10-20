@@ -27,6 +27,8 @@ import { conteudos } from "@/data/roda/conteudos";
 import { rodaConfig } from "@/data/roda/config";
 import { useRodaEventState } from "@/hooks/useRodaEventState";
 import { LegadoHero } from "@/components/roda/LegadoHero";
+import { EscalaPraticaHero } from "@/components/roda/EscalaPraticaHero";
+import { EscalaPraticaConteudo } from "@/components/roda/EscalaPraticaConteudo";
 
 const RodaEdicao = () => {
   const { slug = "" } = useParams();
@@ -44,6 +46,7 @@ const RodaEdicao = () => {
   const proxima = proximaEdicao?.slug === edicao.slug ? null : proximaEdicao;
   const path = `/roda-de-conversa/${edicao.slug}`;
   const edicaoLegado = edicao.slug === "da-empresa-ao-legado";
+  const edicaoEscala = edicao.slug === "fim-escala-6x1-na-pratica";
   const eventoEncerrado = edicao.status === "realizado" || edicao.status === "gravacao-disponivel";
 
   const jsonLd = {
@@ -67,6 +70,21 @@ const RodaEdicao = () => {
     },
     performer: convidados.map((c) => ({ "@type": "Person", name: c?.nome })),
   };
+
+  if (edicaoEscala) {
+    return (
+      <div className="roda-legado-page">
+        <Seo titulo={edicao.seoTitulo} descricao={edicao.seoDescricao} path={path} tipo="article" jsonLd={jsonLd} />
+        {edicao.dataISO ? <EscalaPraticaHero encerrado={eventoEncerrado} dataISO={edicao.dataISO} /> : null}
+        <EscalaPraticaConteudo encerrado={eventoEncerrado} />
+        <section className="roda-section pt-0">
+          <div className="max-w-4xl mx-auto">
+            <ShareButtons url={path} titulo={edicao.seoTitulo} contexto={edicao.slug} />
+          </div>
+        </section>
+      </div>
+    );
+  }
 
   return (
     <div className={edicaoLegado ? "roda-legado-page" : undefined}>
